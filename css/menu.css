@@ -19,7 +19,7 @@
 .menu a 
 {
 	text-decoration:none;
-	color:#fff;
+	color:red;
 }
 
 .menu .level1
@@ -29,7 +29,7 @@
 
 .menu .level1>li
 {
-
+	
 }
 
 .menu .level1>li:hover
@@ -43,6 +43,7 @@
 {
 	color: #000;
 	text-decoration: underline;
+	cursor:default;
 }
 
 .menu .level1>li:first-child:hover
@@ -67,11 +68,15 @@
 
 .menu .level2>li:hover
 {
-	color:black;
+	color: #000;
+	text-decoration: underline;
+	cursor:default;
 }
 .menu .level2>li:hover a
 {
-	color:black;
+	color: #000;
+	text-decoration: underline;
+	cursor:default;
 }
 
 .menu .level2>li:first-child:hover
@@ -91,16 +96,20 @@
 
 .menu .level3 li
 {
-	color:black;
+
 }
 
 .menu .level3>li:hover
 {
-
+	color: #000;
+	text-decoration: underline;
+	cursor:default;
 }
 .menu .level3>li:hover a
 {
-	color:black;
+	color: #000;
+	text-decoration: underline;
+	cursor:default;
 }
 
 .menu .level3>li:first-child:hover
