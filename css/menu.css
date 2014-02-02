@@ -1,0 +1,123 @@
+/*
+ *	Welcome to the
+ *	Menu CSS Style of 
+ *	Split
+ */
+
+*
+{
+	margin:0px;
+	padding:0px;
+}
+
+.menu
+{
+	float:left;
+	margin-left: 100px;
+}
+
+.menu a 
+{
+	text-decoration:none;
+	color:#fff;
+}
+
+.menu .level1
+{
+	list-style:none;
+}
+
+.menu .level1>li
+{
+
+}
+
+.menu .level1>li:hover
+{
+	color: #000;
+	text-decoration: underline;
+	cursor:default;
+}
+
+.menu .level1>li:hover>a
+{
+	color: #000;
+	text-decoration: underline;
+}
+
+.menu .level1>li:first-child:hover
+{
+
+}
+.menu .level1>li:last-child:hover
+{
+
+}
+
+.menu .level2
+{
+	display:none;
+	list-style:none;
+}
+
+.menu .level2 li
+{
+
+}
+
+.menu .level2>li:hover
+{
+	color:black;
+}
+.menu .level2>li:hover a
+{
+	color:black;
+}
+
+.menu .level2>li:first-child:hover
+{
+
+}
+.menu .level2>li:last-child:hover
+{
+
+}
+
+.menu .level3
+{
+	display:none;
+	list-style:none;
+}
+
+.menu .level3 li
+{
+	color:black;
+}
+
+.menu .level3>li:hover
+{
+
+}
+.menu .level3>li:hover a
+{
+	color:black;
+}
+
+.menu .level3>li:first-child:hover
+{
+
+}
+.menu .level3>li:last-child:hover
+{
+
+}
+
+.menu .level1 >li:hover .level2
+{
+  display: block;
+}
+
+.menu .level2 >li:hover .level3
+{
+  display: block;
+}
