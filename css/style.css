@@ -40,13 +40,31 @@ a:hover
 #panAcount
 {
 	background-color:#00939B;
-	width:100%;
+	width:99%;
 	height:25px;
+	
+	margin-right: auto;
+	margin-left: auto;
 	
 	padding: 2px;
 	
 	-webkit-border-radius: 0 0 50px 100px;
 	border-radius: 0 0 50px 100px;
+}
+
+#logo > img
+{
+	display: block;
+    float: left;
+	
+	width: 250px;
+	heigh: 116px;
+	
+	margin-top: auto;
+	margin-bottom: auto;
+	
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .lanquage
@@ -67,7 +85,7 @@ a:hover
 	
 	border-right : solid #000 1px;
 }
- 
+
 #body
 {
 	width: 900px;
@@ -78,11 +96,11 @@ a:hover
 	margin-left: auto;
 	margin-right: auto;
 	
-	border: solid #aaa 1px;
+	/*border: solid #aaa 1px;*/
 
-	-webkit-border-radius: 3px;
+	/*-webkit-border-radius: 3px;
 	border-radius: 3px;
 	
 	-webkit-box-shadow: 0 -2px 5px 0 #aaa;
-	box-shadow: 0 -2px 5px 0 #aaa;
+	box-shadow: 0 -2px 5px 0 #aaa;*/
 }
