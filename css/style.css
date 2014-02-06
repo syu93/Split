@@ -57,8 +57,8 @@ a:hover
 
 #logo > img
 {	
-	width: 250px;
-	heigh: 116px;
+	width: 230px;
+	heigh: 78px;;
 }
 
 .lanquage
@@ -89,12 +89,4 @@ a:hover
 	
 	margin-left: auto;
 	margin-right: auto;
-	
-	/*border: solid #aaa 1px;*/
-
-	/*-webkit-border-radius: 3px;
-	border-radius: 3px;
-	
-	-webkit-box-shadow: 0 -2px 5px 0 #aaa;
-	box-shadow: 0 -2px 5px 0 #aaa;*/
 }

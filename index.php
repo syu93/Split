@@ -35,19 +35,29 @@
 				<a class="signIn" href="#">Sign In / Log In</a>		
 			</div>
 			
-			<!--<div class="slideShow">
+			<div class="slideShow">
 				<h1>Welcome to Split</h1>
-			</div>-->
+			</div>
 
 		<div id="body">
 			<nav class="menu2">						
 				<ul class="level1">
-					<a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a>
+					<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
+					<li><a href="#">Menu1</a>
+					<ul class="level2">
+						<li><a herf="#"> sql</a>
+							<ul class="level3">
+								<li><a href="#">Play !</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					</li>
 					<li><a href="#">Menu1</a></li>
 					<li><a href="#">Menu1</a></li>
 					<li><a href="#">Menu1</a></li>
 					<li><a href="#">Menu1</a></li>
-					<li><a href="#">Menu1</a></li>
+					<li class="cart"><a href="#">My Cart</a></li>
 				</ul>
 			</nav>
 		</div>
