@@ -60,6 +60,9 @@
 					<li class="cart"><a href="#">My Cart</a></li>
 				</ul>
 			</nav>
+			<div class="container">
+			
+			</div>
 		</div>
 	</body>
 </html>
