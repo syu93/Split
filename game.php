@@ -1,5 +1,6 @@
-<?php
-	
+ <?php
+	include("bdd/bddconnect.php");
+	include("gameOrder/addLibrary.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
 	<body>
 			<div id="panAcount">
 			
-				<nav class="menu1">
+				<nav class="menu1" >
 					<ul class="level1">
 						<li><a herf="#"> My Library</a>
 							<ul class="level2">
@@ -36,7 +37,7 @@
 				<a class="signIn" href="#">Sign In / Log In</a>		
 			</div>
 			
-			<div class="slideShow">
+			<div style="display:none;" class="slideShow">
 				<h1>Welcome to Split</h1>
 			</div>
 
@@ -58,13 +59,23 @@
 					<li><a href="#">Menu1</a></li>
 					<li><a href="#">Menu1</a></li>
 					<li><a href="#">Menu1</a></li>
-					<li class="cart"><a href="game.php">My Cart</a></li>
+					<li class="cart"><a href="#">My Cart</a></li>
 				</ul>
 			</nav>
 			<div class="container">
+			<form action="game.php" method="POST">
 				<div class="article">
 					<img src="gameImg/BF4.JPG">
+					<p>
+						plop plop plop
+						<input type="hidden" name="user" value="Syu93">
+						<input type="hidden" name="game" value="TitanFall">						
+						<input type="hidden" name="genre" value="action">					
+					</p>
+				<input type="submit" value="Buy">
+				<!--Set the buton in display hidden after clicking : Js-->
 				</div>
+			</form>	
 			</div>
 		</div>
 	</body>
