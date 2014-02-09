@@ -80,6 +80,35 @@ a:hover
 	
 	border-right : solid #000 1px;
 }
+.overContainer
+{
+	display:none;
+	position: relative;
+
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:79px;
+	
+	z-index: 100;
+	
+	border: dashed #aaa 3px;	width: 400px;
+	height: 400px;
+	
+	background:grey;
+}
+.closeBtn > img
+{
+    left: 385px;
+    position: relative;
+    top: -20px;
+    width: 35px;
+}
+
+.connect
+{
+	padding: 10px;
+}
+
 
 #body
 {
