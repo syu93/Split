@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="css/article.css">
 		
+		<script src="js/jquery.js"></script>
 		<script src="js/checkIfExist.js"></script>
 		<script src="js/overContainer.js"></script>
 		<title>Split</title>

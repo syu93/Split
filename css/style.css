@@ -82,7 +82,6 @@ a:hover
 }
 .overContainer
 {
-	display:none;
 	position: relative;
 
 	margin-left:auto;
@@ -103,6 +102,8 @@ a:hover
     top: -20px;
     width: 35px;
 }
+.OCon {display: block;}
+.OCoff {dispaly: none;}
 
 .connect
 {
