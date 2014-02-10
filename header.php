@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="css/article.css">
 		
-		<script src="js/jquery.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/checkIfExist.js"></script>
 		<script src="js/overContainer.js"></script>
 		<title>Split</title>
@@ -37,7 +37,7 @@
 					<option> sql </option>
 				</select>
 				
-				<a class="signIn" href="#" onClick="openOverContainerConnect()">Sign In / Log In</a>
+				<a if="signIn" class="signIn" href="#">Sign In / Log In</a>
 				<?php 
 					include("connect.php");
 				?>

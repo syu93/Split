@@ -1,9 +1,11 @@
- function openOverContainerConnect()
- {
-	document.getElementById("overContainer").style.display = "block";
- } 
- 
- function closeOverContainerConnect()
- {
-	document.getElementById("overContainer").style.display = "none";
- }
+ $("#signIn").click(function () {
+
+  $('#overContainer').removeClass("OCoff").addClass("OCon");
+
+});
+
+$("#removeClass").click(function () {
+
+  $('#para1').removeClass('highlight');
+
+});

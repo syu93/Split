@@ -1,7 +1,7 @@
 <?php
 	include("form/validateSignIn.php");
 ?>
-<div class="overContainer" id="overContainer">
+<div class="overContainer OCoff" id="overContainer">
 	<span class="closeBtn">
 		<img  src="img/close.PNG" onclick="closeOverContainerConnect()">
 	</span>
