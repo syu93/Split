@@ -37,7 +37,7 @@
 					<option> sql </option>
 				</select>
 				
-				<a id="signIn" class="signIn" href="#">Sign In / Log In</a>
+				<span id="signIn" class="signIn">Sign In / Log In</span>
 				<?php 
 					include("connect.php");
 				?>

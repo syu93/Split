@@ -4,8 +4,8 @@
 	if(!empty($_POST))
 	{
 		// echo($_POST["pseudo"]);
-		echo ($_POST["pseudo"] == $plop)? "true" : "false" ;
-		// print_r ($_POST["pseudo"]);
+		// echo ($_POST["pseudo"] == $plop)? "true" : "false" ;
+		print_r ($_POST["pseudo"]);
 		return;
 	}
 ?>
@@ -57,8 +57,8 @@
 			data: plop1,
 			success: function(data){
 				// alert($('#pseudo').val());
-				// alert(typeof(data))
-				// alert(data)
+				alert(typeof(data))
+				alert(data)
 				if(data == 'true')
 				{
 					alert("This Pseudo already exist");

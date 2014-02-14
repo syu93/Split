@@ -3,6 +3,8 @@
 //Sign Up
 if(!empty($_POST)) // add avatar
 {
+	/*if(isset($_POST["name"],$_POST["firstname"],$_POST["pseudo"], $_POST["email"], $_POST["password"], $_POST["country"], $_POST["language"]))
+	{
 	$name = $_POST["name"];
 	// echo($name);echo("</br>");
 	
@@ -27,13 +29,13 @@ if(!empty($_POST)) // add avatar
 	$language = $_POST["language"];
 	// echo($language);echo("</br>");
 	// echo("</br>");echo("</br>");
-	
+	}*/
+	$pseudo = $_POST["pseudo"];
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
-	if(!empty($_POST))
-	{
+
 		// Recovery of the game array of the licence
 		$test = $bdd->prepare('SELECT pseudo FROM member WHERE pseudo=:pseudo');
 		$test->execute(array(
@@ -41,41 +43,46 @@ if(!empty($_POST)) // add avatar
 		));
 		while ($exist = $test->fetch())
 		{
-			//$valide = $exist["pseudo"];
+			$valide = $exist["pseudo"];
 		}
-		$valide = "Syu93";
+		
 		// echo($_POST["pseudo"]);
 		echo ($_POST["pseudo"] == $valide)? "true" : "false" ;
 
 		return;
-	}
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/*if(!empty($pseudo) && !empty($email))
 	{
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		$test = $bdd->prepare('SELECT id FROM member WHERE email=:email');
