@@ -1,5 +1,5 @@
 <?php
-	include("C:\Users\TheBlackRev\Documents\EasyPHP-DevServer-14.1VC11\data\localweb\Split\bdd\bddconnect.php");
+	include("\data\localweb\Split\bdd\bddconnect.php");
  /*************************************************/
 //Sign Up
 if(!empty($_POST)) // add avatar

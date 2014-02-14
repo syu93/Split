@@ -1,5 +1,5 @@
  <?php
-	//include("bdd/bddconnect.php");
+	include("bdd/bddconnect.php");
  ?>
  <!DOCTYPE html>
 <html>

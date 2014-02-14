@@ -21,7 +21,7 @@ $( document ).ready(function(){	// Creat Json object
 				}
 				else
 				{
-					$("#ckPseudo").html("This pseudo is avaible");
+					$("#ckPseudo").html("This pseudo avaible");
 					// alert("Good");
 				}
 				
