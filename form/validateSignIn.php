@@ -1,7 +1,7 @@
 <?php
  /*************************************************/
 //Sign Up
-if($_POST)
+if(!empty($_POST)) // add avatar
 {
 	$name = $_POST["name"];
 	// echo($name);echo("</br>");
@@ -27,23 +27,56 @@ if($_POST)
 	$language = $_POST["language"];
 	// echo($language);echo("</br>");
 	// echo("</br>");echo("</br>");
+	
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
-
-	if(!empty($pseudo) && !empty($email))
+	if(!empty($_POST))
 	{
 		// Recovery of the game array of the licence
-		$test = $bdd->prepare('SELECT id FROM member WHERE pseudo=:pseudo');
+		$test = $bdd->prepare('SELECT pseudo FROM member WHERE pseudo=:pseudo');
 		$test->execute(array(
 		':pseudo' => $pseudo,
 		));
-		if ($test->rowCount() != 0)
+		while ($exist = $test->fetch())
 		{
-			$validePseudo = "This pseudo is already used"; $vldP = 0;
+			//$valide = $exist["pseudo"];
 		}
-		else {$validePseudo = "OK"; $vldP = 1;}
+		$valide = "Syu93";
+		// echo($_POST["pseudo"]);
+		echo ($_POST["pseudo"] == $valide)? "true" : "false" ;
+
+		return;
+	}
+	
+	/*if(!empty($pseudo) && !empty($email))
+	{
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		$test = $bdd->prepare('SELECT id FROM member WHERE email=:email');
 		$test->execute(array(
@@ -67,7 +100,7 @@ if($_POST)
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
-	if(!empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW) && !empty($country) && !empty($language))
+	/*if(!empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW) && !empty($country) && !empty($language))
 	{
 		if($vldP == 1 && $vldM == 1)
 		{
@@ -83,7 +116,7 @@ if($_POST)
 					':language'=> $language,
 					));
 		}	
-	}
+	}*/
 }
 // Redirection and closed the container...
 

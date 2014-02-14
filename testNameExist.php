@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/overContainer.js"></script>
-	<script type="text/javascript" src="js/checkExist.js"></script>
+	<!--<script type="text/javascript" src="js/checkExist.js"></script>-->
 </head>
 <body>
 
@@ -39,11 +39,9 @@
 	</form>
 </div>
 
-	<script type="text/javascript" src="js/checkExist.js"></script>
-
 </body>
 </html>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 	
 
 	var plop1 = {};
@@ -74,4 +72,4 @@
 			dataType: "text"
 		});		
 	});
-</script>-->
+</script>

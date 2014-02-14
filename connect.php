@@ -2,41 +2,41 @@
 	include("form/validateSignIn.php");
 ?>
 <div class="overContainer OCoff" id="overContainer">
-	<span class="closeBtn">
-		<img  src="img/close.PNG" onclick="closeOverContainerConnect()">
+	<span id="closeBtn" class="closeBtn">
+		<img  src="img/close.PNG">
 	</span>
 	
 	<div class="connect">
 		
 		<form method="POST" action="index.php" name="singup">
-			<span>Name : </span> <input type="text" name="name" value='<?php if($_POST){echo($_POST["name"]);}?>'>
+			<span>Name : </span> <input type="text" name="name">
 			</br>
-			<span>Firstname : </span> <input type="text" name="firstname" value='<?php if($_POST){echo($_POST["firstname"]);}?>'>
+			<span>Firstname : </span> <input type="text" name="firstname">
 			</br>
-			<span>Pseudo : </span> <input type='text' name='pseudo' value='<?php if($_POST){echo($_POST["pseudo"]);}?>' onChange='checkIfExist()'>
+			<span>Pseudo : </span> <input id="pseudo" type='text' name='pseudo'>
 			
-				<span class="checkPseudo"><?php if($_POST){echo($validePseudo);}?></span>
+				<span class="checkPseudo"></span>
 			
 			</br>
 			
-			<span>e mail : </span> <input type="text" name="email" value='<?php if($_POST){echo($_POST["email"]);}?>' onChange='checkIfExist()'>
+			<span>e mail : </span> <input id="mail" type="text" name="email">
 			
-				<span class="checkMail"><?php if($_POST){echo($valideMail);}?></span>
+				<span class="checkMail"></span>
 				
 			</br>
-			<span>Password : </span> <input id="signinPW" type="password" name="password" value='<?php if($_POST){echo($_POST["password"]);}?>'>
+			<span>Password : </span> <input id="signinPW" type="password" name="password">
 			</br>
 			</br>
-			<span>Country : </span> <input type="text" name="country" value='<?php if($_POST){echo($_POST["country"]);}?>'>
+			<span>Country : </span> <input type="text" name="country">
 			</br>
 			</br>
 			<span>Language : </span> <!-- Set the language choses in content and recovery it from sql-->
-				<select name="language" value='<?php if($_POST){echo($_POST["language"]);}?>'>
+				<select name="language">
 					<option>English</option>
 					<option>French</option>
 				</select>
 			</br></br>
-			<input type="submit" value="Submit" name="singup">
+			<input type="button" value="Submit" name="singup">
 		</form>
 	</div>
 </div>

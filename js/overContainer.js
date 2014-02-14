@@ -1,11 +1,13 @@
- $("#signIn").click(function () {
+$( document ).ready(function(){
+	 $("#signIn").click(function(){
 
-  $('#overContainer').removeClass("OCoff").addClass("OCon");
+	  $("#overContainer").removeClass('OCoff');
+	  $("#overContainer").addClass('OCon');
+	});
+	 
+	 $("#closeBtn").click(function(){
 
-});
-
-$("#removeClass").click(function () {
-
-  $('#para1').removeClass('highlight');
-
+	  $("#overContainer").removeClass('OCon');
+	  $("#overContainer").addClass('OCoff');
+	});
 });

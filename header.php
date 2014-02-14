@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/article.css">
 		
 		<script src="js/jquery-1.11.0.min.js"></script>
-		<script src="js/checkIfExist.js"></script>
+		<script src="js/checkExist.js"></script>
 		<script src="js/overContainer.js"></script>
 		<title>Split</title>
 	</head>
@@ -37,7 +37,7 @@
 					<option> sql </option>
 				</select>
 				
-				<a if="signIn" class="signIn" href="#">Sign In / Log In</a>
+				<a id="signIn" class="signIn" href="#">Sign In / Log In</a>
 				<?php 
 					include("connect.php");
 				?>
