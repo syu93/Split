@@ -1,7 +1,43 @@
 <?php
-	include("\data\localweb\Split\bdd\bddconnect.php");
+	include("C:\Users\TheBlackRev\Documents\EasyPHP-DevServer-14.1VC11\data\localweb\Split\bdd\bddconnect.php");
  /*************************************************/
-//Sign Up
+ /*************************************************/
+ /*************************************************/
+ /*************************************************/
+ 
+	//Sign Up
+	if(!empty($_POST))
+	{
+		// recover the pseudo typed
+		$pseudo = $_POST["pseudo"];
+
+		// recover the pseudo typed
+		$mail = $_POST["email"];
+		
+		$rep=NULL;
+
+		$test = $bdd->prepare("SELECT pseudo FROM member WHERE pseudo='$pseudo'");
+		$test->execute(array(
+		':pseudo' => $pseudo,
+		));
+		while ($exist = $test->fetch())
+		{
+			$rep = $exist["pseudo"];
+		}
+		
+		// test si le resultat de la reqette est null ou le pseudo
+		if ($rep!=NULL)
+		{
+			echo("true");
+		}
+		else
+		{
+			// print_r($rep);
+			echo("false");
+		}
+		return;	
+	}
+
 if(!empty($_POST)) // add avatar
 {
 	/*if(isset($_POST["name"],$_POST["firstname"],$_POST["pseudo"], $_POST["email"], $_POST["password"], $_POST["country"], $_POST["language"]))
@@ -36,7 +72,7 @@ if(!empty($_POST)) // add avatar
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
-		$rep=NULL;
+		/*$rep=NULL;
 		// Recovery of the game array of the licence
 		$test = $bdd->prepare("SELECT pseudo FROM member WHERE pseudo='$pseudo'");
 		$test->execute(array(
@@ -61,8 +97,7 @@ if(!empty($_POST)) // add avatar
 
 		// echo ($_POST["pseudo"] == $valide)? "true" : "false" ;
 
-		return;
-	
+		return;*/
 
 
 
