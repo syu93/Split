@@ -10,9 +10,14 @@
 		<link rel="stylesheet" type="text/css" href="css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="css/article.css">
 		
+		<link rel="stylesheet" type="text/css" href="css/validate.css">
+		
+		
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/checkExist.js"></script>
 		<script src="js/overContainer.js"></script>
+		
+		<script src="js/validate.js"></script>
 		<title>Split</title>
 	</head>
 	<body>

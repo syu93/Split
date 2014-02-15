@@ -1,58 +1,118 @@
-$( document ).ready(function(){	// Creat Json object
-	var form = {};
+$( document ).ready(function(){
+	// Creat Json object
+	var formP = {};
 
-	// recover the input value
+	// recover the input value of pseudo
 	$("#pseudo").change(function(){
-
-	form.pseudo = $('#pseudo').val();
-	 // alert(form.pseudo);
+	
+	formP.pseudo = $('#pseudo').val();
+	// alert(formP.pseudo);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignIn.php",
-			data: form,
+			url: "form/validateSignUp.php",
+			data: formP,
 			success: function(data){
 				// alert($('#pseudo').val());
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'true')
 				{
-					$("#ckPseudo").html("This pseudo already exist");
+					$( "#ckpseudo" ).html("This pseudo already exist");
+					$( "#ckpseudo" ).attr( "class", "checkNo" );
+					$("#pseudo").addClass('inputNo');
 					// alert("This Pseudo already exist");
 				}
 				else
 				{
-					$("#ckPseudo").html("This pseudo is avaible");
+					$( "#ckpseudo" ).html("This pseudo is avaible");
+					$( "#ckpseudo" ).attr( "class", "checkOk" );
+					$("#pseudo").removeClass('inputNo');
+					// $( "#submit" ).attr( "type", "submit" );
 					// alert("Good");
 				}				
 			}, 
 			dataType: "text"
-		});		
+		});	
 	});
 	
-		$("#mail").change(function(){
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
 
-	form.mail = $('#mail').val();
-	 // alert(form.pseudo);
+	// Creat Json object
+	var formM = {};
+	// recover the input value of mail
+	$("#mail").change(function(){
+
+	formM.mail = $('#mail').val();
+	// alert(formM.mail);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignIn.php",
-			data: form,
+			url: "form/validateSignUp.php",
+			data: formM,
 			success: function(data){
-				// alert($('#pseudo').val());
+				// alert($('#eamail').val());
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'true')
 				{
-					$("#ckMail").html("This mail already exist");
+					$( "#ckmail" ).html("This mail already exist");
+					$( "#ckmail" ).attr( "class", "checkNo" );
+					$("#mail").addClass('inputNo');
+					// $( "#submit" ).attr( "type", "button" );
 					// alert("This Pseudo already exist");
 				}
 				else
 				{
-					$("#ckMail").html("This mail is avaible");
+					$( "#ckmail" ).html("This mail is avaible");
+					$( "#ckmail" ).attr( "class", "checkOk" );
+					$("#mail").removeClass('inputNo');
 					// alert("Good");
 				}				
 			}, 
 			dataType: "text"
 		});		
 	});
+
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+	// Creat Json object
+	var formA = {};
+
+	// recover the input value of pseudo
+	$("#avatar").change(function(){
+	
+	formA.avatar = $('#avatar').val();
+	// alert(formA.avatar);
+		$.ajax({
+			type: "POST",
+			url: "form/validateSignUp.php",
+			data: formA,
+			success: function(data){
+				// alert($('#avatar').val());
+				// alert(typeof(data));
+				// alert(data);
+				if(data == 'false')
+				{
+					$( "#ckavt" ).html("Invalid type of extension");
+					$( "#ckavt" ).attr( "class", "checkNo" );
+					$("#avatar").addClass('inputNo');
+
+					// alert("This Pseudo already exist");
+				}
+				else
+				{
+					$( "#ckavt" ).html("");
+					$( "#ckavt" ).attr( "class", "checkOk" );
+					$("#mail").removeClass('inputNo');
+				}				
+			}, 
+			dataType: "text"
+		});	
+	});
+
+
 });
