@@ -3,7 +3,7 @@ $( document ).ready(function(){
 	var formP = {};
 
 	// recover the input value of pseudo
-	$("#pseudo").blur(function(){
+	$("#pseudo").change(function(){
 	
 	formP.pseudo = $('#pseudo').val();
 	// alert(formP.pseudo);
@@ -46,7 +46,7 @@ $( document ).ready(function(){
 	// Creat Json object
 	var formM = {};
 	// recover the input value of mail
-	$("#mail").blur(function(){
+	$("#mail").change(function(){
 
 	formM.mail = $('#mail').val();
 	// alert(formM.mail);
@@ -89,7 +89,7 @@ $( document ).ready(function(){
 	var formA = {};
 
 	// recover the input value of avatar
-	$("#avatar").blur(function(){
+	$("#avatar").change(function(){
 	
 	formA.avatar = $('#avatar').val();
 	// alert(formA.avatar);
