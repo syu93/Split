@@ -9,5 +9,6 @@ $( document ).ready(function(){
 
 	  $("#overContainer").removeClass('OCon');
 	  $("#overContainer").addClass('OCoff');
+	  $("#formSi")[0].reset();
 	});
 });

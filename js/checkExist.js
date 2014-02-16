@@ -3,7 +3,7 @@ $( document ).ready(function(){
 	var formP = {};
 
 	// recover the input value of pseudo
-	$("#pseudo").change(function(){
+	$("#pseudo").blur(function(){
 	
 	formP.pseudo = $('#pseudo').val();
 	// alert(formP.pseudo);
@@ -16,11 +16,14 @@ $( document ).ready(function(){
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'true')
-				{
-					$( "#ckpseudo" ).html("This pseudo already exist");
-					$( "#ckpseudo" ).attr( "class", "checkNo" );
-					$("#pseudo").addClass('inputNo');
-					// alert("This Pseudo already exist");
+				{					
+						$( "#ckpseudo" ).html("This pseudo already exist");
+						$( "#ckpseudo" ).attr( "class", "checkNo" );
+						$("#pseudo").addClass('inputNo');
+						// alert("This Pseudo already exist");
+					$( "#formSi" ).submit(function( event ) {	
+					event.preventDefault();
+					});
 				}
 				else
 				{
@@ -43,7 +46,7 @@ $( document ).ready(function(){
 	// Creat Json object
 	var formM = {};
 	// recover the input value of mail
-	$("#mail").change(function(){
+	$("#mail").blur(function(){
 
 	formM.mail = $('#mail').val();
 	// alert(formM.mail);
@@ -56,12 +59,15 @@ $( document ).ready(function(){
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'true')
-				{
-					$( "#ckmail" ).html("This mail already exist");
-					$( "#ckmail" ).attr( "class", "checkNo" );
-					$("#mail").addClass('inputNo');
-					// $( "#submit" ).attr( "type", "button" );
-					// alert("This Pseudo already exist");
+				{					
+						$( "#ckmail" ).html("This mail already exist");
+						$( "#ckmail" ).attr( "class", "checkNo" );
+						$("#mail").addClass('inputNo');
+						// $( "#submit" ).attr( "type", "button" );
+						// alert("This Pseudo already exist");
+					$( "#formSi" ).submit(function( event ) {	
+					event.preventDefault();
+					});					
 				}
 				else
 				{
@@ -82,8 +88,8 @@ $( document ).ready(function(){
 	// Creat Json object
 	var formA = {};
 
-	// recover the input value of pseudo
-	$("#avatar").change(function(){
+	// recover the input value of avatar
+	$("#avatar").blur(function(){
 	
 	formA.avatar = $('#avatar').val();
 	// alert(formA.avatar);
@@ -96,18 +102,20 @@ $( document ).ready(function(){
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'false')
-				{
-					$( "#ckavt" ).html("Invalid type of extension");
-					$( "#ckavt" ).attr( "class", "checkNo" );
-					$("#avatar").addClass('inputNo');
-
-					// alert("This Pseudo already exist");
+				{					
+						$( "#ckavt" ).html("Invalid type of extension");
+						$( "#ckavt" ).attr( "class", "checkNo" );
+						$("#avatar").addClass('inputNo');
+						// alert("This Pseudo already exist");
+					$( "#formSi" ).submit(function( event ) {	
+					event.preventDefault();
+					});
 				}
 				else
 				{
 					$( "#ckavt" ).html("");
 					$( "#ckavt" ).attr( "class", "checkOk" );
-					$("#mail").removeClass('inputNo');
+					$("#avatar").removeClass('inputNo');
 				}				
 			}, 
 			dataType: "text"
