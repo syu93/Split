@@ -15,10 +15,10 @@ $( document ).ready(function(){
 			event.preventDefault();	
 		}
 
-		if ( !($('#avatar').val())) {
+		/*if ( !($('#avatar').val())) {
 			// $( "#cksub" ).text( "Validated..." ).show();
 			event.preventDefault();
-		}
+		}*/
 		
 		if ( !($('#mail').val())) {
 			// $( "#cksub" ).text( "Validated..." ).show();
@@ -35,10 +35,10 @@ $( document ).ready(function(){
 			event.preventDefault();	
 		}
 		
-		if ( !($('#langue').val())) {
+		/*if ( !($('#langue').val())) {
 			// $( "#cksub" ).text( "Validated..." ).show();
 			event.preventDefault();	
-		}		
+		}*/		
 		return;
 		
 			$( "#cksub" ).text( "Not valid!" ).show().fadeOut( 1000 );

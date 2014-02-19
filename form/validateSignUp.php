@@ -20,81 +20,88 @@ if(!empty($_POST))
 	{
 	// var_dump($_POST);
 	
-		if(!isset($_POST["genre"],$_POST["name"],$_POST["firstname"],$_FILE[""],$_POST["pseudo"],$_POST["email"],$_POST["password"],$_POST["country"],$_POST["language"]))
+		if(!isset($_POST["genre"],$_POST["name"],$_POST["firstname"],$_FILE["avatar"]['name'],$_POST["pseudo"],$_POST["email"],$_POST["password"],$_POST["country"]))
 		{
 			$genre = $_POST["genre"];
-			echo($genre);echo("</br>");
+			// echo($genre);echo("</br>");
 			
 			$name = $_POST["name"];
-			echo($name);echo("</br>");
+			// echo($name);echo("</br>");
 			
 			$firstname = $_POST["firstname"];
-			echo($firstname);echo("</br>");
+			// echo($firstname);echo("</br>");
 			
-			$date = $_POST["Y"]."/".$_POST["M"]."/".$_POST["D"];
-			echo($date);echo("</br>");
+			$date = $_POST["Y"]."-".$_POST["M"]."-".$_POST["D"];
+			// echo($date);echo("</br>");
 			
 			$pseudo = $_POST["pseudo"];
-			echo($pseudo);echo("</br>");
+			// echo($pseudo);echo("</br>");
 			
-			$avatar = $_POST["avatar"];
-			echo($avatar);echo("</br>");
+			$avatar = $_FILES['avatar']['name'];
+			$path = NULL;
+					$_FILES['avatar']['type']; 
+					$_FILES['avatar']['size'];
+					$_FILES['avatar']['tmp_name'];
+					$_FILES['avatar']['error'];
+			// echo($avatar);echo("</br>");
 			
 			$email = $_POST["mail"];
-			echo($email);echo("</br>");
+			// echo($email);echo("</br>");
 			
 			$password = $_POST["password"];
-			echo($password);echo("</br>");
+			// echo($password);echo("</br>");
 			
 			$cryptedPW = md5($password);
-			echo($cryptedPW);echo("</br>");
+			// echo($cryptedPW);echo("</br>");
 			
 			$country = $_POST["country"];
-			echo($country);echo("</br>");
+			// echo($country);echo("</br>");
 			
-			$language = $_POST["language"];
-			echo($language);echo("</br>");
-			echo("</br>");echo("</br>");
-			
-			return;
 		}
-	}
-
-	/*********************************************************************************/
-	/*********************************************************************************/
-	/*********************************************************************************/
-	/*********************************************************************************/
-
-	/*if(!empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW) && !empty($country) && !empty($language))
-	{
-		if($vldP == 1 && $vldM == 1)
+		/*********************************************************************************/
+		/*********************************************************************************/
+		/*********************************************************************************/
+		/*********************************************************************************/
+		
+		if($_FILES!=NULL)
 		{
-			$req = $bdd->prepare('INSERT INTO member (name, firstname, pseudo ,email , password ,country ,language) 
-								VALUES(:name, :firstname, :pseudo ,:email , :password , :country , :language)');
-			$req->execute(array(
-					':name'=> $name,
-					':firstname'=> $firstname,
-					':pseudo'=> $pseudo,
-					':password'=> $cryptedPW,
-					':email'=> $email,
-					':country'=> $country,
-					':language'=> $language,
-					));
-		}	
-	}*/
+			//move the file
+			$ext = strtolower(substr(strrchr($avatar, '.'),1)); //get the extension : without the "."
+			$path = "../userAvt/".$pseudo.".".$ext;
+			$movefile = move_uploaded_file($_FILES['avatar']['tmp_name'],$path);
+		}
+		
+			if(!empty($genre) && !empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW))
+			{
+
+					$req = $bdd->prepare('INSERT INTO member (genre, name, firstname, date, pseudo, avatar, email , password ,country) 
+									VALUES(:genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country)');
+					$req->execute(array(
+						':genre'=> $genre,
+						':name'=> $name,
+						':firstname'=> $firstname,
+						':date'=> $date,
+						':pseudo'=> $pseudo,
+						':avatar'=> $path,
+						':password'=> $cryptedPW,
+						':email'=> $email,
+						':country'=> $country,
+						));	
+			}
+	}
 	
 	/*********************************************************************************/
 	/*********************************************************************************/
 	/*********************************************************************************/
 	/*********************************************************************************/
-	
-	//Sign Up
+
+	// check for Sign Up with ajax file: checkExist.js
 	if(!empty($_POST["pseudo"]))
 	{
 		$pseudo = $_POST["pseudo"];
 		
 		$repPS=NULL;
-		// Recovery of the game array of the licence
+		
 		$test = $bdd->prepare("SELECT pseudo FROM member WHERE pseudo='$pseudo'");
 		$test->execute(array(
 		':pseudo' => $pseudo,
@@ -174,6 +181,6 @@ if(!empty($_POST))
 	}
 }
 // Redirection and closed the container...
-
+header("Location: ../");
 
 ?>

@@ -1,77 +1,46 @@
-<?php
-	$plop="plop";
-	
-	if(!empty($_POST))
-	{
-		// echo($_POST["pseudo"]);
-		echo ($_POST["pseudo"] == $plop)? "true" : "false" ;
-		// print_r ($_POST["pseudo"]);
-		return;
-	}
-?>
-
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/overContainer.js"></script>
-	<script type="text/javascript" src="js/checkExist.js"></script>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript">
+function populateList() {
+var teamArray = ["Select a Team",
+ "Smith-Woods", 
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Jones-Ebert",
+ "Bohme-Quester"];
+var arLen=teamArray.length;
+for(var i=0; i<arLen; i++){
+    document.form1.team.options[i]=new Option(teamArray[i], i);
+    }
+}
+
+window.onload=populateList;
+</script>
+
+<style type="text/css">
+</style>
+
 </head>
 <body>
-
-<input type="button"  value="plolp1" onClick="myFunction1();">
-
-</br></br>
-
-<input type="button" value="plolp2" onClick="myFunction2();">
-
-<div id="div">
-	<form id="monForm" name="singup" action="test.php" method="post">
-		<label for="pseudo" >Pseudo</label>
-		
-		<input type="text" id="pseudo" name="pseudo" />
-		
-		
-		<label for="mail">Email</label>
-		<input type="email" id="mail" name="mail"/>
-
-		<input type="button" id="envoyer" value="Envoyer"/>
-	</form>
+<form action="#" method="" name="form1">
+<div>
+<select name="team" onchange="getScorecard(this)">
+</select>
 </div>
-
-	<script type="text/javascript" src="js/checkExist.js"></script>
-
+</form>
 </body>
-</html>
-<!--<script type="text/javascript">
-	
-
-	var plop1 = {};
-	// Creat Json
-
-	$("#pseudo").change(function(){
-
-	plop1.pseudo = $('#pseudo').val();
-	// alert(plop1.pseudo);
-		$.ajax({
-			type: "POST",
-			url: "test.php",
-			data: plop1,
-			success: function(data){
-				// alert($('#pseudo').val());
-				// alert(typeof(data))
-				// alert(data)
-				if(data == 'true')
-				{
-					alert("This Pseudo already exist");
-				}
-				else
-				{
-					alert("Good");
-				}
-				
-			}, 
-			dataType: "text"
-		});		
-	});
-</script>-->
