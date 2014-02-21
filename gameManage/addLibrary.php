@@ -12,7 +12,7 @@
 		{
 			// created a random licence for the user
 			// Each generated Key is store into the game licences array and verify when the user try to lunch the game
-			$licence= uniqid();
+			$licence= $tag."-".uniqid();
 			// echo ($licence);
 			
 			// Recovery of the game array of the user

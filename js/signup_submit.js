@@ -9,13 +9,13 @@ $( document ).ready(function(){
 	// alert(formP.pseudo);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignUp.php",
+			url: "form/validate.php",
 			data: formP,
 			success: function(data){
 				// alert($('#pseudo').val());
 				// alert(typeof(data));
 				// alert(data);
-				if(data == 'true')
+				if(data == 'truep')
 				{					
 						$( "#ckpseudo" ).html("This pseudo already exist");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
@@ -52,13 +52,13 @@ $( document ).ready(function(){
 	// alert(formM.mail);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignUp.php",
+			url: "form/validate.php",
 			data: formM,
 			success: function(data){
 				// alert($('#eamail').val());
 				// alert(typeof(data));
 				// alert(data);
-				if(data == 'true')
+				if(data == 'truem')
 				{					
 						$( "#ckmail" ).html("This mail already exist");
 						$( "#ckmail" ).attr( "class", "checkNo" );
@@ -95,13 +95,13 @@ $( document ).ready(function(){
 	// alert(formA.avatar);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignUp.php",
+			url: "form/validate.php",
 			data: formA,
 			success: function(data){
 				// alert($('#avatar').val());
 				// alert(typeof(data));
 				// alert(data);
-				if(data == 'false')
+				if(data == 'falsea')
 				{					
 						$( "#ckavt" ).html("Invalid type of extension");
 						$( "#ckavt" ).attr( "class", "checkNo" );
@@ -121,6 +121,37 @@ $( document ).ready(function(){
 			dataType: "text"
 		});	
 	});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+	// Creat Json object
+	var formL = {};
 
+	// recover the input value of avatar
+	$("#langue").change(function(){
+	
+	formL.langue = $('#langue').val();
+	alert(formL.langue);
+		$.ajax({
+			type: "POST",
+			url: "form/validateSignUp.php",
+			data: formL,
+			success: function(data){
+				// alert($('#avatar').val());
+				// alert(typeof(data));
+				alert(data);
+				if(data == 'fr')
+				{
+						alert("This Pseudo already exist");
+				}
+				else
+				{
+					
+				}				
+			}, 
+			dataType: "text"
+		});	
+	});
 
 });

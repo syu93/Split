@@ -1,9 +1,9 @@
  <?php
-	include("header.php");
-	include("bdd/bddconnect.php");
-	include("gameManage/addLibrary.php");
+	require_once("header.php");
+	require_once("bdd/bddconnect.php");
+	require_once("gameManage/addLibrary.php");
+	require_once("form/init.php");
 ?>
-
 			<div class="container">
 			<form action="game.php" method="POST">
 				<div class="article">

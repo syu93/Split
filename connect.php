@@ -1,6 +1,3 @@
-<?php
-	//require_once("form/validateSignUp.php");	
-?>
 <div class="overContainer OCoff" id="overContainer">
 	<span id="closeBtn" class="closeBtn">
 		<img  src="img/close.PNG">
