@@ -132,7 +132,7 @@ $( document ).ready(function(){
 	$("#langue").change(function(){
 	
 	formL.langue = $('#langue').val();
-	alert(formL.langue);
+	// alert(formL.langue);
 		$.ajax({
 			type: "POST",
 			url: "form/validateSignUp.php",
@@ -140,15 +140,17 @@ $( document ).ready(function(){
 			success: function(data){
 				// alert($('#avatar').val());
 				// alert(typeof(data));
-				alert(data);
-				if(data == 'fr')
+				// alert(data);
+				if(data == "fr")
 				{
-						alert("This Pseudo already exist");
+					location.reload();
 				}
 				else
 				{
-					
-				}				
+
+					location.reload();
+				}
+			
 			}, 
 			dataType: "text"
 		});	

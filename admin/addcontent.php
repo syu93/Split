@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+require_once'../form/init.php';
 require_once'header.php';
 ?>
 <?php

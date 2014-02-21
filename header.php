@@ -39,11 +39,20 @@
 					</ul>
 				</nav>
 				<form method="POST" action="form/validateSignUp.php">
-					<select id="langue" name="language" class="language">
-						<option> Francais </option>
-						<option> English </option>
+					<select id="langue" name="langue" class="language">
+					<?php
+						if($_SESSION['langue'] == text_fr || $_SESSION['langue']==Null)
+						{
+							echo "<option>Francais</option>";
+							echo"<option>English</option>";
+						}
+						else if($_SESSION['langue'] == text_en)
+						{
+							echo"<option>English</option>";
+							echo "<option>Francais</option>";
+						}
+					?>
 					</select>
-					<input type="submit" value='ok'>
 				</form>
 				<span id="signIn" class="signIn">Sign In / Log In</span>
 				<?php 

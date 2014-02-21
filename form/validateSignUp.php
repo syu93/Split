@@ -1,6 +1,6 @@
 <?php
 	require_once("init.php");
-	require_once("session.php");
+	// require_once("session.php");
 	require_once("../bdd/bddconnect.php");
  
 /*************************************************/
@@ -30,19 +30,19 @@ if(isset($_POST["genre"],$_POST["name"],$_POST["firstname"],$_POST["Y"],$_POST["
 	if(!empty($_POST))
 	{
 		// check for Sign Up with ajax file: signup_submit.js
-		if(!empty($_POST["language"]))
+		if(!empty($_POST["langue"]))
 		{
-			$langue = $_POST["language"];
-			echo $langue;
-
+			$langue = $_POST["langue"];
+			// echo $langue;
+			session_start();
 			if($langue == "Francais")
 			{
-				$_SESSION['langue'] = "text_fr"; 
+				$_SESSION['langue'] = "text_fr"; echo($_SESSION['langue']);
 				echo("fr");
 			}
 			else
 			{
-				$_SESSION['langue'] = "text_en";
+				$_SESSION['langue'] = "text_en"; echo($_SESSION['langue']);
 				echo("en");
 			}
 			return;
