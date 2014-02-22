@@ -1,18 +1,18 @@
  <?php
 	if($_POST == true)
 	{
-		$tag = $_POST["game"];
+		$title = $_POST["game"];
 		$genre = $_POST["genre"];
 		$user = $_POST["user"];
 		
-		// echo($tag);
+		// echo($title);
 		// echo($user);
 		
-		if(isset($tag, $user))
+		if(isset($title, $user))
 		{
 			// created a random licence for the user
 			// Each generated Key is store into the game licences array and verify when the user try to lunch the game
-			$licence= $tag."-".uniqid();
+			$licence= $title."-".uniqid();
 			// echo ($licence);
 			
 			// Recovery of the game array of the user
@@ -29,7 +29,7 @@
 			$newGame = unserialize($userGame);
 			// var_dump ($newGame);
 			
-			$newGame[][$genre][$licence] = $tag;
+			$newGame[][$genre][$licence] = $title;
 			// var_dump($newGame);
 			
 			$addNewGame = serialize($newGame);
@@ -40,9 +40,11 @@
 		/**************************************************************************************/
 		
 			// Recovery of the game array of the licence
-			$req2 = $bdd->prepare('SELECT licence FROM game WHERE tag =:tag');
+			$licenceExist = "plop";
+			
+			$req2 = $bdd->prepare('SELECT licence FROM game WHERE title =:title');		
 			$req2->execute(array(
-			':tag'=> $tag,
+			':title'=> $title,
 			));
 			while ($rep2 = $req2->fetch())
 			{
@@ -50,24 +52,29 @@
 				// var_dump($rep2["licence"]);			
 			}
 			
-			$gameLicence = unserialize($licenceExist);
-			// var_dump($gameLicence);
-			
+			if($licenceExist == NULL)
+			{
+				$gameLicence = unserialize($licenceExist);
+				// var_dump($gameLicence);
+			}
 			$gameLicence[] = $licence;
 			// var_dump($gameLicence);
 			
 			$gl = serialize($gameLicence);
-			// var_dump($gl);
+			// echo($gl);
+			// echo($title);
+
 		/******************************************************************************************/
 		/******************************************************************************************/
 		/******************************************************************************************/
 		/******************************************************************************************/
 		
-				$req3 = $bdd->prepare('UPDATE game SET licence=:newLicence WHERE tag=:tag');
+				$req3 = $bdd->prepare('UPDATE game SET licence=:newLicence WHERE title=:title');
 				$req3->execute(array(
 				':newLicence'=> $gl,
-				':tag'=> $tag,
+				':title'=> $title,
 				));
+				// var_dump($req3);
 				
 				// find a way to test the fist request !!!
 				

@@ -17,7 +17,7 @@ $( document ).ready(function(){
 				// alert(data);
 				if(data == 'truep')
 				{					
-						$( "#ckpseudo" ).html("This pseudo already exist");
+						$( "#ckpseudo" ).html("Not Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
 						$("#pseudo").addClass('inputNo');
 						// alert("This Pseudo already exist");
@@ -27,11 +27,20 @@ $( document ).ready(function(){
 				}
 				else
 				{
-					$( "#ckpseudo" ).html("This pseudo is avaible");
-					$( "#ckpseudo" ).attr( "class", "checkOk" );
-					$("#pseudo").removeClass('inputNo');
-					// $( "#submit" ).attr( "type", "submit" );
-					// alert("Good");
+					if(formP.pseudo != "")
+					{
+						$( "#ckpseudo" ).html("Avaible");
+						$( "#ckpseudo" ).attr( "class", "checkOk" );
+						$("#pseudo").removeClass('inputNo');
+						// $( "#submit" ).attr( "type", "submit" );
+						// alert("Good");
+					}
+					else
+					{
+						$( "#ckpseudo" ).html("");
+						$( "#ckpseudo" ).attr( "class", "checkOk" );
+						$("#pseudo").removeClass('inputNo');
+					}
 				}				
 			}, 
 			dataType: "text"
@@ -59,8 +68,9 @@ $( document ).ready(function(){
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'truem')
-				{					
-						$( "#ckmail" ).html("This mail already exist");
+				{	
+					
+						$( "#ckmail" ).html("Not Avaible");
 						$( "#ckmail" ).attr( "class", "checkNo" );
 						$("#mail").addClass('inputNo');
 						// $( "#submit" ).attr( "type", "button" );
@@ -71,10 +81,19 @@ $( document ).ready(function(){
 				}
 				else
 				{
-					$( "#ckmail" ).html("This mail is avaible");
-					$( "#ckmail" ).attr( "class", "checkOk" );
-					$("#mail").removeClass('inputNo');
-					// alert("Good");
+					if(formM.mail != "")
+					{
+						$( "#ckmail" ).html("Avaible");
+						$( "#ckmail" ).attr( "class", "checkOk" );
+						$("#mail").removeClass('inputNo');
+						// alert("Good");
+					}
+					else
+					{
+						$( "#ckmail" ).html("");
+						$( "#ckmail" ).attr( "class", "checkOk" );
+						$("#mail").removeClass('inputNo');
+					}
 				}				
 			}, 
 			dataType: "text"
@@ -103,7 +122,7 @@ $( document ).ready(function(){
 				// alert(data);
 				if(data == 'falsea')
 				{					
-						$( "#ckavt" ).html("Invalid type of extension");
+						$( "#ckavt" ).html("Invalid extension");
 						$( "#ckavt" ).attr( "class", "checkNo" );
 						$("#avatar").addClass('inputNo');
 						// alert("This Pseudo already exist");

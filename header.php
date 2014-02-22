@@ -75,7 +75,7 @@
 					while ($donnees = $reponse->fetch())
 						{
 					?>						
-						<li><a href="#">	<?php echo $donnees[$_SESSION['langue']]; ?>	</a></li>
+						<li><a href="action.php">	<?php echo $donnees[$_SESSION['langue']]; ?>	</a></li>
 					<?php
 						}
 					?>

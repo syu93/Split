@@ -231,8 +231,8 @@
     border-right: 1px solid #343434;
 	
 	column-width:100px;
--moz-column-width:100px; /* Firefox */
--webkit-column-width:100px; /* Safari and Chrome */
+	-moz-column-width:100px; /* Firefox */
+	-webkit-column-width:100px; /* Safari and Chrome */
 }
 .menu2 .level1 > li:nth-child(2)
 {

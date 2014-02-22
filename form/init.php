@@ -10,12 +10,14 @@ function getUrl() {
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
-function uploadgameimg($pth, $gameImg, $gameTitle){
+function uploadgameimg($gameImg, $gameTitle){
 	$ext = strtolower(substr(strrchr($gameImg, '.'),1)); //get the extension : without the "."
 	// echo $ext;
 	$path = "../gameImg/".$gameTitle.".".$ext;
-	$pth=$path;
+	
 	$movefile = move_uploaded_file($_FILES['gameImg']['tmp_name'],$path);
+	
+	return $path;
 }
 /****************************************************************************/
 /****************************************************************************/

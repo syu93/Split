@@ -8,8 +8,6 @@
 /*************************************************/
 /*************************************************/
 
-
-
 if(isset($_POST["genre"],$_POST["name"],$_POST["firstname"],$_POST["Y"],$_POST["M"],$_POST["D"],$_POST["pseudo"],$_POST["mail"],$_POST["password"],$_POST["country"]))
 {
 	$date = $_POST["Y"]."-".$_POST["M"]."-".$_POST["D"];

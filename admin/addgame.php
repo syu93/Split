@@ -11,7 +11,7 @@ if(isset($_POST['submitContent']))
  *	Recovery and Scripture in the DB
  */
 	$gamePosition = $_POST['gamePosition'];
-	
+	// echo$gamePosition;
 	$gameTag = $_POST['gameTag'];
 	// echo$gameTag;
 	
@@ -19,32 +19,35 @@ if(isset($_POST['submitContent']))
 	// echo$gameTitle;
 	
 	$gameTextFr = $_POST['gameTextFr'];
-	// echo$gameText;
+	// echo$gameTextFr;
 
 	$gameTextEn = $_POST['gameTextEn'];
+	// echo$gameTextEn;
 	
 	$gameTextlongueFr = $_POST['gameTextlongueFr'];
-	// echo$gameText;
+	// echo$gameTextlongueFr;
 
 	$gameTextlongueEn = $_POST['gameTextlongueEn'];
-	// echo$gameText;
+	// echo$gameTextlongueEn;
 	
 	$connected = $_POST['connected'];
 	// echo$connected;
 	
 	$gamePrice = $_POST['gamePrice'];
+	// echo$gamePrice;
 	
 	$gameGenre = $_POST['gameGenre'];
+	// echo$gameGenre;
 	
 	$gameactive = $_POST['gameactive'];
 	// echo$gameactive;
 	
-	$gameImg = $_FILES['gameImg']['name'];
+	$gameImg = $_FILES['gameImg']['name'];	
+	// var_dump($_FILES['gameImg']['name']);
 	
-	// var_dump($_FILES['gameImg']);
-	$pth=NULL;
-	uploadgameimg($pth, $gameImg, $gameTitle);
-	echo$pth;
+	
+	$pth = uploadgameimg($gameImg, $gameTitle);
+	// echo($pth);
 	
 	$req = $bdd->prepare('INSERT INTO game(url,price,genre,textlongue_fr,textlongue_en,tag, title, text_fr, text_en, position,connected, active)VALUES(:pth, :gameGenre,:gamePrice,:gameTextlongueFr,:gameTextlongueEn,:gameTag,:gameTitle,:gameTextFr,:gameTextEn,:gamePosition,:connected,:gameactive)');
 	$req->execute(array(
@@ -61,7 +64,7 @@ if(isset($_POST['submitContent']))
 	':gameactive'=> $gameactive,
 	':pth'=> $pth,
 	));
-	
+	var_dump($req);
 /*
  *	Recovery and Scripture in the DB
  */

@@ -11,7 +11,7 @@
 					<p>
 						plop plop plop
 						<input type="hidden" name="user" value="Syu93">
-						<input type="hidden" name="game" value="TitanFall">						
+						<input type="hidden" name="game" value="titanfall">						
 						<input type="hidden" name="genre" value="action">					
 					</p>
 				<input type="submit" value="Buy">
