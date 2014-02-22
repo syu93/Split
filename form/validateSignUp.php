@@ -31,16 +31,19 @@ if(isset($_POST["genre"],$_POST["name"],$_POST["firstname"],$_POST["Y"],$_POST["
 		if(!empty($_POST["langue"]))
 		{
 			$langue = $_POST["langue"];
-			// echo $langue;
+
 			session_start();
+
 			if($langue == "Francais")
 			{
-				$_SESSION['langue'] = "text_fr"; echo($_SESSION['langue']);
+				$_SESSION["user"]['langue'] = "text_fr";
+				// echo($_SESSION['user']['langue']);
 				echo("fr");
 			}
 			else
-			{
-				$_SESSION['langue'] = "text_en"; echo($_SESSION['langue']);
+			{				
+				$_SESSION['user']['langue'] = "text_en";
+				// echo($_SESSION["user"]['langue']);
 				echo("en");
 			}
 			return;

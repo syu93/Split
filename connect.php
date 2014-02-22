@@ -1,4 +1,4 @@
-<div class="overContainer OCon" id="overContainer">
+<div class="overContainer OCoff" id="overContainer">
 	<span id="closeBtn" class="closeBtn">
 		<img  src="img/close.PNG">
 	</span>

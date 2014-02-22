@@ -41,12 +41,12 @@
 				<form method="POST" action="form/validateSignUp.php">
 					<select id="langue" name="langue" class="language">
 					<?php
-						if($_SESSION['langue'] == text_fr || $_SESSION['langue']==Null)
+						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
 						{
 							echo "<option>Francais</option>";
 							echo"<option>English</option>";
 						}
-						else if($_SESSION['langue'] == text_en)
+						else if($_SESSION['user']['langue'] == "text_en")
 						{
 							echo"<option>English</option>";
 							echo "<option>Francais</option>";
@@ -75,7 +75,7 @@
 					while ($donnees = $reponse->fetch())
 						{
 					?>						
-						<li><a href="action.php">	<?php echo $donnees[$_SESSION['langue']]; ?>	</a></li>
+						<li><a href="action.php">	<?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
 					<?php
 						}
 					?>
