@@ -7,6 +7,7 @@
 *
 {
 	margin: 0;
+	padding: 0;
 }
  
  body
@@ -57,11 +58,11 @@ a:hover
 
 #logo > img
 {	
-	width: 250px;
-	heigh: 116px;
+	width: 230px;
+	heigh: 78px;;
 }
 
-.lanquage
+.language
 {
 	min-width: 100px;
 	float:right;
@@ -79,6 +80,120 @@ a:hover
 	
 	border-right : solid #000 1px;
 }
+.overContainer
+{
+	position: relative;
+
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:79px;
+	
+	z-index: 100;
+	
+	border: dashed #aaa 3px;
+	width: 800px;
+	height: 500px;
+	
+	background:grey;
+	
+}
+.closeBtn > img
+{
+    left: 785px;
+    position: relative;
+    top: -20px;
+    width: 35px;
+}
+.OCon {display: block;}
+.OCoff {display: none;}
+
+.connect
+{
+	padding: 10px;
+}
+.element
+{
+	width: 193px;
+	margin-bottom:5px;
+	display: inline-block;
+}
+hr
+{
+    background-color: #DDDDDD;
+    border: 0 none;
+    color: #DDDDDD;
+	width:65%;
+    height: 1px;
+    margin: 10px 0;
+    outline: 0 none;
+    padding: 0;
+	
+	-webkit-box-shadow: 0 0 6px 0px #000000;
+	box-shadow: 0 0 6px 0px #000000;
+}
+.hr-vert
+{
+	border-right: 1px solid #DDDDDD;
+	box-shadow: 0 0 5px 1px #000000;
+	color: #DDDDDD;
+	height: 340px;
+	left: 370px;
+	margin: 10px 0;
+	outline: 0 none;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.form2
+{
+	font-size:18px;
+	width:50%;
+	float:right;
+}
+
+.genre
+{
+	width:60px;
+	display:inline;
+	margin-right:12px;
+}
+.date , .input
+{
+	display: inline;
+}
+.connect input
+{
+	margin-left:5px;
+	padding-left:5px;
+	padding-right:5px;
+	border-radius: 0 12px 0 12px;
+	border: inset grey 2px;
+}
+#submit
+{
+	margin-left:260px;
+	color : #DDDDDD;
+	
+	font-size: 16px;
+	font-weight:bold;
+	
+	padding-left:10px;
+	padding-right:10px;
+	border: outline #DDDDDD 3px;
+	
+	background:#6E91BE;
+}
+#submit:hover
+{
+	color: #FFF;
+	
+	border: inset #6E91BE 2px;
+	
+	-webkit-box-shadow: 0 0 2px 0px #DDD;
+	box-shadow: 0 0 2	px 0px #DDD;
+	
+	cursor:pointer;
+}
 
 #body
 {
@@ -89,12 +204,26 @@ a:hover
 	
 	margin-left: auto;
 	margin-right: auto;
-	
-	/*border: solid #aaa 1px;*/
+}
 
-	/*-webkit-border-radius: 3px;
-	border-radius: 3px;
+.container
+{
+	width: 100%;
+	height: 100%;
 	
-	-webkit-box-shadow: 0 -2px 5px 0 #aaa;
-	box-shadow: 0 -2px 5px 0 #aaa;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	
+	border: solid black;
+	
+	clear: both;
+}
+
+.text
+{
+	text-align:center;
+	font-size: 25px;
+	
+	padding-top:110px;
 }
