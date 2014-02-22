@@ -159,7 +159,7 @@ $( document ).ready(function(){
 			success: function(data){
 				// alert($('#avatar').val());
 				// alert(typeof(data));
-				alert(data);
+				// alert(data);
 				if(data == "fr")
 				{
 					location.reload();
