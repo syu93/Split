@@ -21,6 +21,15 @@
 						<input type="button" value="Ajouter au panier">
 					<?php
 						}
+					echo"</br>";	
+					echo"user ID :".$_SESSION['user']['id'];
+					echo"</br>";
+					echo"user Session Active :".$_SESSION['user']['connected'];
+					if($_SESSION['user']['connected']==false)echo"false";
+					if($_SESSION['user']['connected']==true)echo"true";
+					echo"</br>";
+					echo"user pseudo :".$_SESSION['user']['pseudo'];
+					echo"</br>";
 					?>
 				</div>
 			</div>

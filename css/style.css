@@ -82,10 +82,9 @@ a:hover
 }
 .overContainer
 {
-	position: relative;
+	position:fixed;
+	left:228.5px;
 
-	margin-left:auto;
-	margin-right:auto;
 	margin-top:79px;
 	
 	z-index: 100;
@@ -94,7 +93,11 @@ a:hover
 	width: 800px;
 	height: 500px;
 	
+	/*background-image:url('get.png');*/
 	background:grey;
+	opacity:0.9;
+	-webkit-box-shadow: 0 0 100px 10px #000000;
+	box-shadow: 0 0 100px 10px #000000;
 	
 }
 .closeBtn > img
@@ -138,11 +141,18 @@ hr
 	color: #DDDDDD;
 	height: 340px;
 	left: 370px;
-	margin: 10px 0;
+	margin: 0 10px 0 10px;
 	outline: 0 none;
 	padding: 0;
 	position: absolute;
 	width: 1px;
+}
+.form1
+{
+	font-size:18px;
+	margin-top:50px;
+	width:50%;
+	float:left;
 }
 .form2
 {

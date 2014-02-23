@@ -59,9 +59,10 @@
 					require_once("connect.php");
 				?>
 			</div>
-			
-			<div class="slideShow">
-				<h1>Welcome to Split</h1>
+			<div class="carousel-header"
+				<div class="slideShow">
+					<h1>Welcome to Split</h1>
+				</div>
 			</div>
 
 		<div id="body">
@@ -70,7 +71,14 @@
 					<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
 					
 					<?php
-					$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" ORDER BY position');
+					if($_SESSION['user']['connected']==false)
+					{
+					$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="no" ORDER BY position');
+					}
+					else if($_SESSION['user']['connected']==true)
+					{
+					$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="yes" ORDER BY position');
+					}
 					// var_dump ($reponse);
 					while ($donnees = $reponse->fetch())
 						{

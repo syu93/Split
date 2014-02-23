@@ -3,23 +3,23 @@ $( document ).ready(function(){
 	var formP = {};
 
 	// recover the input value of pseudo
-	$("#pseudo").change(function(){
+	$("#pseudo2").change(function(){
 	
-	formP.pseudo = $('#pseudo').val();
+	formP.pseudo = $('#pseudo2').val();
 	// alert(formP.pseudo);
 		$.ajax({
 			type: "POST",
 			url: "form/validate.php",
 			data: formP,
 			success: function(data){
-				// alert($('#pseudo').val());
+				// alert($('#pseudo2').val());
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'truep')
 				{					
 						$( "#ckpseudo" ).html("Not Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
-						$("#pseudo").addClass('inputNo');
+						$("#pseudo2").addClass('inputNo');
 						// alert("This Pseudo already exist");
 					$( "#formSi" ).submit(function( event ) {	
 					event.preventDefault();
@@ -31,7 +31,7 @@ $( document ).ready(function(){
 					{
 						$( "#ckpseudo" ).html("Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkOk" );
-						$("#pseudo").removeClass('inputNo');
+						$("#pseudo2").removeClass('inputNo');
 						// $( "#submit" ).attr( "type", "submit" );
 						// alert("Good");
 					}
@@ -39,7 +39,7 @@ $( document ).ready(function(){
 					{
 						$( "#ckpseudo" ).html("");
 						$( "#ckpseudo" ).attr( "class", "checkOk" );
-						$("#pseudo").removeClass('inputNo');
+						$("#pseudo2").removeClass('inputNo');
 					}
 				}				
 			}, 
@@ -55,16 +55,16 @@ $( document ).ready(function(){
 	// Creat Json object
 	var formM = {};
 	// recover the input value of mail
-	$("#mail").change(function(){
+	$("#mail2").change(function(){
 
-	formM.mail = $('#mail').val();
+	formM.mail = $('#mail2').val();
 	// alert(formM.mail);
 		$.ajax({
 			type: "POST",
 			url: "form/validate.php",
 			data: formM,
 			success: function(data){
-				// alert($('#eamail').val());
+				// alert($('#mail2').val());
 				// alert(typeof(data));
 				// alert(data);
 				if(data == 'truem')
@@ -72,7 +72,7 @@ $( document ).ready(function(){
 					
 						$( "#ckmail" ).html("Not Avaible");
 						$( "#ckmail" ).attr( "class", "checkNo" );
-						$("#mail").addClass('inputNo');
+						$("#mail2").addClass('inputNo');
 						// $( "#submit" ).attr( "type", "button" );
 						// alert("This Pseudo already exist");
 					$( "#formSi" ).submit(function( event ) {	
@@ -85,14 +85,14 @@ $( document ).ready(function(){
 					{
 						$( "#ckmail" ).html("Avaible");
 						$( "#ckmail" ).attr( "class", "checkOk" );
-						$("#mail").removeClass('inputNo');
+						$("#mail2").removeClass('inputNo');
 						// alert("Good");
 					}
 					else
 					{
 						$( "#ckmail" ).html("");
 						$( "#ckmail" ).attr( "class", "checkOk" );
-						$("#mail").removeClass('inputNo');
+						$("#mail2").removeClass('inputNo');
 					}
 				}				
 			}, 
