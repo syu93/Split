@@ -22,6 +22,7 @@
 		<title>Split</title>
 	</head>
 	<body>
+		<div id="body">
 			<div id="panAcount">
 			
 				<nav class="menu1">
@@ -59,13 +60,12 @@
 					require_once("connect.php");
 				?>
 			</div>
-			<div class="carousel-header"
+			<div class="carousel-header">
 				<div class="slideShow">
 					<h1>Welcome to Split</h1>
 				</div>
 			</div>
 
-		<div id="body">
 			<nav class="menu2">						
 				<ul class="level1">
 					<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <div class="overContainer OCoff" id="overContainer">
 	<span id="closeBtn" class="closeBtn">
 		<img  src="img/close.PNG">
@@ -6,11 +7,15 @@
 	<div class="connect">
 		<div class="form1">
 			<form method="POST" action="form/validateSignUp.php" id="formLi">
-				<div class="element"><label for="mail1">Email : </label><span id="ckmail" class="checkMail"></span></div>
+				<div><div class="element"><label for="mail1">Email : </label><span id="ckmail" class="checkMail"></span></div>
+				<hr>
 				<div class="input"><input id="mail1" type="email" name="mail" required></div>
-				
+				</div>
+				<div>
 				<div class="element"><label for="password1">Password : </label><span id="ckps" class="checkOk"></span></div>
+				<hr>
 				<div class="input"><input id="password1" type="password" name="password" required></div>
+				</div>
 			</form>
 		</div>
 		<hr class="hr-vert">
