@@ -104,7 +104,7 @@ a:hover
 	
 	border-right : solid #000 1px;
 }
-.signIn::-moz-selection
+.signIn::-moz-selection, .signIn::selection
 {
 	background-color:none ;
 }

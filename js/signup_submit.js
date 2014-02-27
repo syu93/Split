@@ -66,12 +66,12 @@ $( document ).ready(function(){
 			success: function(data){
 				// alert($('#mail2').val());
 				// alert(typeof(data));
-				// alert(data);
+				alert(data);
 				if(data == 'truem')
 				{	
 					
-						$( "#ckmail" ).html("Not Avaible");
-						$( "#ckmail" ).attr( "class", "checkNo" );
+						$( "#ckmail2" ).html("Not Avaible");
+						$( "#ckmail2" ).attr( "class", "checkNo" );
 						$("#mail2").addClass('inputNo');
 						// $( "#submit" ).attr( "type", "button" );
 						// alert("This Pseudo already exist");
@@ -83,15 +83,15 @@ $( document ).ready(function(){
 				{
 					if(formM.mail != "")
 					{
-						$( "#ckmail" ).html("Avaible");
-						$( "#ckmail" ).attr( "class", "checkOk" );
+						$( "#ckmail2" ).html("Avaible");
+						$( "#ckmail2" ).attr( "class", "checkOk" );
 						$("#mail2").removeClass('inputNo');
 						// alert("Good");
 					}
 					else
 					{
-						$( "#ckmail" ).html("");
-						$( "#ckmail" ).attr( "class", "checkOk" );
+						$( "#ckmail2" ).html("");
+						$( "#ckmail2" ).attr( "class", "checkOk" );
 						$("#mail2").removeClass('inputNo');
 					}
 				}				
@@ -144,6 +144,9 @@ $( document ).ready(function(){
 /**************************************************************************/	
 /**************************************************************************/	
 /**************************************************************************/
+
+// Change the language
+
 	// Creat Json object
 	var formL = {};
 

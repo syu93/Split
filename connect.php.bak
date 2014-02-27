@@ -18,9 +18,7 @@
 				</div>
 			</form>
 		</div>
-		
 		<hr class="hr-vert">
-		
 		<div class="form2">
 			<form method="POST" action="form/validateSignUp.php" id="formSi" enctype="multipart/form-data">
 				<div class="element">

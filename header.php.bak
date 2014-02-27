@@ -40,7 +40,7 @@
 									</span>
 									<span class="g-desc">
 										<a><?php echo$donnees["title"];?></a>
-									</span>
+									</div>
 									
 									<ul class="level3">
 										<li>
