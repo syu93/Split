@@ -134,6 +134,13 @@ a:hover
 	box-shadow: 0 0 100px 10px #000000;
 	
 }
+.element-container
+{
+	width:880px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
 .closeBtn > img
 {
     left: 785px;

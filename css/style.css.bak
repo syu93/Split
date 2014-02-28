@@ -43,25 +43,21 @@ a:hover
 .over-wrapper
 {
 
-	height:25px;
-	
-	padding: 2px 0 2px 0;
-	
-	display: inline-block;
-	
-	-webkit-border-radius: 0 0 15px 15x;
+	background: url("bg.png") repeat scroll 0 0 transparent;
 	border-radius: 0 0 15px 15px;
-
-	margin-bottom: 24px;
-
-    width: 100%;
 	color: #DDDDDD;
-	background:url("bg.png");
+	display: inline-block;
+	height: 25px;
+	margin-bottom: 24px;
+	min-width: 1260px;
+	padding: 2px 0;
+	width: 100%;
 }
 
 #panAcount
 {
-	width: 960px;
+	min-width: 960px;
+	width: 76%;
 	
 	margin-left:auto;
 	margin-right:auto;
@@ -104,7 +100,7 @@ a:hover
 	
 	border-right : solid #000 1px;
 }
-.signIn::-moz-selection, .signIn::selection
+.signIn::-moz-selection
 {
 	background-color:none ;
 }
@@ -138,6 +134,12 @@ a:hover
 	box-shadow: 0 0 100px 10px #000000;
 	
 }
+.element-container
+{
+	width:880px;
+	margin-right:auto;
+}
+
 .closeBtn > img
 {
     left: 785px;
