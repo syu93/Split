@@ -16,6 +16,7 @@
 					<li><a href="addcontent.php">Create Content</a></li>
 					<li><a href="updatecontent.php">Modify Content</a></li>
 					<li><a href="addgame.php">Creat Game</a></li>
+					<li><a href="updategame.php">Modify Game</a></li>
 				</ul>
 			</nav>
 			<div id="content">

@@ -57,7 +57,8 @@ function uploadgameimg($gameImg, $gameTitle){
 	
 	$movefile = move_uploaded_file($_FILES['gameImg']['tmp_name'],$path);
 	
-	return $path;
+	$pth = "gameImg/".$gameTitle.".".$ext;
+	return $pth;
 }
 /****************************************************************************/
 /****************************************************************************/

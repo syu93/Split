@@ -22,29 +22,48 @@
 		<title>Split</title>
 	</head>
 	<body>
-	<?php
-	$game = $bdd->query('SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="no"');
-	while ($donnees = $game->fetch())
-	{
-	?>
 	<div id="body">
 		<div class="over-wrapper">
 			<div id="panAcount">			
 				<nav class="menu1">
 					<ul class="level1">
-						<li><a herf="#"> My Library</a>
+	<?php
+	$library = $bdd->query('SELECT text_fr, text_en FROM content WHERE title="mylibrary" AND active="yes" AND tag ="menu" AND connected="yes"');
+	while ($donnees = $library->fetch())
+	{
+	?>
+						<li><a herf="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
+	<?php
+	}
+	?>
 							<ul class="level2">
 								<li class="myGame">
+	<?php
+	$game = $bdd->query('SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="no"');
+	while ($donnees = $game->fetch())
+	{
+	?>
 									<span class="g-img">
 										<img src="<?php echo$donnees["url"];?>"/>
 									</span>
 									<span class="g-desc">
-										<a><?php echo$donnees["title"];?></a>
+										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>									
 									</span>
-									
+	<?php }	/*
+	$play = $bdd->query('SELECT text_fr, text_en FROM content WHERE title="play" AND active="yes" AND tag ="menu" AND connected="yes"');
+	while ($donnees = $play->fetch())
+	{*/
+	?>
 									<ul class="level3">
 										<li>
-											<a href="#">Play !</a>
+											<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
+	<?php
+	// } 
+	?>
+	<?php
+	// } 
+	?>
+
 										</li>
 									</ul>
 								</li>
@@ -52,8 +71,15 @@
 						</li>
 					</ul>
 				</nav>
-	<?php } ?>
-				<span id="signIn" class="signIn">Sign In / Log In</span>
+	<?php
+	$signup = $bdd->query('SELECT text_fr, text_en FROM content WHERE title="signup" AND active="yes" AND tag ="text" AND connected="no"');
+	while ($donnees = $signup->fetch())
+	{
+	?>				
+				<span id="signIn" class="signIn"><?php echo$donnees[$_SESSION['user']['langue']];?></span>
+	<?php
+	}
+	?>			
 				<form method="POST" action="form/validateSignUp.php" id="formLang">
 					<select id="langue" name="langue" class="language">
 					<?php
