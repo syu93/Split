@@ -43,6 +43,7 @@
 	while ($donnees = $game->fetch())
 	{
 	?>
+								<li class="myGame">
 									<span class="g-img">
 										<img src="<?php echo$donnees["url"];?>"/>
 									</span>

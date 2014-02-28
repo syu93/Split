@@ -62,7 +62,7 @@
 .myGame
 {
 	position:absolute;
-
+	top:28px;
 	background:url("get.png");
 	line-height:70px;
 	width:300px;
@@ -120,7 +120,7 @@
 
 .menu1 .level2>li:first-child
 {
-	top:28px;
+	
 }
 .menu1 .level2>li:last-child:hover
 {
