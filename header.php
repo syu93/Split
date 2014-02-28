@@ -6,6 +6,7 @@
 	$gme='SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="no"';
 	$ply='SELECT text_fr, text_en FROM content WHERE title="play" AND active="yes" AND tag ="menu" AND connected="yes"';
 	$sign='SELECT text_fr, text_en FROM content WHERE title="signup" AND active="yes" AND tag ="text" AND connected="no"';
+	$cart='SELECT text_fr, text_en FROM content WHERE title="cart" AND active="yes" AND tag ="menu" AND connected="no"';
  ?>
  <!DOCTYPE html>
 <html>
@@ -102,21 +103,25 @@
 						<?php
 						if($_SESSION['user']['connected']==false)
 						{
-						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="no" ORDER BY position');
+						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="no" ORDER BY position LIMIT 5');
 						}
 						else if($_SESSION['user']['connected']==true)
 						{
-						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="yes" ORDER BY position');
+						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="yes" ORDER BY position LIMIT 5');
 						}
 						// var_dump ($reponse);
-						while ($donnees = $reponse->fetch())
-							{
-						?>						
+						while ($donnees = $reponse->fetch()) {	?>						
 							<li><a href="action.php">	<?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
-						<?php
-							}
-						?>
+						<?php }	?>
 						
-						<li class="cart"><a href="game.php">My Cart</a></li>
+						<?php	$cart = $bdd->query($cart);
+						while ($donnees = $cart->fetch()) { ?>
+												
+							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
+							<div class="panier">
+								<h4><?php echo $donnees[$_SESSION['user']['langue']]; ?></h4>
+							</div>						
+						</li>
+						<?php } ?>
 					</ul>
 				</nav>

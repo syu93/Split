@@ -138,6 +138,7 @@ a:hover
 {
 	width:880px;
 	margin-right:auto;
+	margin-left:auto;
 }
 
 .closeBtn > img
@@ -264,6 +265,16 @@ hr
 	border: solid black;
 	
 	clear: both;
+}
+
+.panier
+{
+	display:none;
+	position: absolute;
+	left:716px;
+	width: 400px;
+	height:400px;
+	background: #3D3D3D;
 }
 
 .text

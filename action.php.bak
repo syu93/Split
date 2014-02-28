@@ -30,7 +30,7 @@
 					echo"</br>";
 					echo"user pseudo :".$_SESSION['user']['pseudo'];
 					echo"</br>";*/
-					?>
+					?>*/
 				</div>
 			</div>
 		</div>
