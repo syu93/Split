@@ -1,8 +1,6 @@
 <?php
 	require_once("header.php");
-	require_once("form/init.php");
-	// echo$_SESSION['langue'];
-	
+	require_once("form/init.php");	
 ?>
 
 			<div class="container">

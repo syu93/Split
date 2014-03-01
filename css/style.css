@@ -43,7 +43,7 @@ a:hover
 
 	background: url("bg.png") repeat scroll 0 0 transparent;
 	border-radius: 0 0 15px 15px;
-	color: #DDDDDD;
+	color: #CCCCCC;
 	display: inline-block;
 	height: 25px;
 	margin-bottom: 24px;
@@ -78,12 +78,12 @@ a:hover
 	margin-right: 10px;
 	background:url("bg.png");
 	border-radius: 5px;
-	color: #DDDDDD;
+	color: #CCC;
 }
 .language>option
 {
 	background:url("bg.png");
-	color: #DDDDDD;
+	color: #CCC;
 	cursor:pointer;
 }	
 
@@ -123,23 +123,35 @@ a:hover
 	
 	width: 800px;
 	height: 500px;
-	
+		
+	background: rgb(61,61,61); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNkM2QzZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iIzNkM2QzZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzZDNkM2QiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-	background: -moz-linear-gradient(top,  rgba(61,61,61,1) 0%, rgba(61,61,61,1) 90%, rgba(61,61,61,0.9) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,61,61,1)), color-stop(90%,rgba(61,61,61,1)), color-stop(100%,rgba(61,61,61,0.9))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 90%,rgba(61,61,61,0.9) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 90%,rgba(61,61,61,0.9) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 90%,rgba(61,61,61,0.9) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 90%,rgba(61,61,61,0.9) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d3d3d', endColorstr='#e63d3d3d',GradientType=0 ); /* IE6-8 */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNkM2QzZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzZDNkM2QiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(61,61,61,1) 0%, rgba(61,61,61,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,61,61,1)), color-stop(100%,rgba(61,61,61,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(61,61,61,1) 0%,rgba(61,61,61,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d3d3d', endColorstr='#3d3d3d',GradientType=0 ); /* IE6-8 */
 
-	-webkit-box-shadow: 0 0 10000px 399px #000000;
-	box-shadow: 0 0 10000px 399px #000000;
+	-webkit-box-shadow: 0 0 10000px 999px #000000;
+	box-shadow: 0 0 10000px 999px #000000;
 	
-	-webkit-border-radius: 0 15px 0 15px;
-	border-radius: 0 15px 0 15px;
+	-webkit-border-radius: 15px 15px 5px 5px;
+	border-radius: 15px 15px 5px 5px;
 	
+}
+.bandeau
+{
+    background: url("bg.png") repeat scroll 0 0 transparent;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 0 5px 0 #000000;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+	color:#CCC;
 }
 .element-container
 {
@@ -150,9 +162,9 @@ a:hover
 
 .closeBtn > img
 {
-    left: 780px;
+    left: 781px;
     position: relative;
-    top: -15px;
+    top: -45px;
     width: 35px;
 }
 .closeBtn :hover
@@ -231,13 +243,17 @@ hr
 	margin-left:5px;
 	padding-left:5px;
 	padding-right:5px;
-	border-radius: 0 12px 0 12px;
+	border-radius: 8px 8px 8px 8px  ;
 	border: inset grey 2px;
+}
+.connect>.form1  input:first-child
+{
+	width:200px;
 }
 #submit1, #submit2
 {
 	margin-left:260px;
-	color : #DDDDDD;
+	color : #949494;
 	
 	font-size: 16px;
 	font-weight:bold;
@@ -246,9 +262,9 @@ hr
 	padding-right:10px;
 	border: outline #DDDDDD 3px;
 	
-	background:#6E91BE;
+	background: url("bg.png") repeat scroll 0 0 transparent;
 }
-#submit1:hover,#submit2	:hover
+#submit1:hover,#submit2:hover
 {
 	color: #FFF;
 	

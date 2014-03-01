@@ -4,8 +4,6 @@
 	
 	if(!empty($_POST))
 	{
-		if(isset($_POST["signup"]))
-		{
 			// check for Sign Up with ajax file: signup_submit.js
 			if(!empty($_POST["pseudo"]))
 			{
@@ -21,14 +19,17 @@
 			{
 				type_avatar($_POST["avatar"]);
 			}
-		}
+
 		
-		if(isset($_POST["login"]))
-		{
-			if(!empty($_POST["mail"]))
+
+			if(!empty($_POST["mail1"]))
 			{
-				exist_mail($bdd,$_POST["mail"]);
+				exist_mail($bdd,$_POST["mail1"]);
 			}
-		}
+			
+			if(!empty($_POST["password1"]))
+			{
+				exist_password($bdd,$_POST["mail01"],$_POST["password1"]);
+			}
 	}
 ?>

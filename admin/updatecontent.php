@@ -62,7 +62,7 @@ require_once'header.php';
 		<h2>Position du contenu</h2>
 				<br>
 				<select name="contentPosition">								
-						<?php for($i=0 ; $i<=10 ; $i++)
+						<?php for($i=0 ; $i<=20 ; $i++)
 							{?>
 								<option><?php echo $i; ?></option>
 						<?php

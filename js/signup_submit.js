@@ -66,7 +66,7 @@ $( document ).ready(function(){
 			success: function(data){
 				// alert($('#mail2').val());
 				// alert(typeof(data));
-				alert(data);
+				// alert(data);
 				if(data == 'truem')
 				{	
 					
@@ -185,14 +185,14 @@ $( document ).ready(function(){
 
 	// Creat Json object
 	var formCM = {};
-	$( "#submit1" ).attr( "type", "button" );
-	// recover the input value of avatar
-	$("#submit1").click(function(){
 	
-	formCM.mail = $('#mail1').val();
-	formCM.password = $('#password1').val();
-	alert(formCM.mail);
-	alert(formCM.password);
+	// recover the input value of avatar
+	$("#submit1").click(function(event){		
+	event.preventDefault();
+	
+		formCM.mail1 = $('#mail1').val();
+		
+		// alert(formCM.mail1);
 		$.ajax({
 			type: "POST",
 			url: "form/validate.php",
@@ -200,20 +200,59 @@ $( document ).ready(function(){
 			success: function(data){
 				// alert($('#avatar').val());
 				// alert(typeof(data));
-				alert(data);
-				if(data == "true")
+				// alert(data);
+				if(data == "truem")
 				{
-					alert("plop connected");
+					// alert("plop connected");
+					/*******************************************/
+						var formCP = {};
+						formCP.password1 = $('#password1').val();
+						formCP.mail01 = $('#mail1').val();
+						// alert(formCP.password1);
+						$.ajax({
+							type: "POST",
+							url: "form/validate.php",
+							data: formCP,
+							success: function(data){
+								// alert($('#avatar').val());
+								// alert(typeof(data));
+								// alert("data : "+data);
+								if(data == "truep")
+								{
+									$("#formLi").submit();
+									// alert("plop connected");
+									// location.reload();
+								}
+								else if(data == "falsep")
+								{
+									// alert("plop not connected");
+									$( "#password1" ).val("");
+									$( "#cksub1" ).html("Your e-mail address or password is invalid. Please try again.");
+									$( "#cksub1" ).attr( "class", "checkNo" );
+									$("#mail1").addClass('inputNo');
+									$("#password1").addClass('inputNo');
+								}
+								else{
+									// alert("error");
+								}
+							}, 
+							dataType: "text"
+						});
+					/*******************************************/
 					// location.reload();
+				}
+				else if(data == "falsem")
+				{
+					// alert("plop not connected");
 				}
 				else
 				{
-					alert("plop not connected");
+					// alert("error");
 				}
-			
 			}, 
 			dataType: "text"
 		});	
+		
 	});
 	
 });

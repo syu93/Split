@@ -2,8 +2,9 @@
 	require_once("bdd/bddconnect.php");
 	require_once("form/session.php");
 	
+	$menu='SELECT * FROM content WHERE active="yes" AND tag ="menu" ORDER BY position LIMIT 5';
 	$lib='SELECT text_fr, text_en FROM content WHERE title="mylibrary" AND active="yes" AND tag ="menu" AND connected="yes"';
-	$gme='SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="no"';
+	$gme='SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="yes"';
 	$ply='SELECT text_fr, text_en FROM content WHERE title="play" AND active="yes" AND tag ="menu" AND connected="yes"';
 	$sign='SELECT text_fr, text_en FROM content WHERE title="signup" AND active="yes" AND tag ="text" AND connected="no"';
 	$cart='SELECT text_fr, text_en FROM content WHERE title="cart" AND active="yes" AND tag ="menu" AND connected="no"';
@@ -85,7 +86,9 @@
 					</select>
 				</form>
 			</div>
-				<?php require_once("connect.php"); ?>
+				<?php 
+					require_once("connect.php");
+				?>
 			</div>
 			
 			<div class="carousel-header">
@@ -98,25 +101,19 @@
 					<ul class="level1">
 						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
 						
-						<?php
-						if($_SESSION['user']['connected']==false)
-						{
-						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="no" ORDER BY position LIMIT 5');
-						}
-						else if($_SESSION['user']['connected']==true)
-						{
-						$reponse = $bdd->query('SELECT * FROM content WHERE active="yes" AND tag ="menu" AND connected="yes" ORDER BY position LIMIT 5');
-						}
+						<?php $reponse = $bdd->query($menu);	
 						// var_dump ($reponse);
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="action.php">	<?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
+							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
 						<?php }	?>
 						
 						<?php	$cart = $bdd->query($cart);
 						while ($donnees = $cart->fetch()) { ?>
 												
 							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<?php require_once("cart.php"); ?>
+							<div class="panier">
+								<h4><?php echo $donnees[$_SESSION['user']['langue']]; ?></h4>
+							</div>						
 						</li>
 						<?php } ?>
 					</ul>

@@ -1,5 +1,8 @@
-<link rel="stylesheet" type="text/css" href="css/style.css">	
+
 <div class="overContainer OCoff" id="overContainer">
+	<div class="bandeau">
+		<h4>Connexion/Inscription</h4>
+	</div>
 	<span id="closeBtn" class="closeBtn">
 		<img  src="img/close.PNG">
 	</span>
@@ -7,20 +10,26 @@
 	<div class="connect">
 		<div class="form1">
 			<form method="POST" action="form/validateSignUp.php" id="formLi">
-				<div><div class="element"><label for="mail1">Email : </label><span id="ckmail1" class="checkMail"></span></div>
-				<hr>
-				<div class="input"><input id="mail1" type="email" name="mail" required></div>
+				<div class="element">
+					<div class="element"><label for="mail1">Email : </label><span id="ckmail1" class="checkMail"></span></div>
+					<hr>
+					<div class="input"><input id="mail1" type="email" name="mail1" required></div>
 				</div>
-				<div>
-				<div class="element"><label for="password1">Password : </label><span id="ckps" class="checkOk"></span></div>
-				<hr>
-				<div class="input"><input id="password1" type="password" name="password" required></div>
+				</br>
+				</br>
+				<div class="element">
+					<div class="element"><label for="password1">Password : </label><span id="ckps1" class="checkOk"></span></div>
+					<hr>
+					<div class="input"><input id="password1" type="password" name="password1" required></div>
 				</div>
 				
 				</br>
 				</br>
 				
 				<input id="submit1" name="login" type="submit" value="Submit">
+				<div class="element">
+					<span id="cksub1" class="checkOk"></span>
+				</div>
 			</form>
 		</div>
 		

@@ -5,10 +5,36 @@ function start_session(){
 	{			
 		$_SESSION['user']['id'] = uniqid("", false);
 	}
-	if(empty($_SESSION['user']["connected"]))
+	if(empty($_SESSION['member']["connected"]))
 	{			
-		$_SESSION['user']["connected"] = false;
+		$_SESSION['member']["connected"] = false;
 	}	
+}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function session_connect($bdd,$m){
+	$mail = $m;
+	$test = $bdd->query("SELECT pseudo FROM member WHERE email='$mail'");
+	$pseudo = $test->fetch();
+	
+	session_start();
+	$_SESSION['member']['id'] = $_SESSION['user']['id'];
+	$_SESSION['member']['pseudo'] = $pseudo;
+	/*************************************************************************/
+	// panier
+	/*************************************************************************/	
+	
+	$_SESSION['member']["connected"] = true;
+	
+	// print_r("Session id: ".$_SESSION['member']['id']);
+	// echo"<br>";
+	// print_r($_SESSION['member']['pseudo']);
+	// echo"<br>";
+	// print_r($_SESSION['member']["connected"]);
+	
+	header('Location: ../');
 }
 /****************************************************************************/
 /****************************************************************************/
@@ -173,6 +199,7 @@ function exist_pseudo($bdd,$p){
 /****************************************************************************/
 /****************************************************************************/
 function exist_mail($bdd,$m){
+	
 	$mail = $m;
 	
 	$repEM=NULL;
@@ -196,6 +223,37 @@ function exist_mail($bdd,$m){
 	{
 		// print_r($repEM);
 		echo("falsem");
+	}
+	return;
+}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function exist_password($bdd,$m,$pw){
+	$mail = $m;
+	$password = $pw;
+	$cryptpw = md5($password);
+	
+	$repPW=NULL;
+	// Recovery of the game array of the licence
+	$test = $bdd->query("SELECT password FROM member WHERE password='$cryptpw' AND email='$mail'");
+
+	while ($exist = $test->fetch())
+	{
+		$repPW = $exist["password"];
+	}
+	
+	// tester si le resultat de la reqette est vide
+	if ($repPW!=NULL)
+	{
+		// print_r("null".$repPW);
+		echo("truep");
+	}
+	else
+	{
+		// print_r("oui".$repPW);
+		echo("falsep");
 	}
 	return;
 }
