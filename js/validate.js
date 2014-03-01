@@ -34,9 +34,20 @@ $( document ).ready(function(){
 		return;
 		
 			$( "#cksub2" ).text( "Not valid!" ).show().fadeOut( 1000 );
-	event.preventDefault();
+	event.preventDefault();	
 	});
 	
 	//......................
 	
+	$( "#formLi" ).submit(function( event ) {
+	if ( !($('#mail1').val())) {
+			// $( "#ckname" ).text( "Validated..." ).show();
+			event.preventDefault();
+		}
+	if ( !($('#password1').val())) {
+			// $( "#ckname" ).text( "Validated..." ).show();
+			event.preventDefault();
+		}
+	
+	});	
 });

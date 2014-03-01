@@ -177,5 +177,43 @@ $( document ).ready(function(){
 			dataType: "text"
 		});	
 	});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+// Connect
 
+	// Creat Json object
+	var formCM = {};
+	$( "#submit1" ).attr( "type", "button" );
+	// recover the input value of avatar
+	$("#submit1").click(function(){
+	
+	formCM.mail = $('#mail1').val();
+	formCM.password = $('#password1').val();
+	alert(formCM.mail);
+	alert(formCM.password);
+		$.ajax({
+			type: "POST",
+			url: "form/validate.php",
+			data: formCM,
+			success: function(data){
+				// alert($('#avatar').val());
+				// alert(typeof(data));
+				alert(data);
+				if(data == "true")
+				{
+					alert("plop connected");
+					// location.reload();
+				}
+				else
+				{
+					alert("plop not connected");
+				}
+			
+			}, 
+			dataType: "text"
+		});	
+	});
+	
 });

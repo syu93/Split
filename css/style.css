@@ -234,7 +234,7 @@ hr
 	border-radius: 0 12px 0 12px;
 	border: inset grey 2px;
 }
-#submit
+#submit1, #submit2
 {
 	margin-left:260px;
 	color : #DDDDDD;
@@ -248,7 +248,7 @@ hr
 	
 	background:#6E91BE;
 }
-#submit:hover
+#submit1:hover,#submit2	:hover
 {
 	color: #FFF;
 	

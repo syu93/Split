@@ -16,6 +16,11 @@
 				<hr>
 				<div class="input"><input id="password1" type="password" name="password" required></div>
 				</div>
+				
+				</br>
+				</br>
+				
+				<input id="submit1" name="login" type="submit" value="Submit">
 			</form>
 		</div>
 		
@@ -96,7 +101,7 @@
 				</br>
 				</br>
 				
-				<input id="submit" name="signup" type="submit" value="Submit">
+				<input id="submit2" name="signup" type="submit" value="Submit">
 				<span id="cksub2" class="cksub"></span>
 			</form>
 		</div>
