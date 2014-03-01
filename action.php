@@ -8,7 +8,7 @@
 			<div class="container">
 				<div class="article">
 					<?php
-					$reponse = $bdd->query('SELECT * FROM game ');
+					$reponse = $bdd->query('SELECT * FROM game WHERE genre="action" ');
 					// var_dump ($reponse);
 					while ($donnees = $reponse->fetch())
 						{
