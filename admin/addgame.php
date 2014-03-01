@@ -49,7 +49,7 @@ if(isset($_POST['submitContent']))
 	$pth = uploadgameimg($gameImg, $gameTitle);
 	// echo($pth);
 	
-	$req = $bdd->prepare('INSERT INTO game(url,price,genre,textlongue_fr,textlongue_en,tag, title, text_fr, text_en, position,connected, active)VALUES(:pth, :gameGenre,:gamePrice,:gameTextlongueFr,:gameTextlongueEn,:gameTag,:gameTitle,:gameTextFr,:gameTextEn,:gamePosition,:connected,:gameactive)');
+	$req = $bdd->prepare('INSERT INTO game(url,price,genre,textlongue_fr,textlongue_en,tag, title, text_fr, text_en, position,connected, active)VALUES(:pth, gamePrice,:gameGenre,:gameTextlongueFr,:gameTextlongueEn,:gameTag,:gameTitle,:gameTextFr,:gameTextEn,:gamePosition,:connected,:gameactive)');
 	$req->execute(array(
 	':gamePosition'=> $gamePosition,
 	':gameTag'=> $gameTag,
