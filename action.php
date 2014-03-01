@@ -12,8 +12,8 @@
 					// var_dump ($reponse);
 					while ($donnees = $reponse->fetch())
 						{
-					?>						
-						<img src="">
+					?>				
+						<img src="<?php echo $donnees['url']; ?>" />
 						<a href="#">	<?php echo $donnees['title']; ?>	</a>
 						<br>
 						<?php echo $donnees['price']; ?><span>€</span>
@@ -21,15 +21,6 @@
 						<input type="button" value="Ajouter au panier">
 					<?php
 						}
-					/*echo"</br>";	
-					echo"user ID :".$_SESSION['user']['id'];
-					echo"</br>";
-					echo"user Session Active :".$_SESSION['user']['connected'];
-					if($_SESSION['user']['connected']==false)echo"false";
-					if($_SESSION['user']['connected']==true)echo"true";
-					echo"</br>";
-					echo"user pseudo :".$_SESSION['user']['pseudo'];
-					echo"</br>";*/
 					?>
 				</div>
 			</div>

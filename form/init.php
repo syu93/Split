@@ -110,6 +110,7 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 			$ext = strtolower(substr(strrchr($avatar, '.'),1)); //get the extension : without the "."
 			$path = "../userAvt/".$pseudo.".".$ext;
 			$movefile = move_uploaded_file($_FILES['avatar']['tmp_name'],$path);
+			$pth = "userAvt/".$pseudo.".".$ext;
 		}
 		
 		if(!empty($genre) && !empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW))
@@ -123,14 +124,14 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 					':firstname'=> $firstname,
 					':date'=> $date,
 					':pseudo'=> $pseudo,
-					':avatar'=> $path,
+					':avatar'=> $pth,
 					':password'=> $cryptedPW,
 					':email'=> $email,
 					':country'=> $country,
 					));	
 		}
 		start_session();
-		$_SESSION['user']["pseudo"] = "plop";
+		// $_SESSION['user']["pseudo"] = "plop";
 		$_SESSION['user']["connected"] = true;
 		
 		header('Location: ../');
@@ -225,6 +226,14 @@ function type_avatar($a){
 		echo("falsea");
 	}
 	return;
+}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function addcart(){
+	
+
 }
 
 ?>

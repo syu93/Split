@@ -155,7 +155,16 @@
 	background:#3d3d3d;
 	text-align:center;
 	
+	-webkit-transform:translateX(-130px);
+	-moz-transform:translateX(-130px);
 	transform:translateX(-130px);
+	
+	-webkit-transition: border-radius 0.1s ease 0.1s, 
+				transform 0.3s,
+				opactity 0.3s;
+	-moz-transition: border-radius 0.1s ease 0.1s, 
+				transform 0.3s,
+				opactity 0.3s;
 	transition: border-radius 0.1s ease 0.1s, 
 				transform 0.3s,
 				opactity 0.3s;
@@ -194,6 +203,8 @@
 .myGame:hover  .level3>li
 {
 	border-radius: 0 0 15px 0 ;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
 	transform: translateX(0px);
 	opacity:1;
 }
@@ -361,10 +372,29 @@
 	opacity :0;
 	z-index:-2;
 	position: absolute;
-	left:716px;
+	left:672px;
 	width: 400px;
 	height:400px;
+
+	padding-top: 10px;
+	padding-right: auto;
+	
 	background: #3D3D3D;
 	
 	border-radius: 0 0 15px 15px;
+	
+	-webkit-box-shadow: 0 -1px 5px 0 #000000;
+	box-shadow: 0 -1px 5px 0 #000000;
+}
+.panier hr
+{
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cart-content
+{
+	height:;
+	margin-left: auto;
+	margin-right: auto;
 }

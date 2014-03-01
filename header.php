@@ -85,9 +85,7 @@
 					</select>
 				</form>
 			</div>
-				<?php 
-					require_once("connect.php");
-				?>
+				<?php require_once("connect.php"); ?>
 			</div>
 			
 			<div class="carousel-header">
@@ -118,9 +116,7 @@
 						while ($donnees = $cart->fetch()) { ?>
 												
 							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<div class="panier">
-								<h4><?php echo $donnees[$_SESSION['user']['langue']]; ?></h4>
-							</div>						
+							<?php require_once("cart.php"); ?>
 						</li>
 						<?php } ?>
 					</ul>
