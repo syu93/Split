@@ -1,0 +1,75 @@
+/* CSS du gesyion de contenu AvegerPlague*/
+input
+{
+	width:100px;
+	color:#001B1D;
+	font-weight:bold;
+	height:18px;
+	background: rgb(206,220,231); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(206,220,231,1) 0%, rgba(89,106,114,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,220,231,1)), color-stop(100%,rgba(89,106,114,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=0 ); /* IE6-9 */
+
+	font-family:chinrg__;
+	font-size:13px;
+	border:1px solid grey;
+	border-radius: 5px;
+}
+input:hover
+{
+	background:#87cefa;
+	border: solid #87cefa 1px;
+	box-shadow:0 0 5px 1px #87cefa;
+	cursor:pointer;
+}
+input.inputtext
+{
+	width:auto;
+	height:auto;
+	font-weight:normal;
+	font-size:medium;
+	background:#ffffff;
+	border-radius:none;
+	box-shadow:none;
+}
+input.inputtext:hover
+{
+	background:#ffffff;
+	border-radius:none;
+	box-shadow:none;
+	cursor:text;
+}
+.addContent
+{
+	width: 45%;
+}
+
+.addContent.menu
+{
+	float: left;
+}
+
+.addContent.module
+{
+	width:850px;
+	margin:30px auto;
+}
+.contentActPos
+{
+	width:110px;
+	height:15px;
+}
+.addContent .contentTitle
+{
+	width:100%;
+	height:30px;
+}
+.addContent .contentText
+{
+	width:100%;
+	min-height:100px;
+}

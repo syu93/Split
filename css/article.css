@@ -1,0 +1,15 @@
+/*
+ *	Welcome to the
+ *	Menu CSS Style of 
+ *	Split
+ */
+ 
+.container .article img
+{
+	width: 400px;
+}
+ .container .article img
+ {
+	width : 100px;
+	border-radius:10px;
+ }

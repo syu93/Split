@@ -1,0 +1,14 @@
+/*
+ *	Welcome to the
+ *	Menu CSS Style of 
+ *	Split
+ */
+ 
+.container .article img
+{
+	
+}
+ .container .article img
+ {
+	width : 100px;
+ }

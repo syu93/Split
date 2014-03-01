@@ -267,6 +267,16 @@ hr
 	clear: both;
 }
 
+.panier
+{
+	display:none;
+	position: absolute;
+	left:716px;
+	width: 400px;
+	height:400px;
+	background: #3D3D3D;
+}
+
 .text
 {
 	text-align:center;
