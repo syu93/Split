@@ -13,7 +13,7 @@
 					while ($donnees = $reponse->fetch())
 						{
 					?>						
-						<img src="">
+						<img src="<?php echo $donnees['url']; ?>">
 						<a href="#">	<?php echo $donnees['title']; ?>	</a>
 						<br>
 						<?php echo $donnees['price']; ?><span>€</span>
