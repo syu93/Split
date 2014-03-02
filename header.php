@@ -2,12 +2,11 @@
 	require_once("bdd/bddconnect.php");
 	require_once("form/session.php");
 	
-	$menu='SELECT * FROM content WHERE active="yes" AND tag ="menu" ORDER BY position LIMIT 5';
-	$lib='SELECT text_fr, text_en FROM content WHERE title="mylibrary" AND active="yes" AND tag ="menu" AND connected="yes"';
-	$gme='SELECT * FROM game WHERE active="yes" AND tag ="game" AND connected="yes"';
-	$ply='SELECT text_fr, text_en FROM content WHERE title="play" AND active="yes" AND tag ="menu" AND connected="yes"';
-	$sign='SELECT text_fr, text_en FROM content WHERE title="signup" AND active="yes" AND tag ="text" AND connected="no"';
-	$cart='SELECT text_fr, text_en FROM content WHERE title="cart" AND active="yes" AND tag ="menu" AND connected="no"';
+	$connected = ifconnected();
+	$pseudo = $_SESSION['member']['pseudo'];
+	$logoff="true";
+	require_once("form/req.php");
+	
  ?>
  <!DOCTYPE html>
 <html>
@@ -34,13 +33,16 @@
 			<div id="panAcount">			
 				<nav class="menu1">
 					<ul class="level1">
-	<?php	$library = $bdd->query($lib);
+	<?php
+	$library = $bdd->query($lib);
+	// var_dump($lib);
 	while ($donnees = $library->fetch()) { ?>
 						<li><a class="signIn" herf="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
 	<?php }	?>
 							<ul class="level2">
 								
-	<?php	$game = $bdd->query($gme);
+	<?php
+	$game = $bdd->query($gmelib);
 	while ($donnees = $game->fetch()) {	?>
 								<li class="myGame">
 									<span class="g-img">
@@ -66,9 +68,28 @@
 					</ul>
 				</nav>
 	<?php	$signup = $bdd->query($sign);
+	if($donnees[$_SESSION['user']['langue']]==1){$class="profil";}
 	while ($donnees = $signup->fetch()) { ?>				
-				<span id="signIn" class="signIn"><?php echo$donnees[$_SESSION['user']['langue']];?></span>
-	<?php } ?>			
+				<span id="signIn" class="signIn">
+					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
+					<a href="#"> <?php echo $pseudo["pseudo"]; ?></a>
+					<div class="<?phpecho$class;?>">
+						<?php	
+							$avt = $bdd->query($profil);
+							$avat = $avt->fetch();
+							echo"<img src='".$avat['avatar']."'/>";
+						?>
+						<?php
+							echo"<a href='#'>".$pseudo['pseudo']."</a>";
+						?>	
+					</div>					
+				</span>
+				<?php
+					$deco = $bdd->query($deco); 
+					$donnees = $deco->fetch();		
+				?>
+				<span class="logoff"><?php echo("<a href='form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
+	<?php } ?>
 				<form method="POST" action="form/validateSignUp.php" id="formLang">
 					<select id="langue" name="langue" class="language">
 					<?php
@@ -101,8 +122,7 @@
 					<ul class="level1">
 						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
 						
-						<?php $reponse = $bdd->query($menu);	
-						// var_dump ($reponse);
+						<?php $reponse = $bdd->query($menu);
 						while ($donnees = $reponse->fetch()) {	?>						
 							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
 						<?php }	?>
@@ -111,9 +131,7 @@
 						while ($donnees = $cart->fetch()) { ?>
 												
 							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<div class="panier">
-								<h4><?php echo $donnees[$_SESSION['user']['langue']]; ?></h4>
-							</div>						
+							<?php require_once("cart.php");?>						
 						</li>
 						<?php } ?>
 					</ul>

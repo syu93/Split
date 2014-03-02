@@ -2,7 +2,6 @@
 	require_once("header.php");
 	require_once("form/init.php");
 	// echo$_SESSION['langue'];
-	
 ?>
 
 			<div class="container">
@@ -28,8 +27,11 @@
 					if($_SESSION['member']['connected']==false)echo"false";
 					if($_SESSION['member']['connected']==true)echo"true";
 					echo"</br>";
-					print_r($_SESSION['member']['pseudo']);
+					$plop = $_SESSION['member']['pseudo'];
+					echo$_SESSION['member']['pseudo'];
 					echo"</br>";
+					echo $plop["pseudo"];
+					
 					?>
 				</div>
 			</div>

@@ -64,7 +64,7 @@
 	background: #333;
 	position: relative;
 	line-height:70px;
-	width:300px;
+	width:360px;
 	height:91px;
 }
 .myGame:not(:last-child)
@@ -91,7 +91,7 @@
 }
 .g-img >img
 {
-	width:60px;
+	width:115px;
 	height:91px;
 }
 .g-desc
@@ -142,7 +142,8 @@
 	/*display:none;*/
 	opacity:0;
 	list-style:none;
-	left: 300px;
+	left: 360px;
+	right:auto;
 	position: absolute;
 	top: 1px;
 }
@@ -372,7 +373,7 @@
 	opacity :0;
 	z-index:-2;
 	position: absolute;
-	left:672px;
+	left:682px;
 	width: 400px;
 	height:400px;
 

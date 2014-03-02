@@ -243,7 +243,11 @@ $( document ).ready(function(){
 				}
 				else if(data == "falsem")
 				{
-					// alert("plop not connected");
+					$( "#password1" ).val("");
+					$( "#cksub1" ).html("Your e-mail address or password is invalid. Please try again.");
+					$( "#cksub1" ).attr( "class", "checkNo" );
+					$("#mail1").addClass('inputNo');
+					$("#password1").addClass('inputNo');
 				}
 				else
 				{

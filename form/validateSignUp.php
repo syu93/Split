@@ -35,6 +35,11 @@
 	{
 		session_connect($bdd,$_POST['mail1']);
 	}
-
+	
+	if(isset($_GET["logoff"]))
+	{
+		session_disconnect($_GET["logoff"]);
+	}
+	
 	
 ?>
