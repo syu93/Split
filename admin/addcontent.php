@@ -31,7 +31,8 @@ if(isset($_POST['submitContent']))
 	$contentactive = $_POST['contentactive'];
 	// echo$contentactive;
 
-	$req = $bdd->prepare('INSERT INTO content(tag, title, text_fr, text_en, position,connected, active) VALUES(:contentTag,:contentTitle, :contentTextFr, :contentTextEn, :contentPosition,:connected, :contentactive)');
+	$req = $bdd->prepare('INSERT INTO content(tag, title, text_fr, text_en, position,connected, active)
+	VALUES(:contentTag,:contentTitle, :contentTextFr, :contentTextEn, :contentPosition,:connected, :contentactive)');
 	$req->execute(array(
 	':contentTag'=> $contentTag,
 	':contentTitle'=> $contentTitle,
@@ -83,11 +84,10 @@ if(isset($_POST['submitContent']))
 					<p>
 						<span>connected</span>	<br>
 						<select name="connected">
-							<option>yes</option>
-							<option>no</option>
+							<option value="1">yes</option>
+							<option value="0">no</option>
 						</select>
-					</p>
-					
+					</p>			
 					
 					<br>
 					<p>
@@ -98,7 +98,7 @@ if(isset($_POST['submitContent']))
 						</select>
 					</p>
 					<br>
-							<input type="submit" value="Submit" name="submitContent"/>
+						<input type="submit" value="Submit" name="submitContent"/>
 					</form>
 				</div>
 				</div><br clear="both">

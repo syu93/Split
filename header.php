@@ -13,11 +13,14 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/com-center.css">
 		<link rel="stylesheet" type="text/css" href="css/menu.css">
 		<link rel="stylesheet" type="text/css" href="css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="css/article.css">
 		
 		<link rel="stylesheet" type="text/css" href="css/validate.css">
+		
+		<link href='http://fonts.googleapis.com/css?family=Esteban|Prosto+One|Nova+Oval' rel='stylesheet' type='text/css'>
 		
 		
 		<script src="js/jquery-1.11.0.min.js"></script>
@@ -69,9 +72,9 @@
 				</nav>
 	<?php	$signup = $bdd->query($sign);
 	while ($donnees = $signup->fetch()) {
-	if($_SESSION['member']['connected']==1){$class="profil";}else{$class="OCoff";}
+	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
 	?>				
-				<span id="signIn" class="signIn">
+				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
 					<a href="#"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
@@ -112,12 +115,7 @@
 					require_once("connect.php");
 				?>
 			</div>
-			
-			<div class="carousel-header">
-				<div class="slideShow">
-					<h1>Welcome to Split</h1>
-				</div>
-			</div>
+
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">

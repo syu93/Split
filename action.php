@@ -2,15 +2,16 @@
 	require_once("header.php");
 	require_once("form/init.php");
 	// echo$_SESSION['langue'];
+	require_once("form/req.php");
 ?>
 
 			<div class="container">
 				<div class="article">
 					<?php
-					$reponse = $bdd->query('SELECT * FROM game WHERE genre ="action" ');
+					$reponse = $bdd->query($action);
 					// var_dump ($reponse);
 					while ($donnees = $reponse->fetch())
-						{
+					{
 					?>				
 						<img src="<?php echo $donnees['url']; ?>">
 						<a href="#">	<?php echo $donnees['title']; ?>	</a>
@@ -28,9 +29,10 @@
 					if($_SESSION['member']['connected']==true)echo"true";
 					echo"</br>";
 					$plop = $_SESSION['member']['pseudo'];
-					echo$_SESSION['member']['pseudo'];
+					$p = $_SESSION['member']['pseudo'];
+					
 					echo"</br>";
-					echo $plop["pseudo"];
+					echo $p["pseudo"];
 					
 					?>
 				</div>

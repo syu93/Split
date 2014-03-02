@@ -4,6 +4,11 @@
 ?>
 
 			<div class="container">
+			<div class="carousel-header">
+				<div class="slideShow">
+					<h1>Welcome to Split</h1>
+				</div>
+			</div>
 				<div class="article">
 					<img src="gameImg/BF4.JPG">
 					<img src="gameImg/BF3.JPG">
@@ -12,6 +17,6 @@
 					<a href="action.php"><img src="gameImg/titanfall.JPG"></a>
 				</div>
 			</div>
-		</div>
-	</body>
-</html>
+<?php
+	require_once("footer.php");
+?>

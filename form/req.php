@@ -1,4 +1,5 @@
 <?php
+	// Header
 	$menu=" SELECT * FROM content WHERE active='yes' AND tag ='menu' ORDER BY position LIMIT 5";
 	$lib="SELECT text_fr, text_en FROM content WHERE title='mylibrary' AND active='yes' AND tag ='menu' AND connected='".$connected."' ";		
 	$gmelib="SELECT * FROM game WHERE active='yes' AND tag ='game' AND connected='".$connected."' ";
@@ -7,4 +8,14 @@
 	$deco="SELECT text_fr, text_en FROM content WHERE title='logoff' AND active='yes' AND tag ='text' AND connected='".$connected."' ";
 	$cart="SELECT text_fr, text_en FROM content WHERE title='cart' AND active='yes' AND tag ='menu' ";
 	$profil="SELECT avatar FROM member WHERE pseudo='".$pseudo["pseudo"]."'";
+	
+	
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	// action
+	
+	$action='SELECT * FROM game WHERE genre ="action" ';
+	
 ?>

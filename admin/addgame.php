@@ -12,6 +12,7 @@ if(isset($_POST['submitContent']))
  */
 	$gamePosition = $_POST['gamePosition'];
 	// echo$gamePosition;
+	
 	$gameTag = $_POST['gameTag'];
 	// echo$gameTag;
 	
@@ -43,13 +44,13 @@ if(isset($_POST['submitContent']))
 	// echo$gameactive;
 	
 	$gameImg = $_FILES['gameImg']['name'];	
-	// var_dump($_FILES['gameImg']['name']);
-	
+	// var_dump($_FILES['gameImg']['name']);	
 	
 	$pth = uploadgameimg($gameImg, $gameTitle);
 	// echo($pth);
 	
-	$req = $bdd->prepare('INSERT INTO game(url,price,genre,textlongue_fr,textlongue_en,tag, title, text_fr, text_en, position,connected, active)VALUES(:pth, :gamePrice,:gameGenre,:gameTextlongueFr,:gameTextlongueEn,:gameTag,:gameTitle,:gameTextFr,:gameTextEn,:gamePosition,:connected,:gameactive)');
+	$req = $bdd->prepare('INSERT INTO game(url,price,genre,textlongue_fr,textlongue_en,tag, title, text_fr, text_en, position,connected, active)
+	VALUES(:pth, :gamePrice,:gameGenre,:gameTextlongueFr,:gameTextlongueEn,:gameTag,:gameTitle,:gameTextFr,:gameTextEn,:gamePosition,:connected,:gameactive)');
 	$req->execute(array(
 	':gamePosition'=> $gamePosition,
 	':gameTag'=> $gameTag,
@@ -111,8 +112,8 @@ if(isset($_POST['submitContent']))
 					<p>
 						<span>connected</span>	<br>
 						<select name="connected">
-							<option>yes</option>
-							<option>no</option>
+							<option value="1">yes</option>
+							<option value="0">no</option>
 						</select>
 					</p>
 					
@@ -145,7 +146,7 @@ if(isset($_POST['submitContent']))
 						</select>
 					</p>
 					<br>
-							<input type="submit" value="Submit" name="submitContent"/>
+						<input type="submit" value="Submit" name="submitContent"/>
 					</form>
 				</div>
 				</div><br clear="both">

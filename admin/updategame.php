@@ -112,8 +112,8 @@ require_once'header.php';
 			<p>
 			<h2>Connected</h2>
 			<select name="connected">
-				<option>no</option>
-				<option>yes</option>
+				<option value="0">no</option>
+				<option value="1">yes</option>
 			</select>
 			</p>
 			<br>
