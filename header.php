@@ -68,12 +68,13 @@
 					</ul>
 				</nav>
 	<?php	$signup = $bdd->query($sign);
-	if($donnees[$_SESSION['user']['langue']]==1){$class="profil";}
-	while ($donnees = $signup->fetch()) { ?>				
+	while ($donnees = $signup->fetch()) {
+	if($_SESSION['member']['connected']==1){$class="profil";}else{$class="OCoff";}
+	?>				
 				<span id="signIn" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
 					<a href="#"> <?php echo $pseudo["pseudo"]; ?></a>
-					<div class="<?phpecho$class;?>">
+					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);
 							$avat = $avt->fetch();

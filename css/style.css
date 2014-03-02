@@ -54,8 +54,8 @@ a:hover
 
 #panAcount
 {
-	min-width: 1000px;
-	width: 79%;
+	min-width: 1025x;
+	width: 85%;
 	
 	margin-left:auto;
 	margin-right:auto;
@@ -120,7 +120,7 @@ a:hover
 	position:absolute;
 	
 	background:#3d3d3d;
-	width:225px;
+	width:210px;
 	height:200px;
 	
 	-moz-border-radius:0 0 5px 5px;
@@ -218,7 +218,7 @@ a:hover
 hr
 {
     background-color: #DDDDDD;
-    border: 0 none;
+    border-top: 1px solid #C2C2C2;
     color: #DDDDDD;
 	width:65%;
     height: 1px;
