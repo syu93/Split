@@ -70,7 +70,7 @@ a:hover
     margin-left: auto;
     margin-right: auto;
 	
-    text-align: right;
+    text-align: center;
     width: 85%;
 }
 /******************************************************************************************/
@@ -155,6 +155,8 @@ a:hover
 	
 	-moz-border-radius:0 0 5px 5px;
 	border-radius:0 0 5px 5px;
+	
+	z-index: 5;
 	
 }
 
