@@ -26,7 +26,7 @@ body
 	background-repeat:no-repeat;
 	
 	/* Provisoire size size of the body */
-	height: 1000px;
+	height: 100%;
  }
 /******************************************************************************************/
 /******************************************************************************************/
@@ -217,7 +217,7 @@ a:hover
     background: url("bg.png") repeat scroll 0 0 transparent;
     border-radius: 15px 15px 0 0;
     box-shadow: 0 0 5px 0 #000000;
-    font-size: 20px;
+	font-size: 20px;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -407,8 +407,7 @@ hr
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
-	
-	border: solid black;
+	padding: 5px 1px 5px 1px;	
 	
 	clear: both;
 }

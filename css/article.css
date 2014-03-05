@@ -3,14 +3,36 @@
  *	Menu CSS Style of 
  *	Split
  */
- 
+
 .container .article img
 {
 	height: 91px;
-    width: 115px;
-}
- .container .article img
- {
-	width : 100px;
+    width: 200px;
 	border-radius:10px;
- }
+	padding:2px;
+	border: inset 1px #FFF;
+}
+ 
+.article
+{
+	width:210px;
+	height:135px;
+	background:url("get.png");
+	padding:5px;
+	
+	margin-bottom:5px;
+	
+	display:inline-block;
+	
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	text-align:center;
+}
+
+.article-text
+{
+	font-size:15px;
+	padding:5px;
+	display:table;
+}

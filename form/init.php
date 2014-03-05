@@ -201,6 +201,10 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		// $_SESSION['user']["pseudo"] = "plop";
 		$_SESSION['user']["connected"] = true;
 		
+		
+		session_connect($bdd,$e);
+		
+		
 		header('Location: ../');
 	}
 }
