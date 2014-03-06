@@ -101,12 +101,14 @@ function langue($p){
 		if($langue == "Francais")
 		{
 			$_SESSION["user"]['langue'] = "text_fr";
+			$_SESSION["user"]['langueLongue'] = "textlongue_fr";
 			// echo($_SESSION['user']['langue']);
 			echo("fr");
 		}
 		else
 		{				
 			$_SESSION['user']['langue'] = "text_en";
+			$_SESSION['user']['langueLongue'] = "textlongue_en";
 			// echo($_SESSION["user"]['langue']);
 			echo("en");
 		}

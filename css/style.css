@@ -9,6 +9,7 @@
 	margin: 0;
 	padding: 0;
 	
+	
 }
  
 body
@@ -156,7 +157,7 @@ a:hover
 	-moz-border-radius:0 0 5px 5px;
 	border-radius:0 0 5px 5px;
 	
-	z-index: 5;
+	z-index: 20;
 	
 }
 

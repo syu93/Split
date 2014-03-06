@@ -21,6 +21,8 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/validate.css">
 		
+		<link rel="stylesheet" type="text/css" href="css/fontello/css/fontello.css">
+		
 		<link href='http://fonts.googleapis.com/css?family=Esteban|Prosto+One|Nova+Oval' rel='stylesheet' type='text/css'>
 		
 		
