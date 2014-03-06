@@ -93,7 +93,7 @@ require_once'header.php';
 			</p>
 			
 			<p>
-			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>">
+			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['price']; ?>">
 		
 			</p>
 			

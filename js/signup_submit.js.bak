@@ -275,7 +275,7 @@ $( document ).ready(function(){
 			// alert($(this).attr("alt"));
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
-			// alert(game);
+			alert(game);
 
 			$.ajax({
 				type: "POST",

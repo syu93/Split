@@ -88,36 +88,47 @@ require_once'header.php';
 			<p>
 			<br>
 				<select name="pagename">
-				<?php
-				//	Recovevy of the pagename
-				$optPagename = $bdd->query('SELECT * FROM content');
-				while ($opt = $optPagename->fetch())
-				{
-				?>
-					<option><?php echo $opt['page']; ?></option>
-				<?php
-				}
-				?>
+
+					<option><?php echo $donnees['page']; ?></option>
+	
 				</select>
 			</p>
 			<br>
 			
 			<p>
-			<h2>Connected</h2>
+			<h2>Connecter</h2>
+			<br>
 			<select name="connected">
-				<option value="0">no</option>
-				<option value="1">yes</option>
+				<?php
+					if($donnees['connected'] == 0)
+					{
+						echo "<option value='0'>No</option>";
+						echo "<option value='1'>Yes</option>";
+					}
+					else if($donnees['connected'] == 1)
+					{
+						echo "<option value='1'>Yes</option>";
+						echo "<option value='0'>No</option>";
+					}
+				?>
 			</select>
 			</p>
 			<br>
 			<p>
 			<span>Afficher ce contenu</span>
-			<span>Afficher : </span>
-			<?php echo'<input class="inputtext" type="text" value="'.$donnees['active'].'" readonly/>';?>
-			<br>
 			<select name="contentactive">
-				<option>yes</option>
-				<option>no</option>
+			<?php
+					if($donnees['active'] == "no")
+					{
+						echo "<option value='0'>No</option>";
+						echo "<option value='1'>Yes</option>";
+					}
+					else if($donnees['active'] == "yes")
+					{
+						echo "<option value='1'>Yes</option>";
+						echo "<option value='0'>No</option>";
+					}
+				?>
 			</select>
 			</p>
 			<br>

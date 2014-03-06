@@ -38,7 +38,7 @@
 				<?php 
 				$i++;
 				} ?>
-			<span id="nb-game" data="<?php echo$i; ?>"></<span>
+			<span id="plop" data="<?php echo$i; ?>"></<span>
 			</div>
 <?php
 	require_once("footer.php");

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once'../form/init.php';
 require_once'header.php';
 ?>
 
 <div class="addContent module">
 	<h1>Modification d'un contenu</h1>
 	<br>
-	<form method="post" action="updategame.php">
+	<form method="post" action="updatecontent.php">
 		<h2>Choisisez le module a modifier</h2>
 		<span>Tout les modules</span>
 			<select name="SelectModule">
 				<option></option>
 				<?php
 				//	Recovevy of the content list
-				$optContent = $bdd->query('SELECT * FROM game');
+				$optContent = $bdd->query('SELECT * FROM content');
 				while ($opt = $optContent->fetch())
 				{
 				?>
@@ -46,15 +45,15 @@ require_once'header.php';
 		//	If the variable SelectModule is not empty --> Recovery of the module by its name
 	if(!empty($_POST['SelectModule']))	
 	{
-		$req = $bdd->prepare('SELECT * FROM game WHERE title=?');
+		$req = $bdd->prepare('SELECT * FROM content WHERE title=?');
 		$req->execute(array($SelectModule,));
 		/*Recovery*/
 		while ($donnees = $req->fetch())
 		{
 		?>
-		<form method="post" action="updategame.php" enctype="multipart/form-data">
+		<form method="post" action="updatecontent.php">
 		<br>
-		<span>Position actuel</span>
+		<h2>Position actuel</h2>
 			<p>
 				<?php echo'<input name="contentid" type="hidden" value="'.$donnees['id'].'"/>'?>
 				<textarea class="contentActPos" readonly><?php echo $donnees['position']; ?></textarea>				
@@ -63,7 +62,7 @@ require_once'header.php';
 		<h2>Position du contenu</h2>
 				<br>
 				<select name="contentPosition">								
-						<?php for($i=0 ; $i<=10 ; $i++)
+						<?php for($i=0 ; $i<=20 ; $i++)
 							{?>
 								<option><?php echo $i; ?></option>
 						<?php
@@ -83,45 +82,30 @@ require_once'header.php';
 		<p>
 			<h2>Contenu fr</h2>	<br>	<textarea class="contentText" name="contentTextFr"><?php echo $donnees['text_fr']; ?></textarea>
 			<h2>Contenu en</h2>	<br>	<textarea class="contentText" name="contentTextEn"><?php echo $donnees['text_en']; ?></textarea>
-
-			<h2>Contenu Long fr</h2>	<br>	<textarea class="contentText" name="gameTextlongueFr"><?php echo $donnees['textlongue_fr']; ?></textarea>
-			<h2>Contenu Long en</h2>	<br>	<textarea class="contentText" name="gameTextlongueEn"><?php echo $donnees['textlongue_en']; ?></textarea>
 		</p>
 		<br>
-		<p>
-			<span>Prix du jeu</span>	<br>	<textarea class="" name="gamePrice"><?php echo $donnees['price']; ?></textarea>
-			</p>
-			
+		<h2>Page du contenu</h2>
 			<p>
-			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>">
-		
-			</p>
-			
 			<br>
-			<p>
-			<input class="inputtext" type="text" value="<?php echo$donnees['genre'] ?>">
-			<br>
-			<br>
-			<span>Type de jeu</span>
-				<select name="gameGenre">
-					<option>action</option>
-					<option>aventure</option>
-					<option>strategie</option>
-					<option>RPG</option>
-					<option>MMO</option>
+				<select name="pagename">
+
+					<option><?php echo $donnees['page']; ?></option>
+	
 				</select>
 			</p>
+			<br>
 			
 			<p>
-			<h2>Connected</h2>
+			<h2>Connecter</h2>
+			<br>
 			<select name="connected">
-			<?php
+				<?php
 					if($donnees['connected'] == 0)
 					{
 						echo "<option value='0'>No</option>";
 						echo "<option value='1'>Yes</option>";
 					}
-					else if($donnees['active'] == 1)
+					else if($donnees['connected'] == "yes")
 					{
 						echo "<option value='1'>Yes</option>";
 						echo "<option value='0'>No</option>";
@@ -132,17 +116,14 @@ require_once'header.php';
 			<br>
 			<p>
 			<span>Afficher ce contenu</span>
-			<span>Afficher : </span>
-			<?php echo'<input class="inputtext" type="text" value="'.$donnees['active'].'" readonly/>';?>
-			<br>
 			<select name="contentactive">
 			<?php
-					if($donnees['active'] == 0)
+					if($donnees['active'] == "no")
 					{
 						echo "<option value='0'>No</option>";
 						echo "<option value='1'>Yes</option>";
 					}
-					else if($donnees['active'] == 1)
+					else if($donnees['active'] == "yes")
 					{
 						echo "<option value='1'>Yes</option>";
 						echo "<option value='0'>No</option>";
@@ -170,35 +151,22 @@ require_once'header.php';
 		$contentTitle = $_POST['contentTitle'];
 		$contentTextFr = $_POST['contentTextFr'];
 		$contentTextEn = $_POST['contentTextEn'];
-		$gameTextlongueFr = $_POST['gameTextlongueFr'];
-		$gameTextlongueEn = $_POST['gameTextlongueEn'];
 		$contentPosition = $_POST['contentPosition'];
-		
-		$price = $_POST['gamePrice'];
-		$gameImg = $_FILES['gameImg']['name'];
-		
-		$pth = uploadgameimg($gameImg, $contentTitle);
-		
-		$gameGenre = $_POST['gameGenre'];
-		
+		$contentPagename =$_POST['pagename'];
 		$connected =$_POST['connected'];
 		$contentactive =$_POST['contentactive'];
 		$contentid=$_POST['contentid'];
 
-		$req = $bdd->prepare('UPDATE game SET url=:url, price=:price, genre=:gameGenre,  title=:contentTitle, text_fr=:contentTextFr, text_en=:contentTextEn,textlongue_fr=:gameTextlongueFr, textlongue_en=:gameTextlongueEn, position=:contentPosition,connected=:connected,active=:contentactive WHERE id=:contentid');
+		$req = $bdd->prepare('UPDATE content SET title=:contentTitle, text_fr=:contentTextFr, text_en=:contentTextEn, position=:contentPosition, page=:contentPage,connected=:connected,active=:contentactive WHERE id=:contentid');
 		$req->execute(array(
 		':contentTitle'=> $contentTitle,
 		':contentid'=> $contentid,
 		':contentTextFr'=> $contentTextFr,
 		':contentTextEn'=> $contentTextEn,
-		':gameTextlongueFr'=> $gameTextlongueFr,
-		':gameTextlongueEn'=> $gameTextlongueEn,
 		':contentPosition'=> $contentPosition,
+		':contentPage'=> $contentPagename,
 		':connected'=> $connected,
 		':contentactive'=> $contentactive,
-		':price'=> $price,
-		':gameGenre'=> $gameGenre,
-		':url'=> $pth,
 		));	
 	}
 	?>
