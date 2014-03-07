@@ -275,26 +275,22 @@ $( document ).ready(function(){
 			// alert($(this).attr("alt"));
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
-			alert(game);
+			
+			var url = $("#plop").val();
+			// alert(plop);
+			
+			gameInf = {};
+			
+			gameInf.selct = game;
+			
+			alert(gameInf.selct);
 
 			$.ajax({
 				type: "POST",
 				url: "form/validateSignUp.php",
-				data: formL,
+				data: gameInf,
 				success: function(data){
-					// alert($('#avatar').val());
-					// alert(typeof(data));
-					// alert(data);
-					if(data == "fr")
-					{
-						location.reload();
-					}
-					else if(data == "en")
-					{
-
-						location.reload();
-					}
-				
+					alert(data);
 				}, 
 				dataType: "text"
 			});

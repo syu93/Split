@@ -12,7 +12,7 @@ $( document ).ready(function(){
 	  $("#formSi")[0].reset();
 	});
 	
-	/*$(".info").click(function(){
+	$(".info").click(function(){
 	
 	  $("#overContainer2").removeClass('OCoff');
 	  $("#overContainer2").addClass('OCon');
@@ -21,5 +21,5 @@ $( document ).ready(function(){
 	$("#gameBack").click(function(){
 	  $("#overContainer2").removeClass('OCon');
 	  $("#overContainer2").addClass('OCoff');
-	});*/
+	});
 });

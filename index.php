@@ -6,7 +6,6 @@
 	/*****************************/
 	/*****************************/
 	
-	$url=getUrl();
 ?>
 
 			<div class="container">
@@ -17,6 +16,7 @@
 			</div>-->
 				<?php $game_idx = $bdd->query($game_index);
 				$i = 0;
+				$url = getUrl();
 				while($donnees = $game_idx->fetch()) {	
 				?>
 					<div class="article">
@@ -32,9 +32,16 @@
 						</div>
 					</div>
 					<div class="gameDescrib OCoff" id="overContainer2">
-					<a id="gameBack" class="gameBack">Back</a>
-						
-					</div>
+						<a id="gameBack" class="gameBack">Back</a>
+						<div>
+							<img width="400px" src="<?php echo$donnees["url"];?>">
+							<br>
+							<span id="<?php echo $i; ?>" class="article-text"><?php echo $donnees[$_SESSION['user']['langue']]; ?></span>
+							<div class="">
+								<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
+							</div>
+						</div>
+					</div>					
 				<?php 
 				$i++;
 				} ?>
