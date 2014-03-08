@@ -270,31 +270,42 @@ $( document ).ready(function(){
 	{
 		//var article-info = {};
 		// plop=i;
-		$("#jeux"+i).click(function(){
 		
-			// alert($(this).attr("alt"));
+		$("#jeux"+i).click(function(){	
+		
+			// alert($(this).attr("alt"))
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
 			
 			var url = $("#plop").val();
-			// alert(plop);
+			// alert(id);
 			
-			gameInf = {};
+			/****************************************/
+			$("#overContainer2"+id).removeClass('OCoff');
+			$("#overContainer2"+id).addClass('OCon');
+			/****************************************/
 			
+			gameInf = {};			
 			gameInf.selct = game;
 			
-			alert(gameInf.selct);
-
+			// alert(gameInf.selct);	
+			
 			$.ajax({
 				type: "POST",
 				url: "form/validateSignUp.php",
 				data: gameInf,
 				success: function(data){
-					alert(data);
 				}, 
 				dataType: "text"
 			});
-		});	
+			/****************************************/
+			$(".gameBack").click(function(){
+				alert("close");
+				$("#overContainer2"+id).removeClass('OCon');
+				$("#overContainer2"+id).addClass('OCoff');
+			});	
+		});
+
 	}
 	
 });

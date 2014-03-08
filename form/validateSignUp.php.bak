@@ -48,10 +48,10 @@
 	if(isset($_POST["selct"]))
 	{
 		session_start();
-		// echo'SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["selct"].'" ';
 		$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["selct"].'" ');
 		$donnees = $req->fetch();
-		echo $donnees["title"];
+		echo "jeux : ",  json_encode($donnees);
+		
 		return;
 	}
 	

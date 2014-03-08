@@ -11,15 +11,5 @@ $( document ).ready(function(){
 	  $("#overContainer").addClass('OCoff');
 	  $("#formSi")[0].reset();
 	});
-	
-	$(".info").click(function(){
-	
-	  $("#overContainer2").removeClass('OCoff');
-	  $("#overContainer2").addClass('OCon');
-	});
-	
-	$("#gameBack").click(function(){
-	  $("#overContainer2").removeClass('OCon');
-	  $("#overContainer2").addClass('OCoff');
-	});
+
 });

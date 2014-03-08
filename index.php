@@ -21,7 +21,7 @@
 				?>
 					<div class="article">
 					<span class="article-info">
-						<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info" href="#"><i class="icon-info"></i></a>|<a href="#"><i class="icon-basket"></i></a>
+						<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a>|<a href="#"><i class="icon-basket"></i></a>
 					</span>
 						<img src="<?php echo$donnees["url"];?>">
 
@@ -31,12 +31,13 @@
 							<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
 						</div>
 					</div>
-					<div class="gameDescrib OCoff" id="overContainer2">
+					
+					<div class="gameDescrib OCoff" id="overContainer2<?php echo$i; ?>">
 						<a id="gameBack" class="gameBack">Back</a>
-						<div>
-							<img width="400px" src="<?php echo$donnees["url"];?>">
+						<div class="page-game">
+							<img src="<?php echo$donnees["url"];?>">
 							<br>
-							<span id="<?php echo $i; ?>" class="article-text"><?php echo $donnees[$_SESSION['user']['langue']]; ?></span>
+							<span id="<?php echo $i; ?>" class="article-text"><?php echo$donnees[$_SESSION['user']['langue']]; ?></span>
 							<div class="">
 								<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
 							</div>

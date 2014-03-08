@@ -50,7 +50,8 @@
 		session_start();
 		$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["selct"].'" ');
 		$donnees = $req->fetch();
-		echo $donnees["title"];
+		echo $donnees;
+		
 		return;
 	}
 	
