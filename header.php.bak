@@ -114,7 +114,7 @@
 					</select>
 				</form>
 			</div>
-			<div class="float-container">
+			<div style="width:800px; margin-left:auto; margin-right:auto;">
 				<?php 
 					require_once("connect.php");
 				?>
