@@ -33,16 +33,27 @@
 					</div>
 					
 					<div class="gameDescrib OCoff" id="overContainer2<?php echo$i; ?>">
+						<div class="over-wrapper game-title">
+							<span id="<?php echo $i; ?>" class=""><?php echo$donnees[$_SESSION['user']['langue']]; ?></span>
+						</div>
+						
 						<a id="gameBack" class="gameBack">Back</a>
+						
 						<div class="page-game">
-							<img src="<?php echo$donnees["url"];?>">
-							<br>
+						
+								<img src="<?php echo$donnees["url"];?>"/>
+
 							<div class="describ-text">
 								<span id="<?php echo $i; ?>" class="article-text"><?php echo$donnees[$_SESSION['user']['langue']]; ?></span>
 								<div class="long-describ">
 									<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
 								</div>
 							</div>
+							
+							<div>
+								<a class="addcart" href="">Ajouter au Panier | <span class="icon-basket"></span></a>
+							</div>
+						<span class="article-genre">Tags : </span><a class="article-tag" href="">Action</a><a class="article-tag" href="">Aventure</a>
 						</div>
 					</div>					
 				<?php 
