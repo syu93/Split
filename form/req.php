@@ -27,6 +27,8 @@
 	
 	$action='SELECT * FROM game WHERE genre ="action" ';
 	
-	$test = 'SELECT genre.genre FROM game, genre, gamegenre WHERE game.id=gamegenre.idgame AND gamegenre.idgenre=genre.id AND game.title="TitanFall"';
+	$testgenre = 'SELECT genre.genre FROM game, genre, gamegenre WHERE game.id=gamegenre.idgame AND gamegenre.idgenre=genre.id AND game.title="TitanFall"';
+	
+	$testfriend = 'SELECT friend.pseudofriend FROM member, friend WHERE member.pseudo=friend.pseudomember AND member.pseudo="Syu93" ';
 	
 ?>
