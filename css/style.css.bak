@@ -278,7 +278,7 @@ a:hover
 /******************************************************************************************/
 .element
 {
-	width: 195px;
+	width: 193px;
 	margin-bottom:5px;
 	display: inline-block;
 }

@@ -3,18 +3,11 @@
  *	Menu CSS Style of 
  *	Split
  */
-/*************************/
-/* Fonts*/
-/*
-font-family: 'Esteban', serif;
-*/
-/*************************/
+
 *
 {
 	margin: 0px;
 	padding: 0px;
-	
-	font-family: 'Esteban', serif;
 }
 /******************************************************************************************/
 /******************************************************************************************/
@@ -29,6 +22,8 @@ font-family: 'Esteban', serif;
 	color: #DDDDDD;
 	
 	z-index: 1;
+	
+	font-family: 'Esteban', serif;
 }
 
 .menu1 a 
