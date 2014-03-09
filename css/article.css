@@ -55,6 +55,15 @@
 	text-align:left;
 }
 
+.gameDescrib .article-text,.gameDescrib .article-describ
+{
+	margin-left: 15px;
+	float:left;
+	clear:both;
+	
+}
+
+
 .article-describ
 {
 	display:none;
@@ -162,9 +171,10 @@
 
 .page-game img
 {
-	margin-left:50px;
+	margin-left:250px;
 	width:400px;
 	height:200px;
+	float:left;
 	
 	border: inset 1px #FFF;
 	
