@@ -109,6 +109,17 @@
 	-webkit-border-radius: 8px 0 0 8px;
 	
 }
+.describ-text
+{
+	margin-right: 40px;
+	float:left;
+}
+
+.long-describ
+{
+	width:400px;
+}
+
 .article:hover .article-info
 {
 	opacity:1;
@@ -117,7 +128,7 @@
 }
 .article-info a:hover
 {
-	text-shadow: 0 0 6px #111;
+	text-shadow: 0 0 6px #000;
 }
 
 .icon-info:hover
@@ -165,6 +176,8 @@
 	margin-left:50px;
 	width:400px;
 	height:200px;
+	
+	float:left;
 	
 	border: inset 1px #FFF;
 	

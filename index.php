@@ -37,9 +37,11 @@
 						<div class="page-game">
 							<img src="<?php echo$donnees["url"];?>">
 							<br>
-							<span id="<?php echo $i; ?>" class="article-text"><?php echo$donnees[$_SESSION['user']['langue']]; ?></span>
-							<div class="">
-								<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
+							<div class="describ-text">
+								<span id="<?php echo $i; ?>" class="article-text"><?php echo$donnees[$_SESSION['user']['langue']]; ?></span>
+								<div class="long-describ">
+									<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
+								</div>
 							</div>
 						</div>
 					</div>					

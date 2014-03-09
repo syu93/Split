@@ -118,6 +118,17 @@
 	-webkit-border-radius: 8px 0 0 8px;
 	
 }
+.describ-text
+{
+	margin-left: 40px;
+	float:left;
+}
+
+.long-describ
+{
+	width:400px;
+}
+
 .article:hover .article-info
 {
 	opacity:1;
@@ -174,6 +185,8 @@
 	margin-left:250px;
 	width:400px;
 	height:200px;
+	float:left;
+	
 	float:left;
 	
 	border: inset 1px #FFF;
