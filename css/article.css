@@ -158,6 +158,8 @@
 {
 	float:left;
 	margin-left:15px;
+	clear:both;
+	cursor:pointer;
 }
 .game-title
 {
@@ -192,6 +194,7 @@
 	border:inset #ddd 1px;
 	-webkit-box-shadow: 0 0 3px 0 #000;
 	box-shadow: 0 0 3px 0 #000;
+	clear:both;
 }
 .addcart:hover
 {
@@ -210,9 +213,14 @@
 	color:#6e91be;
 }
 
+.article-genre
+{
+	float:left;
+	margin-top:15px;
+}
 .article-tag
 {
-	padding: 0 3px 0 3px;
+
 }
 .article-tag:after
 {
@@ -231,6 +239,7 @@
 .page-game
 {
 	margin-top:20px;
+	margin-left:20px;
 	background: url('get.png');
     float: left;
     height: 400px;
