@@ -16,7 +16,7 @@
 .article
 {
 	width:210px;
-	height:140px;
+	height:150px;
 	background:url("get.png");
 	padding:5px;
 	
@@ -49,10 +49,13 @@
 
 .article-text
 {
-	font-size:15px;
-	padding:5px;
-	display:table;
-	text-align:left;
+    display: table;
+    float: left;
+    font-size: 15px;
+    height: 45px;
+    padding: 5px;
+    text-align: left;
+    width: 130px;
 }
 
 .article-describ
@@ -119,6 +122,11 @@
 {
 	margin-left: 40px;
 	float:left;
+}
+.game-price
+{
+	/*margin-right:18px;*/
+	float:right;
 }
 
 .long-describ
@@ -220,7 +228,7 @@
 }
 .article-tag
 {
-	padding: 0 3px 0 3px;
+
 }
 .article-tag:after
 {

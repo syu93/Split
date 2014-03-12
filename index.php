@@ -6,6 +6,7 @@
 	/*****************************/
 	/*****************************/
 	
+	
 ?>
 
 			<div class="container">
@@ -17,15 +18,25 @@
 				<?php $game_idx = $bdd->query($game_index);
 				$i = 0;
 				$url = getUrl();
-				while($donnees = $game_idx->fetch()) {	
+				
+				while($donnees = $game_idx->fetch()) {
 				?>
 					<div class="article">
-					<span class="article-info">
-						<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a>|<a href="#"><i class="icon-basket"></i></a>
-					</span>
+						<span class="article-info">
+							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a>|<a href="#"><i class="icon-basket"></i></a>
+						</span>
 						<img src="<?php echo$donnees["url"];?>">
 
-						<span id="<?php echo $i; ?>" class="article-text"><?php echo $donnees[$_SESSION['user']['langue']]; ?></span>
+						<span id="<?php echo $i; ?>" class="article-text">
+							<?php echo $donnees[$_SESSION['user']['langue']]; ?>							
+						</span>
+						<span class="game-price <?php echo devise();  ?>">
+							<?php
+								$price=convert($bdd,$donnees["title"]);					
+								echo $price;
+			
+							?>
+						</span>
 					
 						<div class="article-describ">
 							<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>

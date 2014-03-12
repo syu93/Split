@@ -124,7 +124,6 @@ function devise(){
 	if($_SESSION["user"]['langue'] == "text_fr")
 	{
 		$devise="icon-euro";
-		return $devise;
 	}
 	
 	else if($_SESSION["user"]['langue'] == "text_en")
