@@ -16,7 +16,7 @@
 	padding: 0;
 	
 	font-family: ExpletusSans-Medium;
-	font-size:16px;
+	font-size:16px
 }
  
 body
@@ -36,6 +36,7 @@ body
 	/* Provisoire size size of the body */
 	height: 100%;
  }
+
 /******************************************************************************************/
 /******************************************************************************************/
 /******************************************************************************************/
@@ -107,7 +108,7 @@ a:hover
 {
 	min-width: 100px;
 	height:25px;
-	font-size:
+	font-size:14px;
 	margin-right: 10px;
 	background:url("bg.png");
 	border-radius: 5px;

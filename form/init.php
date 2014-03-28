@@ -3,7 +3,7 @@ function start_session(){
 	session_start();
 	if(empty($_SESSION["user"]['id']))
 	{			
-		$_SESSION['user']['id'] = uniqid("", false);
+		$_SESSION['user']['id'] = uniqid("", false); //may replace this for an exa decimal number
 	}
 	if(empty($_SESSION['member']["connected"]))
 	{			
@@ -188,6 +188,8 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 	
 	if(isset($g,$n,$f,$d,$p,$a,$e,$pw,$c))
 	{
+		$id = createID($p);
+		
 		$genre = $g;//$_POST["genre"];
 		// echo($genre);echo("</br>");
 		
@@ -222,7 +224,8 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		
 		$country = $c;//$_POST["country"];
 		// echo($country);echo("</br>");	
-
+		
+		$registred = date("Y-m-d");
 
 		if($_FILES!=NULL)
 		{
@@ -236,9 +239,10 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		if(!empty($genre) && !empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW))
 		{
 
-				$req = $bdd->prepare('INSERT INTO member (genre, name, firstname, date, pseudo, avatar, email , password ,country) 
-								VALUES(:genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country)');
+				$req = $bdd->prepare('INSERT INTO member (id, genre, name, firstname, date, pseudo, avatar, email , password ,country, registred) 
+								VALUES(:id, :genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country, :registred)');
 				$req->execute(array(
+					':id'=> $id,
 					':genre'=> $genre,
 					':name'=> $name,
 					':firstname'=> $firstname,
@@ -248,6 +252,7 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 					':password'=> $cryptedPW,
 					':email'=> $email,
 					':country'=> $country,
+					':registred'=> $registred,
 					));	
 		}
 		start_session();
@@ -383,6 +388,19 @@ function type_avatar($a){
 	}
 	return;
 }
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function createID($n){
+	$timestamp = time();
+	$name=$n;
+	$mdName=md5($name);
+	$id = $timestamp."-".$mdName;
+	return $id;
+}
+
+
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/

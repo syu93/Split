@@ -1,4 +1,10 @@
 $( document ).ready(function(){
+
+
+	$( document ).scroll(function() {
+		$("body").removeClass('noscroll');
+	});
+	
 	// Creat Json object
 	var formP = {};
 
@@ -300,7 +306,7 @@ $( document ).ready(function(){
 			});
 			/****************************************/
 			$(".gameBack").click(function(){
-				alert("close");
+				// alert("close");
 				$("#overContainer2"+id).removeClass('OCon');
 				$("#overContainer2"+id).addClass('OCoff');
 			});	

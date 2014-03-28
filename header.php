@@ -78,7 +78,7 @@
 	?>				
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="#"> <?php echo $pseudo["pseudo"]; ?></a>
+					<a href="index.php?usr=<?php echo"plop"; ?>"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);

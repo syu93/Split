@@ -23,7 +23,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/fontello/css/fontello.css">
 		<link rel="stylesheet" type="text/css" href="css/fontello-back/css/back.css">
-		<link rel="stylesheet" type="text/css" href="css/fontello-icone/css/icone.css">
+		<link rel="stylesheet" type="text/css" href="css/icone/css/icone.css">
 		
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/signup_submit.js"></script>
@@ -73,12 +73,13 @@
 					</ul>
 				</nav>
 	<?php	$signup = $bdd->query($sign);
+	echo $registred = date("Y-m-d");
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
 	?>				
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="#"> <?php echo $pseudo["pseudo"]; ?></a>
+					<a href="index.php?usr=<?php echo"plop"; ?>"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);
