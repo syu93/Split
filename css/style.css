@@ -18,7 +18,14 @@
 	font-family: ExpletusSans-Medium;
 	font-size:16px
 }
- 
+
+h1{font-size:2.6em;}
+h2{font-size:2.5em;}
+h3{font-size:2.4em;}
+h4{font-size:2.3em;}
+h5{font-size:2.2em;}
+h6{font-size:2.1em;}
+
 body
 {
 	background: #f6f8f9; /* Old browsers */
@@ -176,7 +183,7 @@ a:hover
 	display:block;
 }
 
-.profil>img
+.profil img
 {
 	width:70px;
 	padding:2px;

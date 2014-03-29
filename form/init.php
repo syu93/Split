@@ -227,13 +227,17 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		
 		$registred = date("Y-m-d");
 
-		if($_FILES!=NULL)
+		if($avatar!=NULL)
 		{
 			//move the file
 			$ext = strtolower(substr(strrchr($avatar, '.'),1)); //get the extension : without the "."
 			$path = "../userAvt/".$pseudo.".".$ext;
 			$movefile = move_uploaded_file($_FILES['avatar']['tmp_name'],$path);
 			$pth = "userAvt/".$pseudo.".".$ext;
+		}
+		else
+		{
+			$pth = "userAvt/default.jpg";
 		}
 		
 		if(!empty($genre) && !empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW))
@@ -395,12 +399,11 @@ function type_avatar($a){
 function createID($n){
 	$timestamp = time();
 	$name=$n;
-	$mdName=md5($name);
-	$id = $timestamp."-".$mdName;
-	return $id;
+	$mdName=crc32($name);
+	$id = $timestamp.$mdName;
+	$md = md5($id);
+	return $md;
 }
-
-
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/

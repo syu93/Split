@@ -22,13 +22,7 @@
 				?>
 					<div class="article">
 						<span class="article-info">
-							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" >
-								<i class="icon-info"></i>
-							</a>
-							<span>|</span>
-							<a href="#">
-								<i class="icon-basket"></i>
-							</a>
+							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a> | <a href="#"><i class="icon-basket"></i></a>
 						</span>
 						
 						<img src="<?php echo$donnees["url"];?>">

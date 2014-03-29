@@ -1,11 +1,11 @@
 ﻿ <?php
-	require_once("bdd/bddconnect.php");
-	require_once("form/session.php");
+	require_once("../bdd/bddconnect.php");
+	require_once("../form/session.php");
 	
 	$connected = ifconnected();
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";
-	require_once("form/req.php");
+	require_once("../form/req.php");
 	
  ?>
  <!DOCTYPE html>
@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/article.css">
+		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/user.css">
 		
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/validate.css">
 		
@@ -35,58 +36,23 @@
 	<body>
 	<div id="body">
 		<div class="over-wrapper">
-			<div id="panAcount">			
-				<nav class="menu1">
-					<ul class="level1">
-	<?php
-	$library = $bdd->query($lib);
-	// var_dump($lib);
-	while ($donnees = $library->fetch()) { ?>
-						<li><a class="signIn" herf="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
-	<?php }	?>
-							<ul class="level2">
-								
-	<?php
-	$game = $bdd->query($gmelib);
-	while ($donnees = $game->fetch()) {	?>
-								<li class="myGame">
-									<span class="g-img">
-										<img src="<?php echo$donnees["url"];?>"/>
-									</span>
-									<span class="g-desc">
-										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>									
-									</span>
-		<?php	$play = $bdd->query($ply);
-		while ($donnees = $play->fetch()) {	?>
-									<ul class="level3">
-										<li>
-											<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
-		<?php }	?>
-
-
-										</li>
-									</ul>
-								</li>
-	<?php } ?>
-							</ul>
-						</li>
-					</ul>
-				</nav>
+			<div id="panAcount">
 	<?php	$signup = $bdd->query($sign);
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
 	?>				
 				<span id="<?php echo $idt; ?>" class="signIn">
-					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="user/user.php"> <?php echo $pseudo["pseudo"]; ?></a>
+					<?php echo$donnees[$_SESSION['user']['langue']]; 
+					$avt = $bdd->query($profil);
+					$avat = $avt->fetch();
+					?>
+					<a href="user.php"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
-						<?php	
-							$avt = $bdd->query($profil);
-							$avat = $avt->fetch();
-							echo"<a href='user/user.php'><img src='".$avat['avatar']."'/>";
+						<?php
+							echo"<img src=' ../".$avat['avatar']."'/>";
 						?>
 						<?php
-							echo $pseudo['pseudo']."</a>";
+							echo"<a href='#'>".$pseudo['pseudo']."</a>";
 						?>	
 					</div>					
 				</span>
@@ -94,9 +60,9 @@
 					$deco = $bdd->query($deco); 
 					$donnees = $deco->fetch();		
 				?>
-				<span class="logoff"><?php echo("<a href='form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
+				<span class="logoff"><?php echo("<a href='../form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
 	<?php } ?>
-				<form method="POST" action="form/validateSignUp.php" id="formLang">
+				<form method="POST" action="../form/validateSignUp.php" id="formLang">
 					<select id="langue" name="langue" class="language">
 					<?php
 						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
@@ -115,7 +81,7 @@
 			</div>
 			<div class="float-container">
 				<?php 
-					require_once("connect.php");
+					require_once("../connect.php");
 				?>
 			</div>
 			</div>
@@ -123,9 +89,9 @@
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
+						<span><a id="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>
 						
-						<?php $reponse = $bdd->query($menu);
+						<?php $reponse = $bdd->query($menu_user);
 						while ($donnees = $reponse->fetch()) {	?>						
 							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
 						<?php }	?>
@@ -134,7 +100,7 @@
 						while ($donnees = $cart->fetch()) { ?>
 												
 							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<?php require_once("cart.php");?>						
+							<?php require_once("../cart.php");?>						
 						</li>
 						<?php } ?>
 					</ul>

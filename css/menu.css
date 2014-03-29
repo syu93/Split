@@ -313,7 +313,6 @@
 	float: left;
 	
 	min-width: 70px;
-	width: 103px;
 	text-align: center;
 	
 	/*border-left: solid #ccc 1px;
@@ -333,7 +332,7 @@
 
 .menu2 .level1 > li:last-child
 {
-	width: 113px;
+	float:right;
 	
 	border-right: none;
 	

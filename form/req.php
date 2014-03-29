@@ -7,7 +7,7 @@
 	$sign="SELECT text_fr, text_en FROM content WHERE title='signup' AND active=1 AND tag ='text' AND connected='".$connected."' ";
 	$deco="SELECT text_fr, text_en FROM content WHERE title='logoff' AND active=1 AND tag ='text' AND connected='".$connected."' ";
 	$cart="SELECT text_fr, text_en FROM content WHERE title='cart' AND active=1 AND tag ='menu' ";
-	$profil="SELECT avatar FROM member WHERE pseudo='".$pseudo["pseudo"]."'";
+	$profil="SELECT * FROM member WHERE pseudo='".$pseudo["pseudo"]."'";
 	
 	
 	/*************************************************************************/
@@ -18,6 +18,14 @@
 	$game_index='SELECT * FROM game ';
 	
 	
+	
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	// user
+	
+	$menu_user = " SELECT * FROM content WHERE active=1 AND tag ='menu' AND title = 'mylibrary' ORDER BY position LIMIT 5";
 	
 	/*************************************************************************/
 	/*************************************************************************/
