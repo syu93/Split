@@ -38,6 +38,7 @@
 		<div class="over-wrapper">
 			<div id="panAcount">
 	<?php	$signup = $bdd->query($sign);
+	echo$_SESSION['user']['langue'];
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
 	?>				
@@ -62,7 +63,7 @@
 				?>
 				<span class="logoff"><?php echo("<a href='../form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
 	<?php } ?>
-				<form method="POST" action="../form/validateSignUp.php" id="formLang">
+				<form method="POST" action="../validateSignUp.php" id="formLang">
 					<select id="langue" name="langue" class="language">
 					<?php
 						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
