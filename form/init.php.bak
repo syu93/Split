@@ -4,7 +4,6 @@ function start_session(){
 	if(empty($_SESSION["user"]['id']))
 	{			
 		$_SESSION['user']['id'] = uniqid("", false); //may replace this for an exa decimal number
-		$_SESSION['member']["cart"] = null;
 	}
 	if(empty($_SESSION['member']["connected"]))
 	{			

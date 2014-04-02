@@ -67,6 +67,6 @@
 	$_SESSION['member']["cart"] = $item;
 	
 	echo $_SESSION['member']["cart"];
-	return;
+	return $_SESSION['member']["cart"];
 	}	
 ?>

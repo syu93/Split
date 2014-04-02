@@ -328,15 +328,15 @@ $( document ).ready(function(){
 		addcart = {};	
 		addcart.cart = game;
 		
-		// alert(game);			
-		// alert(addcart.cart);
+		alert(game);			
+		alert(addcart.cart);
 		
 			$.ajax({
 				type: "POST",
 				url: "form/validateSignUp.php",
 				data: addcart,
 				success: function(data){
-					// alert(data);
+					alert(data);
 					$("#mycartItem").html(data);
 				}, 
 				dataType: "text"

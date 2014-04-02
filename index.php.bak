@@ -21,6 +21,9 @@
 				while($donnees = $game_idx->fetch()) {
 				?>
 					<div class="article">
+					<div class="bandeau">
+					
+					</div>
 						<span class="article-info">
 							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a> | <a id="cart<?php echo$i; ?>" alt="<?php echo$i; ?>"><i class="icon-basket"></i></a>
 						</span>

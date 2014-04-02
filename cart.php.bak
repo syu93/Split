@@ -5,6 +5,7 @@
 	if($_SESSION['member']["cart"]!=null)
 	{
 		//$_SESSION['member']["cart"];
+		var_dump($_SESSION['member']["cart"]);
 	}
 ?>
 <div class="panier">
