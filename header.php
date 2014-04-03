@@ -6,6 +6,10 @@
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";
 	require_once("form/req.php");
+	/********************************************************/
+
+	debug($_SESSION);
+	/********************************************************/
 	
  ?>
  <!DOCTYPE html>
@@ -78,7 +82,7 @@
 	?>				
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="user/user.php"> <?php echo $pseudo["pseudo"]; ?></a>
+					<a href="user/user.php"> <?php echo $pseudo["id"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);
@@ -86,7 +90,7 @@
 							echo"<a href='user/user.php'><img src='".$avat['avatar']."'/>";
 						?>
 						<?php
-							echo $pseudo['pseudo']."</a>";
+							echo $pseudo['id']."</a>";
 						?>	
 					</div>					
 				</span>

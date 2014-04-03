@@ -7,7 +7,6 @@
 	{			
 		$_SESSION["user"]['langue'] = "text_fr";
 		$_SESSION['user']['langueLongue'] = "textlongue_fr";
-		// echo"plop";
 	}
  ?>
  

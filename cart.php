@@ -1,11 +1,6 @@
 <?php
 	require_once("bdd/bddconnect.php");
-	require_once("form/session.php");
 	
-	if($_SESSION['member']["cart"]!=null)
-	{
-		//$_SESSION['member']["cart"];
-	}
 ?>
 <div class="panier">
 	<div>
@@ -13,6 +8,8 @@
 	</div>
 	<hr>
 	<div class="cart-content">
-		<div id="mycartItem" class="item"><?php echo $_SESSION['member']["cart"]; ?></div>
+	<?php foreach( $_SESSION['user']['cart']['game'] as $game):	?>
+		<div id="mycartItem" class="item bandeau"><?php echo $game; ?></div>
+	<?php endforeach; ?>
 	</div>
 </div>	

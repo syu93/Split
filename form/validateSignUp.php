@@ -63,10 +63,39 @@
 	{
 	$item = $_POST["cart"];
 	
-	session_start();
-	$_SESSION['member']["cart"] = $item;
+	$_SESSION['user']['cart']['id_game'] = array();
+	$_SESSION['user']['cart']['game'] = array(); 
+	$_SESSION['user']['cart']['price'] = array(); 
+	$_SESSION['user']['cart']['editor'] = array(); 
+	$_SESSION['user']['cart']['genre'] = array(); 
+	$_SESSION['user']['cart']['pegi'] = array(); 
+	$_SESSION['user']['cart']['url'] = array(); 
 	
-	echo $_SESSION['member']["cart"];
+	
+	
+	session_start();
+	$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["cart"].'" ');
+	$donnees = $req->fetch();
+	
+	
+	
+	$plop = array_search($donnees['id'], $_SESSION['user']['cart']['id_game']);
+	if($plop !==false)
+	{
+	// debug($_SESSION['user']['cart']['id_game']);
+
+	}
+	if(empty($_SESSION['user']['cart']['game']))
+		{
+			$_SESSION['user']['cart']['game'] = array($item);
+		}
+	else
+	{
+		array_push($_SESSION['user']['cart']['game'],$item);
+	}
+	
+	
+	foreach( $_SESSION['user']['cart']['game'] as $game) {echo '<div class="bandeau">'.$game.'</div>';}
 	return;
 	}	
 ?>

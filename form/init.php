@@ -1,10 +1,18 @@
 <?php
 function start_session(){
 	session_start();
-	if(empty($_SESSION["user"]['id']))
+	if(empty($_SESSION["user"]['id_session']))
 	{			
-		$_SESSION['user']['id'] = uniqid("", false); //may replace this for an exa decimal number
-		$_SESSION['member']["cart"] = null;
+		$_SESSION['user']['id_session'] = uniqid("", false); // User represent the session itself and member the information about the customer	
+		$_SESSION['user']["cart"] = array(); 
+		
+		$_SESSION['user']['cart']['id_game'] = array(); 
+		$_SESSION['user']['cart']['game'] = array(); 
+		$_SESSION['user']['cart']['price'] = array(); 
+		$_SESSION['user']['cart']['editor'] = array(); 
+		$_SESSION['user']['cart']['genre'] = array(); 
+		$_SESSION['user']['cart']['pegi'] = array(); 
+		$_SESSION['user']['cart']['url'] = array(); 
 	}
 	if(empty($_SESSION['member']["connected"]))
 	{			
@@ -14,6 +22,11 @@ function start_session(){
 	{			
 		$_SESSION['member']["pseudo"] = null;
 	}	
+	if(empty($_SESSION["user"]['langue']))
+	{			
+		$_SESSION["user"]['langue'] = "text_fr";
+		$_SESSION['user']['langueLongue'] = "textlongue_fr";
+	}
 }
 /****************************************************************************/
 /****************************************************************************/
@@ -21,12 +34,14 @@ function start_session(){
 /****************************************************************************/
 function session_connect($bdd,$m){
 	$mail = $m;
-	$test = $bdd->query("SELECT pseudo FROM member WHERE email='$mail'");
+	$test = $bdd->query("SELECT id FROM member WHERE email='$mail'");
 	$pseudo = $test->fetch();
 	
 	session_start();
 	$_SESSION['member']['id'] = $_SESSION['user']['id'];
 	$_SESSION['member']['pseudo'] = $pseudo;
+	
+	
 	/*************************************************************************/
 	// panier
 	/*************************************************************************/	
@@ -92,6 +107,7 @@ function getUrl() {
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
+// Useless
 function convert($bdd,$game){
 	$dolls = 1.38700;
 	
@@ -417,5 +433,19 @@ function addcart(){
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
-
+	function debug($var) {
+	$debug = debug_backtrace();
+	echo '</br>';
+	echo '<p><a href="#"><strong>'.$debug[0]['file'].'</strong> | ligne:'.$debug[0]['line'].'</a></p>';
+	echo '<ol>';
+	foreach ($debug as $key => $value) {
+	if ($key > 0 && isset($value['file'])) {
+	echo '<li><strong>'.$value['file'].'</strong> | ligne:'.$value['line'].'</li>';
+	}
+	}
+	echo '</ol>';
+	echo '<pre>';
+	print_r($var);
+	echo '</pre>';
+	}
 ?>

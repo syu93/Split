@@ -284,11 +284,11 @@ $( document ).ready(function(){
 			$("#overContainer2"+id).removeClass('OCoff');
 			$("#overContainer2"+id).addClass('OCon');
 			/****************************************/
-			
+		/*	
 			gameInf = {};	
 			gameInf.selct = game;
 			
-			// alert(gameInf.selct);	
+			alert(gameInf.selct);	
 			
 			$.ajax({
 				type: "POST",
@@ -298,6 +298,7 @@ $( document ).ready(function(){
 				}, 
 				dataType: "text"
 			});
+			*/
 			/****************************************/
 			$(".gameBack").click(function(){
 				// alert("close");
