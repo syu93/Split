@@ -37,7 +37,6 @@
 							echo "<a href='#'><img src=".$donnees["url"]."></a>";
 							echo "<p class=''>".$donnees[$_SESSION['user']['langue']]."</p>";
 							echo "<p class='".devise(); echo "'>".$donnees["price"]."</p>" ;
-							echo"<br>";				
 					echo"</div>";
 			endforeach;
 		echo"<hr>";	

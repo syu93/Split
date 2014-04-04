@@ -36,9 +36,9 @@
 					echo"<div id='mycartItem' class='cart_item'>";
 							echo "<a href='#'><img src=".$donnees["url"]."></a>";
 							echo "<p class=''>".$donnees[$_SESSION['user']['langue']]."</p>";
-							echo "<span class='".devise(); echo "'>".$donnees["price"]."</span>" ;
-							echo"<br>";				
+							echo "<p class='".devise(); echo "'>".$donnees["price"]."</p>" ;
 					echo"</div>";
+			echo"<br>";
 			endforeach;
 		echo"<hr>";	
 		echo"<span>Totale :".$donnees["price"]."</span>";

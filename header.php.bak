@@ -8,7 +8,7 @@
 	require_once("form/req.php");
 	/********************************************************/
 
-	debug($_SESSION);
+	// debug($_SESSION);
 	/********************************************************/
 	
  ?>
@@ -82,7 +82,7 @@
 	?>				
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="user/user.php"> <?php echo $pseudo["id"]; ?></a>
+					<a href="user/user.php"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);

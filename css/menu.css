@@ -473,16 +473,23 @@
 {
 	color:#DDD;
 }
-.cart_item
-{
-	text-align:left;
-}
 
 .cart_item 
 {
-	height:100px;
+	text-align:left;
+	height:90px;
+	background:url("get.png");
+	border-bottom:inset #ccc 1px;
 }
-
+.cart_item:hover
+{
+	color:#fff;
+}
+/* putin de last-child de merde a fait macher*/
+.cart_item:last-child
+{
+	border:none;
+}
 .cart_item img
 {
 	width:130px;
@@ -490,6 +497,7 @@
 	float:left;
 	vertical-align:middle;
 	margin-right:16px;
-
 	
+	margin-top:auto;
+	margin-bottom:auto;	
 }
