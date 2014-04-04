@@ -340,7 +340,6 @@ $( document ).ready(function(){
 					// alert(data);
 					//$("#mycartItem").html(data);
 					document.getElementById('cart_window').contentWindow.location.reload();
-					document.getElementByName('cart_window').contentWindow.location.reload();
 				}, 
 				dataType: "text"
 			});

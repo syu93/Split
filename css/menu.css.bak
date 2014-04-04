@@ -485,8 +485,8 @@
 
 .cart_item img
 {
-	width:130px;
-	height:90px;
+	width:120px;
+	height:80px;
 	float:left;
 	vertical-align:middle;
 	margin-right:16px;
