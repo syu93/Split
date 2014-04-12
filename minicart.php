@@ -23,25 +23,19 @@
 	</head>
 	<body class="mycart_wrapper">
 		<div class="cart_body">
-			<div class="cart_head">
-				<h4><?php $mycart = $bdd->query($cart); $donnees = $mycart->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?></h4>
-			</div>
-			<hr>
+
 		<?php
 			foreach( $_SESSION['user']['cart']['game']as$game):
 				$g=trim($game," \t\n\r\0\x0B"); //delete the space around the variable
 				$incart="SELECT * FROM game WHERE text_fr='".$g."' ";
 				$cartitem = $bdd->query($incart);
 				$donnees = $cartitem->fetch();
-					echo"<div id='mycartItem' class='cart_item'>";
+					echo"<div id='mycartItem' class='cart_item' height='40px'>";
 							echo "<a href='#'><img src=".$donnees["url"]."></a>";
 							echo "<p class=''>".$donnees[$_SESSION['user']['langue']]."</p>";
 							echo "<p class='".devise(); echo "'>".$donnees["price"]."</p>" ;
 					echo"</div>";
-			endforeach;
-		echo"<hr>";	
-		echo"<span>Totale :".$donnees["price"]."</span>";
-		?>
+			endforeach;?>
 		</div>
 	</body>
 </html>

@@ -452,7 +452,7 @@
 .cart_window
 {
 	width:390px;
-	height:350px;
+	height:230px;
 	border:none;
 }
 
@@ -480,6 +480,10 @@
 	height:90px;
 	background:url("get.png");
 	border-bottom:inset #ccc 1px;
+}
+.cart_item:nth-child(2n)
+{
+	background: #3C3C3C;
 }
 .cart_item:hover
 {
