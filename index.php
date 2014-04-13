@@ -21,7 +21,7 @@
 				while($donnees = $game_idx->fetch()) {
 				?>
 					<div class="article">
-					<div class="bandeau"></div>
+					<div class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
 						<span class="article-info">
 							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a> | <a id="cart<?php echo$i; ?>" alt="<?php echo$i; ?>"><i class="icon-basket"></i></a>
 						</span>
@@ -29,7 +29,7 @@
 						<img src="<?php echo$donnees["url"];?>">
 
 						<span id="<?php echo $i; ?>" class="article-text">
-							<?php echo $donnees[$_SESSION['user']['langue']]; ?>							
+							<?php echo $donnees[$_SESSION['user']['langueLongue']]; ?>
 						</span>
 						
 						<span class="game-price <?php echo devise(); ?>">
