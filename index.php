@@ -19,6 +19,9 @@
 				$i = 0;
 				$url = getUrl();			
 				while($donnees = $game_idx->fetch()) {
+				$genre_idx = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
+				
+						//echo $genre_index." AND game.title='".$donnees['title']."' ";
 				?>
 					<div class="article">
 					<div class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
@@ -28,20 +31,25 @@
 						
 						<img src="<?php echo$donnees["url"];?>">
 
-						<span id="<?php echo $i; ?>" class="article-text">
-							<?php echo $donnees[$_SESSION['user']['langueLongue']]; ?>
-						</span>
+						<p id="<?php echo $i; ?>" class="article-text">
+							<?php 
+							while($donnees2 = $genre_idx->fetch()){
+								echo $donnees2[$_SESSION['user']['langue']];
+								echo", ";
+							}
+							?>
+						</p>
 						
 						<span class="game-price <?php echo devise(); ?>">
 							<?php
-								$price=convert($bdd,$donnees["title"]);					
+								$price=convert($bdd,$donnees["title"]);				
 								echo $price;			
 							?>
 						</span>
 					
-						<div class="article-describ">
-							<?php echo$donnees[$_SESSION["user"]['langueLongue']];?>
-						</div>
+						<!--<div class="article-describ">
+							<?php //echo$donnees[$_SESSION["user"]['langueLongue']];?>
+						</div>-->
 					</div>
 					
 					<div class="gameDescrib OCoff" id="overContainer2<?php echo$i; ?>">
@@ -69,8 +77,12 @@
 							
 							<div class="article-genre">
 								<span>Tags : 
-									<a class="article-tag" href="">Action</a>
-									<a class="article-tag" href="">Aventure</a>
+							<?php // bug
+							while($donnees2 = $genre_idx->fetch()){
+								echo $donnees2[$_SESSION['user']['langue']];
+								echo", ";
+							}
+							?>
 								</span>
 							</div>
 						</div>

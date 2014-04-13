@@ -46,7 +46,7 @@ require_once'header.php';
 		//	If the variable SelectModule is not empty --> Recovery of the module by its name
 	if(!empty($_POST['SelectModule']))	
 	{
-		$req = $bdd->prepare('SELECT * FROM game WHERE title=?');
+		$req = $bdd->prepare('SELECT * FROM game WHERE title=?');		
 		$req->execute(array($SelectModule,));
 		/*Recovery*/
 		while ($donnees = $req->fetch())
@@ -93,7 +93,7 @@ require_once'header.php';
 			</p>
 			
 			<p>
-			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>">
+			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>" required>
 		
 			</p>
 			
@@ -102,14 +102,18 @@ require_once'header.php';
 			<input class="inputtext" type="text" value="<?php echo$donnees['genre'] ?>">
 			<br>
 			<br>
-			<span>Type de jeu</span>
-				<select name="gameGenre">
-					<option>action</option>
-					<option>aventure</option>
-					<option>strategie</option>
-					<option>RPG</option>
-					<option>MMO</option>
-				</select>
+
+		
+		<span>Type de jeu</span>
+			<select name="gameGenre">
+		<?php 
+		$req1 = $bdd->query('SELECT genre FROM game, genre WHERE game.idgenre = genre.id AND game.title="'.$SelectModule.'" ');
+		while ($donnees = $req1->fetch())
+		{
+		?>
+			<option><?php echo $donnees["genre"] ?></option>		
+		<?php } ?>
+		</select>
 			</p>
 			
 			<p>

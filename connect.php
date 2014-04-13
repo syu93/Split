@@ -1,7 +1,7 @@
 
 <div class="overContainer OCoff" id="overContainer">
 	<div class="bandeau">
-		<h4>Connexion/Inscription</h4>
+		<h6>Connexion/Inscription</h6>
 	</div>
 	<span id="closeBtn" class="closeBtn">
 		<img  src="img/close.PNG">
