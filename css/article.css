@@ -6,30 +6,30 @@
 
 .container .article img
 {
-	height: 91px;
-    width: 200px;
-	border-radius:3px;
-	margin-top:2px;
-	border: inset 1px #3d3d3d;
+    border: 2px solid #3D3D3D;
+    border-radius: 0 0 2px 2px;
+    height: 91px;
+    margin-top: 2px;
+    width: 216px;
 }
  
 .article
 {
 	width:220px;
 	height:180px;
-	color: #FFF;
+	color: #666;
 	/*background:none repeat scroll 0 0 #3c3d3e;*/
-	background:url("get.png");
-	box-shadow: inset 0 0 2px 0.9px #3d3d3d;
+	background:#FFF;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	padding:0 0 5px 0;
 	
 	margin-bottom:5px;
 	
 	display:inline-block;
 	
-	border-radius:20px 20px 2px 2px;
-	-moz-border-radius:20px 20px 2px 2px;
-	-webkit-border-radius:20px 20px 2px 2px;
+	border-radius:20px 20px 0px 0px;
+	-moz-border-radius:20px 20px 0px 0px;
+	-webkit-border-radius:20px 20px 0px 0px;
 	
 	text-align:center;
 	
@@ -45,11 +45,12 @@
 	transition-property:-webkit-box-shadow;
 	transition-property:box-shadow;
 	transition-duration:0.5s;
-	color:#fff;
+	color:#444;
 }
 .article .bandeau
 {
 	font-size:13px;
+	font-weight:normal;
 	color:#fff;
 	background:none repeat scroll 0 0 #3D3D3D;
 }
@@ -96,7 +97,28 @@
 
 .article a
 {
-	color:#000;
+	color:#EEE;
+	font-size:11px;
+	margin-right:5px;
+}
+.article  .g_genre
+{
+	margin-right:5px;
+	color:#666;
+}
+
+.g_genre:after
+{
+	color:#333;
+	content:",";
+}
+.g_genre:last-child:after
+{
+	content:"";
+}
+.g_genre:hover
+{
+	color:#444;
 }
 
 @keyframes marquee 
@@ -109,6 +131,7 @@
 {
 	opacity:0;
 	position:absolute;
+	top: 32px;
 	right:-60px;
 	background:#3d3d3d;
 	z-index:20;

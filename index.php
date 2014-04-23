@@ -17,9 +17,11 @@
 			</div>-->
 				<?php $game_idx = $bdd->query($game_index);
 				$i = 0;
-				$url = getUrl();			
+				$url = getUrl();
 				while($donnees = $game_idx->fetch()) {
 				$genre_idx = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
+				$genre_idx2 = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
+				
 				
 						//echo $genre_index." AND game.title='".$donnees['title']."' ";
 				?>
@@ -34,8 +36,7 @@
 						<p id="<?php echo $i; ?>" class="article-text">
 							<?php 
 							while($donnees2 = $genre_idx->fetch()){
-								echo $donnees2[$_SESSION['user']['langue']];
-								echo", ";
+								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 							}
 							?>
 						</p>
@@ -77,10 +78,9 @@
 							
 							<div class="article-genre">
 								<span>Tags : 
-							<?php // bug
-							while($donnees2 = $genre_idx->fetch()){
-								echo $donnees2[$_SESSION['user']['langue']];
-								echo", ";
+							<?php 
+							while($donnees2 = $genre_idx2->fetch()){
+								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 							}
 							?>
 								</span>

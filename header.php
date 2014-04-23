@@ -44,9 +44,10 @@
 					<ul class="level1">
 	<?php
 	$library = $bdd->query($lib);
+	// var_dump($pseudo);
 	// var_dump($lib);
 	while ($donnees = $library->fetch()) { ?>
-						<li><a class="signIn" herf="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
+						<li><a class="signIn" herf="#"><?php echo $donnees[$_SESSION['user']['langue']];?></a>
 	<?php }	?>
 							<ul class="level2">
 								
@@ -79,10 +80,10 @@
 	<?php	$signup = $bdd->query($sign);
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
-	?>				
+	?>		
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="user/user.php"> <?php echo $pseudo["id"]; ?></a>
+					<a href="user/user.php"> <?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);
@@ -90,7 +91,7 @@
 							echo"<a href='user/user.php'><img src='".$avat['avatar']."'/>";
 						?>
 						<?php
-							echo $pseudo['id']."</a>";
+							echo $pseudo['pseudo']."</a>";
 						?>	
 					</div>					
 				</span>

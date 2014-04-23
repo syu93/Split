@@ -16,8 +16,7 @@
 	/*************************************************************************/
 	// Index
 	$game_index='SELECT * FROM game ';
-	$genre_index='SELECT genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.id = gamegenre.idgame AND genre.id = gamegenre.idgenre ';
-	
+	$genre_index='SELECT genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre ';
 	
 	/*************************************************************************/
 	/*************************************************************************/

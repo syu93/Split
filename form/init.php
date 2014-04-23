@@ -34,7 +34,7 @@ function start_session(){
 /****************************************************************************/
 function session_connect($bdd,$m){
 	$mail = $m;
-	$test = $bdd->query("SELECT id FROM member WHERE email='$mail'");
+	$test = $bdd->query("SELECT id, pseudo FROM member WHERE email='$mail'");
 	$pseudo = $test->fetch();
 	
 	session_start();
