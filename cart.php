@@ -8,7 +8,7 @@
 	</div>
 		
 	<hr>
-	<iframe id="cart_window" name="cart_window" class="cart_window" src="minicart.php"scrolling="auto"></iframe>
+	<iframe id="cart_window" name="cart_window" class="cart_window" src="http://127.0.0.1/split/minicart.php"scrolling="auto"></iframe>
 	<hr>
 	<div>
 		<span>Totale :<?php echo $donnees["price"]?></span>

@@ -8,7 +8,7 @@
 	require_once("form/req.php");
 	/********************************************************/
 
-	// debug($_SESSION);
+	debug($_SESSION);
 	/********************************************************/
 	
  ?>
@@ -59,7 +59,7 @@
 										<img src="<?php echo$donnees["url"];?>"/>
 									</span>
 									<span class="g-desc">
-										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>									
+										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>								
 									</span>
 		<?php	$play = $bdd->query($ply);
 		while ($donnees = $play->fetch()) {	?>
@@ -67,8 +67,6 @@
 										<li>
 											<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
 		<?php }	?>
-
-
 										</li>
 									</ul>
 								</li>
@@ -83,7 +81,7 @@
 	?>		
 				<span id="<?php echo $idt; ?>" class="signIn">
 					<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-					<a href="user/user.php"> <?php echo $pseudo["pseudo"]; ?></a>
+					<a href="user/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php	
 							$avt = $bdd->query($profil);
@@ -132,7 +130,7 @@
 						
 						<?php $reponse = $bdd->query($menu);
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
+							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
 						<?php }	?>
 						
 						<?php	$cart = $bdd->query($cart);

@@ -157,7 +157,7 @@ $( document ).ready(function(){
 	// alert(formL.langue);
 		$.ajax({
 			type: "POST",
-			url: "form/validateSignUp.php",
+			url: "http://127.0.0.1/split/form/validateSignUp.php",
 			data: formL,
 			success: function(data){
 				// alert($('#avatar').val());
@@ -284,7 +284,7 @@ $( document ).ready(function(){
 			$("#overContainer2"+id).removeClass('OCoff');
 			$("#overContainer2"+id).addClass('OCon');
 			/****************************************/
-		/*	
+			
 			gameInf = {};	
 			gameInf.selct = game;
 			
@@ -298,7 +298,7 @@ $( document ).ready(function(){
 				}, 
 				dataType: "text"
 			});
-			*/
+			
 			/****************************************/
 			$(".gameBack").click(function(){
 				// alert("close");
@@ -313,24 +313,21 @@ $( document ).ready(function(){
 /**************************************************************************/	
 /**************************************************************************/	
 /**************************************************************************/
+// Add to cart
 	var i = $( "#nb-game" ).attr("data");
 	var nb = parseInt(i); //convert in number
-	// alert(typeof nb);
+	
 	
 	for(i=0;i<=nb; i++)
-	{
-		//var article-info = {};
-		// plop=i;
-		
+	{		
 		$("#cart"+i).click(function(){
-		var id = $(this).attr("alt");
-		var game = $("#"+id).html();
+		var id = $(this).attr("alt"); // The nb of the element clicked
+		
+		var game = $("#"+id).html(); // Get the name of the game selected
 		
 		addcart = {};	
 		addcart.cart = game;
-		
-		// alert(game);			
-		// alert(addcart.cart);
+		// FIXME send all informatin to the cart
 		
 			$.ajax({
 				type: "POST",
@@ -338,7 +335,7 @@ $( document ).ready(function(){
 				data: addcart,
 				success: function(data){
 					// alert(data);
-					//$("#mycartItem").html(data);
+					// $("#mycartItem").html(data);
 					document.getElementById('cart_window').contentWindow.location.reload();
 					document.getElementByName('cart_window').contentWindow.location.reload();
 				}, 

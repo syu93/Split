@@ -26,14 +26,14 @@
 						//echo $genre_index." AND game.title='".$donnees['title']."' ";
 				?>
 					<div class="article">
-					<div class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
+					<div id="<?php echo $i; ?>" class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
 						<span class="article-info">
 							<a id="jeux<?php echo$i; ?>" alt="<?php echo$i; ?>" class="info<?php echo$i; ?>" ><i class="icon-info"></i></a> | <a id="cart<?php echo$i; ?>" alt="<?php echo$i; ?>"><i class="icon-basket"></i></a>
 						</span>
 						
 						<img src="<?php echo$donnees["url"];?>">
 
-						<p id="<?php echo $i; ?>" class="article-text">
+						<p class="article-text">
 							<?php 
 							while($donnees2 = $genre_idx->fetch()){
 								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';

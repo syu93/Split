@@ -1,4 +1,26 @@
+.user
+{
+	background:#fff;
+	padding:5px;	
+	min-height:700px;
+	color:#666;
+}
+.user h1
+{
+	
+	float:left;
+}
+.user h1:hover
+{
+	color:#444;
+	cursor:pointer;
+}
+
 .user>img
 {
-	width:260px;
+	width:130px;
+    border: 2px solid #3D3D3D;
+    border-radius: 0 0 2px 2px;
+	float:left;
+	margin:10px;
 }

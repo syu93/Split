@@ -38,7 +38,6 @@
 		<div class="over-wrapper">
 			<div id="panAcount">
 	<?php	$signup = $bdd->query($sign);
-	echo$_SESSION['user']['langue'];
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
 	?>				
@@ -47,7 +46,7 @@
 					$avt = $bdd->query($profil);
 					$avat = $avt->fetch();
 					?>
-					<a href="user.php"> <?php echo $pseudo["pseudo"]; ?></a>
+					<a href="user.php"><?php echo $pseudo["pseudo"]; ?></a>
 					<div class="<?php echo $class; ?>">
 						<?php
 							echo"<img src=' ../".$avat['avatar']."'/>";
@@ -101,7 +100,7 @@
 						while ($donnees = $cart->fetch()) { ?>
 												
 							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<?php require_once("../cart.php");?>						
+							<?php require_once("../cart.php");?>		
 						</li>
 						<?php } ?>
 					</ul>
