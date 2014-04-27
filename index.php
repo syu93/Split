@@ -34,19 +34,14 @@
 						<img src="<?php echo$donnees["url"];?>">
 
 						<p class="article-text">
-							<?php 
+							<?php
 							while($donnees2 = $genre_idx->fetch()){
 								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 							}
 							?>
 						</p>
 						
-						<span class="game-price <?php echo devise(); ?>">
-							<?php
-								$price=convert($bdd,$donnees["title"]);				
-								echo $price;			
-							?>
-						</span>
+						<span id="p_<?php echo $i; ?>" class="game-price <?php echo devise(); ?>"><?php echo $donnees["price"];?></span>
 					
 						<!--<div class="article-describ">
 							<?php //echo$donnees[$_SESSION["user"]['langueLongue']];?>

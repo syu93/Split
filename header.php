@@ -8,7 +8,9 @@
 	require_once("form/req.php");
 	/********************************************************/
 
-	debug($_SESSION);
+	// debug($_SESSION);
+	// unset($_SESSION['user']['cart']['game'][0]);
+	// echo $_SESSION['user']['cart']['game'][0];
 	/********************************************************/
 	
  ?>
@@ -27,7 +29,9 @@
 		
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/fontello/css/fontello.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/fontello-back/css/back.css">
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/icone/css/icone.css">
+		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/devise/css/devise.css">
+		
+		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/scrollbar/jquery.mCustomScrollbar.css">
 		
 		<script src="http://127.0.0.1/split/js/jquery-1.11.0.min.js"></script>
 		<script src="http://127.0.0.1/split/js/signup_submit.js"></script>
@@ -75,6 +79,22 @@
 						</li>
 					</ul>
 				</nav>
+					<form method="POST" action="form/validateSignUp.php" id="formLang">
+					<select id="langue" name="langue" class="language">
+					<?php
+						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
+						{
+							echo "<option>Francais</option>";
+							echo"<option>English</option>";
+						}
+						else if($_SESSION['user']['langue'] == "text_en")
+						{
+							echo"<option>English</option>";
+							echo "<option>Francais</option>";
+						}
+					?>
+					</select>
+				</form>
 	<?php	$signup = $bdd->query($sign);
 	while ($donnees = $signup->fetch()) {
 	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
@@ -99,22 +119,6 @@
 				?>
 				<span class="logoff"><?php echo("<a href='form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
 	<?php } ?>
-				<form method="POST" action="form/validateSignUp.php" id="formLang">
-					<select id="langue" name="langue" class="language">
-					<?php
-						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
-						{
-							echo "<option>Francais</option>";
-							echo"<option>English</option>";
-						}
-						else if($_SESSION['user']['langue'] == "text_en")
-						{
-							echo"<option>English</option>";
-							echo "<option>Francais</option>";
-						}
-					?>
-					</select>
-				</form>
 			</div>
 			<div class="float-container">
 				<?php 
@@ -126,17 +130,17 @@
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>
-						
+						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>						
 						<?php $reponse = $bdd->query($menu);
 						while ($donnees = $reponse->fetch()) {	?>						
 							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
-						<?php }	?>
+						<?php }
 						
-						<?php	$cart = $bdd->query($cart);
-						while ($donnees = $cart->fetch()) { ?>
-												
-							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
+						$cart = $bdd->query($cart);
+						while ($donnees = $cart->fetch()) { ?>												
+							<li class="cart">
+							<i id="nb_cart" class="nb_cart icon-basket" ><?php echo cart_count();?></i>
+							<a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>
 							<?php require_once("cart.php");?>						
 						</li>
 						<?php } ?>

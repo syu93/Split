@@ -8,9 +8,11 @@
 	</div>
 		
 	<hr>
-	<iframe id="cart_window" name="cart_window" class="cart_window" src="http://127.0.0.1/split/minicart.php"scrolling="auto"></iframe>
+	<div id="content"class="content">
+		<iframe id="cart_window" name="cart_window" class="cart_window" src="http://127.0.0.1/split/minicart.php"scrolling="no"></iframe>
+	</div>
 	<hr>
-	<div>
-		<span>Totale :<?php echo $donnees["price"]?></span>
+	<div class="total">
+		<H4>Total : </H4><span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span>
 	</div>	
 </div>

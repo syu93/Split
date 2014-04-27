@@ -324,25 +324,83 @@ $( document ).ready(function(){
 		var id = $(this).attr("alt"); // The nb of the element clicked
 		
 		var game = $("#"+id).html(); // Get the name of the game selected
+		var price = $("#p_"+id).html(); // Get the price of the game selected
+		//alert(price);
+		addcart = {};		
 		
-		addcart = {};	
 		addcart.cart = game;
-		// FIXME send all informatin to the cart
+		addcart.price = price;		
 		
 			$.ajax({
 				type: "POST",
 				url: "form/validateSignUp.php",
 				data: addcart,
 				success: function(data){
-					// alert(data);
-					// $("#mycartItem").html(data);
+					// alert("nb_cart "+data);
+					$("#nb_cart").html(data);
+					
+						addprice= {};
+						addprice.prx = price;
+						
+							$.ajax({
+								type: "POST",
+								url: "form/validateSignUp.php",
+								data: addprice,
+								success: function(data){
+									// alert("total :"+data);
+									$("#total").html(data);
+								}, 
+								dataType: "text"
+							});
+
 					document.getElementById('cart_window').contentWindow.location.reload();
-					document.getElementByName('cart_window').contentWindow.location.reload();
+					// document.getElementByName('cart_window').contentWindow.location.reload();
+				}, 
+				dataType: "text"
+			});	
+		});
+	}
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+// Rmove from cart
+	var n =$("#sum").attr("data");
+	var nb = parseInt(n); //convert in number
+	
+	for(i=0;i<nb; i++)
+	{		
+		$("#trash"+i).click(function(){
+		var s = nb-1;
+		var arr_idx = $(this).attr("data");
+		var rmcart = {};
+		rmcart.arr_idx = arr_idx;
+		
+			$.ajax({
+				type: "POST",
+				url: "form/validateSignUp.php",
+				data: rmcart,
+				success: function(data){
+					$('#nb_cart', parent.document).html(data);							
+					location.reload();
 				}, 
 				dataType: "text"
 			});
 		});
 	}
-
+	$("#trash"+0).click(function(){
+	addprice= {};
+	addprice.prx = "prix";
 	
+		$.ajax({
+			type: "POST",
+			url: "form/validateSignUp.php",
+			data: addprice,
+			success: function(data){
+				alert("total :"+data);
+				// $("#total").html(data);
+			}, 
+			dataType: "text"
+		});
+	});
 });

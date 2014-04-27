@@ -1,0 +1,60 @@
+@font-face
+{
+	font-family: airstrike;
+	src: url('../font/devise/airstrike/airstrike.ttf');
+}
+@font-face
+{	
+	font-family: Mech ;
+	src: url('../font/devise/mech_tech/Mech Tech.ttf');
+}
+@font-face
+{	
+	font-family: Old_R;
+	src: url('../font/devise/old_republic/Old_R.ttf');
+}
+@font-face
+{	
+	font-family: Transformers;
+	src: url('../font/devise/transformers_movie/Transformers Movie.ttf');
+}
+@font-face
+{	
+	font-family: Transmetals;
+	src: url('../font/devise/transmetals/Transmetals.ttf');
+}
+@font-face
+{	
+	font-family: xirod;
+	src: url('../font/devise/xirod/xirod.ttf');
+}
+
+.icon-euro, .icon-dollar
+{
+	font-family: Mech;
+	font-size:20px;
+	margin:0 5px 0 3px;
+}
+
+.icon-euro:after
+{
+	content:"€";
+	font-family: Mech;
+	font-size:23px;
+	width:auto;
+}
+
+.icon-dollar:before
+{
+	content:"$";
+	font-family: airstrike;
+	font-size:23px;
+	width:auto;
+}
+
+.cart_item .icon-euro:after, .cart_item .icon-dollar:before
+{
+	font-family:ExpletusSans-Medium;
+	font-size:12px;
+	margin:0 5px 0 3px;
+}
