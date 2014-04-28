@@ -340,7 +340,7 @@ $( document ).ready(function(){
 					$("#nb_cart").html(data);
 					
 						addprice= {};
-						addprice.prx = price;
+						addprice.prx_add = price;
 						
 							$.ajax({
 								type: "POST",
@@ -368,39 +368,42 @@ $( document ).ready(function(){
 	var n =$("#sum").attr("data");
 	var nb = parseInt(n); //convert in number
 	
-	for(i=0;i<nb; i++)
-	{		
+	for(i=0;i<=nb; i++)
+	{	
 		$("#trash"+i).click(function(){
 		var s = nb-1;
 		var arr_idx = $(this).attr("data");
 		var rmcart = {};
 		rmcart.arr_idx = arr_idx;
+
+		data: {status: status, name: name},
+		
 		
 			$.ajax({
 				type: "POST",
 				url: "form/validateSignUp.php",
 				data: rmcart,
 				success: function(data){
-					$('#nb_cart', parent.document).html(data);							
+					$('#nb_cart', parent.document).html(data);
+
+		// var addprice= {};
+		// addprice.prx_rm = parseInt( $("#total", parent.document).html() );
+		// alert(addprice.prx_rm);
+			// $.ajax({
+				// type: "POST",
+				// url: "form/validateSignUp.php",
+				// data: addprice,
+				// success: function(data){
+					// alert("total :"+data);
+					// $("#total", parent.document).html(data);
+				// }, 
+				// dataType: "text"
+			// });
+					
 					location.reload();
 				}, 
 				dataType: "text"
 			});
 		});
 	}
-	$("#trash"+0).click(function(){
-	addprice= {};
-	addprice.prx = "prix";
-	
-		$.ajax({
-			type: "POST",
-			url: "form/validateSignUp.php",
-			data: addprice,
-			success: function(data){
-				alert("total :"+data);
-				// $("#total").html(data);
-			}, 
-			dataType: "text"
-		});
-	});
 });

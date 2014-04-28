@@ -437,14 +437,25 @@ function cart_count(){
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
-//
+// Total of the cart in add
 function summary(){
 	$nb_cart = cart_count() -1;
-	$total=0;
+	$total=number_format(0.00, 2);
 	foreach($_SESSION['user']['cart']['price']as$price):
 		$total += $price;
 	endforeach;
-	return $total;
+	return number_format($total,2);
+}
+/****************************************************************************/
+/****************************************************************************/
+// Total of the cart in remove
+function rm_summary($tot){
+	$nb_cart = cart_count() -1;
+	$total=number_format($tot, 2);
+	foreach($_SESSION['user']['cart']['price']as$price):
+		$total -= $price;
+	endforeach;
+	return number_format($total,2);
 }
 
 /****************************************************************************/

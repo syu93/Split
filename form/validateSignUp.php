@@ -103,10 +103,17 @@
 	return;
 	}
 	
-	if(isset($_POST["prx"]))
+	if(isset($_POST["prx_add"]))
 	{
 		session_start();
 		echo summary();
+		return;
+	}
+
+	if(isset($_POST["prx_rm"]))
+	{
+		session_start();
+		echo rm_summary($_POST["prx_rm"]);
 		return;
 	}
 /*********************************************************************************/

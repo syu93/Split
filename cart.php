@@ -1,10 +1,11 @@
 <?php
 	require_once("bdd/bddconnect.php");
 	$cart_tag="SELECT text_fr, text_en FROM content WHERE title='cart' AND active=1 AND tag ='menu' ";
+	$cart_tot="SELECT text_fr, text_en FROM content WHERE title='total' ";
 ?>
 <div class="panier">
 	<div class="cart_head">
-		<h4><?php $mycart = $bdd->query($cart_tag); $donnees = $mycart->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?></h4>
+		<h4><?php $mycart1 = $bdd->query($cart_tag); $donnees = $mycart1->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?></h4>
 	</div>
 		
 	<hr>
@@ -13,6 +14,7 @@
 	</div>
 	<hr>
 	<div class="total">
-		<H4>Total : </H4><span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span>
+		<H4><?php $mycart2 = $bdd->query($cart_tot); $donnees = $mycart2->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?> : </H4>
+		<span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span>
 	</div>	
 </div>

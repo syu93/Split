@@ -42,29 +42,43 @@
 			<div class="cart_body" style="width:400px">
 			<?php
 				$i=0;
-				foreach( $_SESSION['user']['cart']['game']as$game):
-				
+				$c_empty = "SELECT * FROM content WHERE title='cartempty' ";
+				$empty = $bdd->query($c_empty);
+				$data = $empty->fetch();
+				if($_SESSION['user']['cart']['game'] == null)
+				{
+					echo"<H6 class='c_empty'>".$data[$_SESSION['user']['langue']]."</H6>";					
+				}
+				foreach( $_SESSION['user']['cart']['game']as$game):			
 					$g=trim($game," \t\n\r\0\x0B"); //delete the space around the variable
 					$gm ="'".preg_quote($g,"'" )."'"; // Escape the singles quotes
 					/********************************************************************************/
 					$incart="SELECT * FROM game WHERE game.text_fr=".$gm." ";
-					$cartinfo="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.text_fr=".$gm." AND game.ideditor=editor.name";
-					// echo $incart;
+					$carteditor="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.text_fr=".$gm." AND game.ideditor=editor.name";
+					$cartgenre="SELECT genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre AND game.".$_SESSION['user']['langue']." = ".$gm.";";
+					
 					$cartitem1 = $bdd->query($incart);
-					$cartinfo = $bdd->query($cartinfo);
 					$cartitem2 = $bdd->query($editor);
+					$carteditor = $bdd->query($carteditor);
+					$cartgenre = $bdd->query($cartgenre);
 					$cartitem3 = $bdd->query($price);
 					
 					$donnees1 = $cartitem1->fetch();
-					$info = $cartinfo->fetch();
 					$donnees2 = $cartitem2->fetch();
 					$donnees3 = $cartitem3->fetch();
+					$c_editor = $carteditor->fetch();					
 					/********************************************************************************/
 					echo"<div id='mycartItem' class='cart_item'>";
 							echo"<span id='sum' data=".$_SESSION['user']['cart']['nb_cart']."></span>";
 							echo "<a href='#'><img src=".$donnees1["url"]."></a>";
 							echo "<H6>".$donnees1[$_SESSION['user']['langue']]."</H6>";
-							echo "<p style='font-size:12px'>".$donnees2[$_SESSION['user']['langue']]." : ".$info[$_SESSION['user']['langue']]."</p>";
+							echo "<p>".$donnees2[$_SESSION['user']['langue']]." : ".$c_editor[$_SESSION['user']['langue']]."</p>";
+							echo "<p>".$donnees3[$_SESSION['user']['langue']]." : ";
+					while($c_genre = $cartgenre->fetch())
+					{
+							echo "<a class='c_gre'>".$c_genre[$_SESSION['user']['langue']]."</a>";
+					}
+							echo "</p>";
 							echo "<p style='font-size:12px'>".$donnees3[$_SESSION['user']['langue']]." :</span><span class='".devise(); echo "' style='font-size:12px'>".$donnees1["price"]."</p>" ;
 							echo"<span id='trash".$i."' class='c_trash icon-trash-2' data=".$i."></span>";
 						echo"</div>";

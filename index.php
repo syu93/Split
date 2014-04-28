@@ -10,20 +10,12 @@
 ?>
 
 			<div class="container">
-			<!--<div class="carousel-header">
-				<div class="slideShow">
-					<h1>Welcome to Split</h1>
-				</div>
-			</div>-->
 				<?php $game_idx = $bdd->query($game_index);
 				$i = 0;
 				$url = getUrl();
 				while($donnees = $game_idx->fetch()) {
 				$genre_idx = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
 				$genre_idx2 = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
-				
-				
-						//echo $genre_index." AND game.title='".$donnees['title']."' ";
 				?>
 					<div class="article">
 					<div id="<?php echo $i; ?>" class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>

@@ -58,3 +58,38 @@
 	font-size:12px;
 	margin:0 5px 0 3px;
 }
+.cart_item p
+{
+	font-size:12px;
+}
+.c_empty
+{
+    color: #DDDDDD;
+    display: block;
+    font-size: 25px;
+    height: 107px;
+    line-height: 107px;
+    margin-top: 50px;
+    text-shadow: 0 0 2px #000000;
+    width: 400px;
+}
+.c_gre
+{
+	font-size:9px;
+	margin-right:2px;
+	cursor:pointer;
+}
+.c_gre:hover
+{
+	color:#333;
+}
+.c_gre:after
+{
+	content:",";
+	color:#aaa;
+
+}
+.c_gre:last-child:after
+{
+	content:"";
+}
