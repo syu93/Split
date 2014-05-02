@@ -6,6 +6,7 @@ $( document ).ready(function(){
 	$("#pseudo2").change(function(){
 	
 	formP.pseudo = $('#pseudo2').val();
+	// alert(formP.pseudo);
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validateSignUp.php",
