@@ -123,7 +123,6 @@
 	if(isset($_POST["arr_idx"]))
 	{
 		session_start();
-		$n = summary();		
 		unset($_SESSION['user']['cart']['game'][$_POST["arr_idx"]]);
 		unset($_SESSION['user']['cart']['price'][$_POST["arr_idx"]]);
 		

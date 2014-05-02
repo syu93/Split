@@ -26,7 +26,7 @@
 				</br>
 				</br>
 				
-				<input id="submit1" name="login" type="submit" value="Submit">
+				<input class="submit" id="submit1" name="login" type="submit" value="Submit">
 				<div class="element">
 					<span id="cksub1" class="checkOk"></span>
 				</div>
@@ -110,7 +110,7 @@
 				</br>
 				</br>
 				
-				<input id="submit2" name="signup" type="submit" value="Submit">
+				<input class="submit" id="submit2" name="signup" type="submit" value="Submit">
 				<span id="cksub2" class="cksub"></span>
 			</form>
 		</div>

@@ -450,12 +450,9 @@ function summary(){
 /****************************************************************************/
 // Total of the cart in remove
 function rm_summary($tot){
-	$nb_cart = cart_count() -1;
 	$total=number_format($tot, 2);
-	foreach($_SESSION['user']['cart']['price']as$price):
-		$total -= $price;
-	endforeach;
-	return number_format($total,2);
+	$sub_tot = summary();
+	return number_format($sub_tot,2);
 }
 
 /****************************************************************************/

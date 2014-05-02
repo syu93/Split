@@ -9,7 +9,7 @@ $( document ).ready(function(){
 	// alert(formP.pseudo);
 		$.ajax({
 			type: "POST",
-			url: "form/validate.php",
+			url: "http://127.0.0.1/split/form/validateSignUp.php",
 			data: formP,
 			success: function(data){
 				// alert($('#pseudo2').val());
@@ -61,7 +61,7 @@ $( document ).ready(function(){
 	// alert(formM.mail);
 		$.ajax({
 			type: "POST",
-			url: "form/validate.php",
+			url: "http://127.0.0.1/split/form/validate.php",
 			data: formM,
 			success: function(data){
 				// alert($('#mail2').val());
@@ -114,7 +114,7 @@ $( document ).ready(function(){
 	// alert(formA.avatar);
 		$.ajax({
 			type: "POST",
-			url: "form/validate.php",
+			url: "http://127.0.0.1/split/form/validate.php",
 			data: formA,
 			success: function(data){
 				// alert($('#avatar').val());
@@ -195,7 +195,7 @@ $( document ).ready(function(){
 		// alert(formCM.mail1);
 		$.ajax({
 			type: "POST",
-			url: "form/validate.php",
+			url: "http://127.0.0.1/split/form/validate.php",
 			data: formCM,
 			success: function(data){
 				// alert($('#avatar').val());
@@ -211,7 +211,7 @@ $( document ).ready(function(){
 						// alert(formCP.password1);
 						$.ajax({
 							type: "POST",
-							url: "form/validate.php",
+							url: "http://127.0.0.1/split/form/validate.php",
 							data: formCP,
 							success: function(data){
 								// alert($('#avatar').val());
@@ -292,7 +292,7 @@ $( document ).ready(function(){
 			
 			$.ajax({
 				type: "POST",
-				url: "form/validateSignUp.php",
+				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: gameInf,
 				success: function(data){
 				}, 
@@ -333,7 +333,7 @@ $( document ).ready(function(){
 		
 			$.ajax({
 				type: "POST",
-				url: "form/validateSignUp.php",
+				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: addcart,
 				success: function(data){
 					// alert("nb_cart "+data);
@@ -344,7 +344,7 @@ $( document ).ready(function(){
 						
 							$.ajax({
 								type: "POST",
-								url: "form/validateSignUp.php",
+								url: "http://127.0.0.1/split/form/validateSignUp.php",
 								data: addprice,
 								success: function(data){
 									// alert("total :"+data);
@@ -370,37 +370,31 @@ $( document ).ready(function(){
 	
 	for(i=0;i<=nb; i++)
 	{	
-		$("#trash"+i).click(function(){
+		$("#trash"+i).click(function(event){
 		var s = nb-1;
 		var arr_idx = $(this).attr("data");
 		var rmcart = {};
 		rmcart.arr_idx = arr_idx;
 
-		data: {status: status, name: name},
-		
-		
 			$.ajax({
 				type: "POST",
-				url: "form/validateSignUp.php",
+				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: rmcart,
 				success: function(data){
 					$('#nb_cart', parent.document).html(data);
-
-		// var addprice= {};
-		// addprice.prx_rm = parseInt( $("#total", parent.document).html() );
-		// alert(addprice.prx_rm);
-			// $.ajax({
-				// type: "POST",
-				// url: "form/validateSignUp.php",
-				// data: addprice,
-				// success: function(data){
-					// alert("total :"+data);
-					// $("#total", parent.document).html(data);
-				// }, 
-				// dataType: "text"
-			// });
 					
-					location.reload();
+					var addprice= {};
+					addprice.prx_rm = parseInt( $("#total", parent.document).html() );
+						$.ajax({
+							type: "POST",
+							url: "http://127.0.0.1/split/form/validateSignUp.php",	
+							data: addprice,
+							success: function(data){
+								$("#total", parent.document).html(data);
+								location.reload();
+							}, 
+							dataType: "text"
+						});
 				}, 
 				dataType: "text"
 			});

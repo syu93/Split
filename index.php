@@ -1,5 +1,5 @@
 <?php
-	require_once("header.php");
+	require_once("include/header.php");
 	require_once("form/init.php");	
 	require_once("form/req.php");
 	
@@ -80,5 +80,5 @@
 				<span id="nb-game" data="<?php echo$i; ?>"></<span>
 			</div>
 <?php
-	require_once("footer.php");
+	require_once("include/footer.php");
 ?>

@@ -1,7 +1,7 @@
 
 
 		</div>
-	<?php require_once("com-center.php");?>
+	<?php require_once("../com-center.php");?>
 		<div class="footer">
 			<div class="element-container">
 			plopplopplopplopplopplopplopplop</br>

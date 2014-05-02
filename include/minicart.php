@@ -1,6 +1,6 @@
  <?php
-	require_once("bdd/bddconnect.php");
-	require_once("form/init.php");
+	require_once("../bdd/bddconnect.php");
+	require_once("../form/init.php");
 	$game = null;
 	
 	$editor="SELECT * FROM content WHERE title='editor' ";
@@ -70,7 +70,7 @@
 					/********************************************************************************/
 					echo"<div id='mycartItem' class='cart_item'>";
 							echo"<span id='sum' data=".$_SESSION['user']['cart']['nb_cart']."></span>";
-							echo "<a href='#'><img src=".$donnees1["url"]."></a>";
+							echo "<a href='#'><img src=../".$donnees1["url"]."></a>";
 							echo "<H6>".$donnees1[$_SESSION['user']['langue']]."</H6>";
 							echo "<p>".$donnees2[$_SESSION['user']['langue']]." : ".$c_editor[$_SESSION['user']['langue']]."</p>";
 							echo "<p>".$donnees3[$_SESSION['user']['langue']]." : ";
@@ -88,10 +88,10 @@
 		</div>
 
 	<!-- Google CDN jQuery with fallback to local -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script>!window.jQuery && document.write(unescape('%3Cscript src="js/minified/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="js/minified/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>-->
 	<!-- custom scrollbars plugin -->
-	<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script>
 		(function($){
 			$(window).load(function(){
