@@ -56,6 +56,8 @@
 							<ul class="level2">
 								
 	<?php
+	
+	$gmelib = $gmelib.' AND licence.member="'.$_SESSION["member"]['mail'].'" ';
 	$game = $bdd->query($gmelib);
 	while ($donnees = $game->fetch()) {	?>
 								<li class="myGame">

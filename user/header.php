@@ -37,7 +37,7 @@
 		<script src="http://127.0.0.1/split/js/signup_submit.js"></script>
 		<script src="http://127.0.0.1/split/js/overContainer.js"></script>
 		
-		<script src="js/validate.js"></script>
+		<script src="../js/validate.js"></script>
 		<title>Split</title>
 	</head>
 	<body>
@@ -56,11 +56,12 @@
 							<ul class="level2">
 								
 	<?php
+	$gmelib = $gmelib.' AND licence.member="'.$_SESSION["member"]['mail'].'" ';
 	$game = $bdd->query($gmelib);
 	while ($donnees = $game->fetch()) {	?>
 								<li class="myGame">
 									<span class="g-img">
-										<img src="<?php echo$donnees["url"];?>"/>
+										<img src="../<?php echo$donnees["url"];?>"/>
 									</span>
 									<span class="g-desc">
 										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>								
@@ -122,9 +123,7 @@
 
 			</div>
 			<div class="float-container">
-				<?php 
-					require_once("../include/connect.php");
-				?>
+
 			</div>
 			</div>
 

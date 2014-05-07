@@ -40,6 +40,7 @@
 .menu1 .level1>li
 {
 	padding-bottom:7px;
+	height:20px;
 }
 
 .menu1 .level1>li:hover
@@ -69,7 +70,8 @@
 /******************************************************************************************/
 .myGame
 {
-	background: #333;
+	background: #fff;
+	color:#666;
 	position: relative;
 	line-height:70px;
 	width:360px;
@@ -84,7 +86,7 @@
 
 .myGame:hover
 {
-	background:#444;
+	background:url("bg2.png");
 }
 /******************************************************************************************/
 /******************************************************************************************/
@@ -108,8 +110,10 @@
 }
 .g-img >img
 {
-	width:115px;
-	height:91px;
+	width:116px;
+	height:87px;
+	border:solid #3d3d3d 2px;
+	border-radius:0 3px 3px 0;
 }
 .g-desc
 {
@@ -123,11 +127,12 @@
 {
 	display:block;
 	height:91px;
-	color:#FFF;
+	color:#666;
 }
 .g-desc a:hover
 {
 	text-decoration:none;
+	color:444;
 }
 /******************************************************************************************/
 /******************************************************************************************/

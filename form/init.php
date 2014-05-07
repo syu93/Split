@@ -22,6 +22,7 @@ function start_session(){
 	if(empty($_SESSION['member']["pseudo"]))
 	{			
 		$_SESSION['member']["pseudo"] = null;
+		$_SESSION['member']["mail"] = null;
 	}	
 	if(empty($_SESSION["user"]['langue']))
 	{			
@@ -35,12 +36,13 @@ function start_session(){
 /****************************************************************************/
 function session_connect($bdd,$m){
 	$mail = $m;
-	$test = $bdd->query("SELECT id, pseudo FROM member WHERE email='$mail'");
+	$test = $bdd->query("SELECT id, pseudo, email FROM member WHERE email='$mail'");
 	$pseudo = $test->fetch();
 	
 	session_start();
 	$_SESSION['member']['id'] = $_SESSION['user']['id'];
 	$_SESSION['member']['pseudo'] = $pseudo;
+	$_SESSION['member']['mail'] = $mail;
 	
 	
 	/*************************************************************************/
@@ -86,6 +88,7 @@ function ifconnected(){
 		if(!empty($_SESSION['member']['pseudo'])) 
 		{
 			$pseudo=$_SESSION['member']['pseudo'];
+			$pseudo=$_SESSION['member']['mail'];
 		}
 	}
 	else
