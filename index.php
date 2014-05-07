@@ -11,6 +11,7 @@
 
 			<div class="container">
 				<?php $game_idx = $bdd->query($game_index);
+				//FIXME : Add a genre separator
 				$i = 0;
 				$url = getUrl();
 				while($donnees = $game_idx->fetch()) {
@@ -28,7 +29,7 @@
 						<p class="article-text">
 							<?php
 							while($donnees2 = $genre_idx->fetch()){
-								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
+								echo '<a class="g_genre" href="game.php?genre='.$donnees2['genre'].'" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 							}
 							?>
 						</p>
@@ -67,12 +68,13 @@
 								<span>Tags : 
 							<?php 
 							while($donnees2 = $genre_idx2->fetch()){
-								echo '<a class="g_genre" href="" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
+								echo '<a class="g_genre" href="game.php?genre='.$donnees2['genre'].'" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 							}
 							?>
 								</span>
 							</div>
-						</div>
+							<iframe id='video_<?php echo $i; ?>' width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+						</div>						
 					</div>				
 				<?php 
 				$i++;

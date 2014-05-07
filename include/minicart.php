@@ -5,6 +5,7 @@
 	
 	$editor="SELECT * FROM content WHERE title='editor' ";
 	$price="SELECT * FROM content WHERE title='price' ";
+	$genre="SELECT * FROM content WHERE title='genre' ";
 	session_start();
  ?>
 <html>
@@ -55,17 +56,19 @@
 					/********************************************************************************/
 					$incart="SELECT * FROM game WHERE game.text_fr=".$gm." ";
 					$carteditor="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.text_fr=".$gm." AND game.ideditor=editor.name";
-					$cartgenre="SELECT genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre AND game.".$_SESSION['user']['langue']." = ".$gm.";";
+					$cartgenre="SELECT genre.genre, genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre AND game.".$_SESSION['user']['langue']." = ".$gm.";";
 					
 					$cartitem1 = $bdd->query($incart);
 					$cartitem2 = $bdd->query($editor);
 					$carteditor = $bdd->query($carteditor);
 					$cartgenre = $bdd->query($cartgenre);
 					$cartitem3 = $bdd->query($price);
+					$cartitem4 = $bdd->query($genre);
 					
 					$donnees1 = $cartitem1->fetch();
 					$donnees2 = $cartitem2->fetch();
 					$donnees3 = $cartitem3->fetch();
+					$donnees4= $cartitem4->fetch();
 					$c_editor = $carteditor->fetch();					
 					/********************************************************************************/
 					echo"<div id='mycartItem' class='cart_item'>";
@@ -73,10 +76,10 @@
 							echo "<a href='#'><img src=../".$donnees1["url"]."></a>";
 							echo "<H6>".$donnees1[$_SESSION['user']['langue']]."</H6>";
 							echo "<p>".$donnees2[$_SESSION['user']['langue']]." : ".$c_editor[$_SESSION['user']['langue']]."</p>";
-							echo "<p>".$donnees3[$_SESSION['user']['langue']]." : ";
+							echo "<p>".$donnees4[$_SESSION['user']['langue']]." : ";
 					while($c_genre = $cartgenre->fetch())
 					{
-							echo "<a class='c_gre'>".$c_genre[$_SESSION['user']['langue']]."</a>";
+							echo "<a class='c_gre' href='http://127.0.0.1/split/game.php?genre=".$c_genre['genre']."'>".$c_genre[$_SESSION['user']['langue']]."</a>";
 					}
 							echo "</p>";
 							echo "<p style='font-size:12px'>".$donnees3[$_SESSION['user']['langue']]." :</span><span class='".devise(); echo "' style='font-size:12px'>".$donnees1["price"]."</p>" ;
@@ -99,6 +102,11 @@
 					scrollButtons:{
 						enable:true
 					}
+				});
+				$('a').click(function(event){
+					event.preventDefault();
+					var link = $(this).attr('href');
+					window.top.location.href = link;
 				});
 			});
 		})(jQuery);

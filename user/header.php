@@ -6,6 +6,12 @@
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";
 	require_once("../form/req.php");
+	/********************************************************/
+
+	// debug($_SESSION);
+	// unset($_SESSION['user']['cart']['game'][0]);
+	// echo $_SESSION['user']['cart']['game'][0];
+	/********************************************************/
 	
  ?>
  <!DOCTYPE html>
@@ -18,13 +24,14 @@
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/article.css">
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/user.css">
 		
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/validate.css">
 		
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/fontello/css/fontello.css">
 		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/fontello-back/css/back.css">
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/icone/css/icone.css">
+		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/devise/css/devise.css">
+		
+		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/split/css/scrollbar/jquery.mCustomScrollbar.css">
 		
 		<script src="http://127.0.0.1/split/js/jquery-1.11.0.min.js"></script>
 		<script src="http://127.0.0.1/split/js/signup_submit.js"></script>
@@ -36,33 +43,43 @@
 	<body>
 	<div id="body">
 		<div class="over-wrapper">
-			<div id="panAcount">
-	<?php	$signup = $bdd->query($sign);
-	while ($donnees = $signup->fetch()) {
-	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
-	?>				
-				<span id="<?php echo $idt; ?>" class="signIn">
-					<?php echo$donnees[$_SESSION['user']['langue']]; 
-					$avt = $bdd->query($profil);
-					$avat = $avt->fetch();
-					?>
-					<a href="user.php"><?php echo $pseudo["pseudo"]; ?></a>
-					<div class="<?php echo $class; ?>">
-						<?php
-							echo"<img src=' ../".$avat['avatar']."'/>";
-						?>
-						<?php
-							echo"<a href='#'>".$pseudo['pseudo']."</a>";
-						?>	
-					</div>					
-				</span>
-				<?php
-					$deco = $bdd->query($deco); 
-					$donnees = $deco->fetch();		
-				?>
-				<span class="logoff"><?php echo("<a href='../form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
+			<div id="panAcount">			
+				<nav class="menu1">
+					<ul class="level1">
+	<?php
+	$library = $bdd->query($lib);
+	// var_dump($pseudo);
+	// var_dump($lib);
+	while ($donnees = $library->fetch()) { ?>
+						<li><a class="signIn" herf="#"><?php echo $donnees[$_SESSION['user']['langue']];?></a>
+	<?php }	?>
+							<ul class="level2">
+								
+	<?php
+	$game = $bdd->query($gmelib);
+	while ($donnees = $game->fetch()) {	?>
+								<li class="myGame">
+									<span class="g-img">
+										<img src="<?php echo$donnees["url"];?>"/>
+									</span>
+									<span class="g-desc">
+										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>								
+									</span>
+		<?php	$play = $bdd->query($ply);
+		while ($donnees = $play->fetch()) {	?>
+									<ul class="level3">
+										<li>
+											<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
+		<?php }	?>
+										</li>
+									</ul>
+								</li>
 	<?php } ?>
-				<form method="POST" action="../validateSignUp.php" id="formLang">
+							</ul>
+						</li>
+					</ul>
+				</nav>
+					<form method="POST" action="../form/validateSignUp.php" id="formLang">
 					<select id="langue" name="langue" class="language">
 					<?php
 						if($_SESSION['user']['langue'] == "text_fr" || $_SESSION['user']['langue'] == Null)
@@ -78,10 +95,35 @@
 					?>
 					</select>
 				</form>
+	<?php
+		$deco = $bdd->query($deco); 
+		$donnees = $deco->fetch();		
+	?>
+	<span class="logoff"><?php echo("<a href='../form/validateSignUp.php?logoff=".$logoff." '>".$donnees[$_SESSION['user']['langue']]."</a>"); ?></span>
+		
+	<?php	$signup = $bdd->query($sign);
+	$donnees = $signup->fetch();
+	if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
+	?>		
+		<span id="<?php echo $idt; ?>" class="signIn">
+			<?php echo$donnees[$_SESSION['user']['langue']]; ?>
+			<a href="user/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
+			<div class="<?php echo $class; ?>">
+				<?php	
+					$avt = $bdd->query($profil);
+					$avat = $avt->fetch();
+					echo"<a href='user/user.php'><img src='../".$avat['avatar']."'/>";
+				?>
+				<?php
+					echo $pseudo['pseudo']."</a>";
+				?>	
+			</div>					
+		</span>
+
 			</div>
 			<div class="float-container">
 				<?php 
-					require_once("../connect.php");
+					require_once("../include/connect.php");
 				?>
 			</div>
 			</div>
@@ -89,18 +131,18 @@
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a id="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>
-						
-						<?php $reponse = $bdd->query($menu_user);
+						<span><a id="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>						
+						<?php $reponse = $bdd->query($menu2_user);
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?>	</a></li>
-						<?php }	?>
+							<li><a href="game.php?genre=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
+						<?php }
 						
-						<?php	$cart = $bdd->query($cart);
-						while ($donnees = $cart->fetch()) { ?>
-												
-							<li class="cart"><a href="game.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>	
-							<?php require_once("../cart.php");?>		
+						$cart = $bdd->query($cart);
+						while ($donnees = $cart->fetch()) { ?>												
+							<li class="cart">
+							<i id="nb_cart" class="nb_cart icon-basket" ><?php echo cart_count();?></i>
+							<a href="page_cart.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>
+							<?php require_once("../include/cart.php");?>						
 						</li>
 						<?php } ?>
 					</ul>

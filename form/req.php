@@ -1,6 +1,7 @@
 <?php
 	// Header
-	$menu=" SELECT * FROM content WHERE active=1 AND tag ='menu' ORDER BY position LIMIT 5";
+	$menu=" SELECT * FROM content WHERE active=1 AND tag ='menu' AND page='index' ORDER BY position LIMIT 6";
+	$menu2_user=" SELECT * FROM content WHERE active=1 AND tag ='menu' AND page='user' ORDER BY position LIMIT 6";
 	$lib="SELECT text_fr, text_en FROM content WHERE title='mylibrary' AND active=1 AND tag ='menu' AND connected='".$connected."' ";		
 	$gmelib="SELECT * FROM game WHERE active=1 AND tag ='game' AND connected='".$connected."' ";
 	$ply="SELECT text_fr, text_en FROM content WHERE title='play' AND active=1 AND tag ='menu' AND connected='".$connected."' ";
@@ -15,8 +16,8 @@
 	/*************************************************************************/
 	/*************************************************************************/
 	// Index
-	$game_index='SELECT * FROM game ';
-	$genre_index='SELECT genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre ';
+	$game_index='SELECT * FROM game, gamegenre WHERE game.title = gamegenre.idgame ORDER BY gamegenre.idgenre ';
+	$genre_index='SELECT genre.genre, genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre ';
 	
 	/*************************************************************************/
 	/*************************************************************************/
@@ -35,10 +36,10 @@
 	/*************************************************************************/
 	/*************************************************************************/
 	/*************************************************************************/
-	// action
+	// game	
+	$game_p_genre='SELECT * FROM game, gamegenre WHERE game.title = gamegenre.idgame ';
 	
-	$action='SELECT * FROM game WHERE genre ="action" ';
-	
+	// test
 	$testgenre = 'SELECT genre.genre FROM game, genre, gamegenre WHERE game.id=gamegenre.idgame AND gamegenre.idgenre=genre.id AND game.title="TitanFall"';
 	
 	$testfriend = 'SELECT friend.pseudofriend FROM member, friend WHERE member.pseudo=friend.pseudomember AND member.pseudo="Syu93" ';

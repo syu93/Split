@@ -1,5 +1,5 @@
 <?php
-	require_once("bdd/bddconnect.php");
+	// require_once("bdd/bddconnect.php");
 	$cart_tag="SELECT text_fr, text_en FROM content WHERE title='cart' AND active=1 AND tag ='menu' ";
 	$cart_tot="SELECT text_fr, text_en FROM content WHERE title='total' ";
 	$cart_button="SELECT text_fr, text_en FROM content WHERE title='cartvalidate' ";

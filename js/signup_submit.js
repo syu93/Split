@@ -12,15 +12,12 @@ $( document ).ready(function(){
 			url: "http://127.0.0.1/split/form/validateSignUp.php",
 			data: formP,
 			success: function(data){
-				// alert($('#pseudo2').val());
-				// alert(typeof(data));
-				// alert(data);
 				if(data == 'truep')
 				{					
 						$( "#ckpseudo" ).html("Not Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
 						$("#pseudo2").addClass('inputNo');
-						// alert("This Pseudo already exist");
+					
 					$( "#formSi" ).submit(function( event ) {
 					event.preventDefault();
 					});
@@ -32,8 +29,6 @@ $( document ).ready(function(){
 						$( "#ckpseudo" ).html("Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkOk" );
 						$("#pseudo2").removeClass('inputNo');
-						// $( "#submit" ).attr( "type", "submit" );
-						// alert("Good");
 					}
 					else
 					{
@@ -58,23 +53,18 @@ $( document ).ready(function(){
 	$("#mail2").change(function(){
 
 	formM.mail = $('#mail2').val();
-	// alert(formM.mail);
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validate.php",
 			data: formM,
 			success: function(data){
-				// alert($('#mail2').val());
-				// alert(typeof(data));
-				// alert(data);
 				if(data == 'truem')
 				{	
 					
 						$( "#ckmail2" ).html("Not Avaible");
 						$( "#ckmail2" ).attr( "class", "checkNo" );
 						$("#mail2").addClass('inputNo');
-						// $( "#submit" ).attr( "type", "button" );
-						// alert("This Pseudo already exist");
+						
 					$( "#formSi" ).submit(function( event ) {	
 					event.preventDefault();
 					});					
@@ -86,7 +76,6 @@ $( document ).ready(function(){
 						$( "#ckmail2" ).html("Avaible");
 						$( "#ckmail2" ).attr( "class", "checkOk" );
 						$("#mail2").removeClass('inputNo');
-						// alert("Good");
 					}
 					else
 					{
@@ -111,7 +100,6 @@ $( document ).ready(function(){
 	$("#avatar").change(function(){
 	
 	formA.avatar = $('#avatar').val();
-	// alert(formA.avatar);
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validate.php",
@@ -125,7 +113,6 @@ $( document ).ready(function(){
 						$( "#ckavt" ).html("Invalid extension");
 						$( "#ckavt" ).attr( "class", "checkNo" );
 						$("#avatar").addClass('inputNo');
-						// alert("This Pseudo already exist");
 					$( "#formSi" ).submit(function( event ) {	
 					event.preventDefault();
 					});
@@ -154,15 +141,11 @@ $( document ).ready(function(){
 	$("#langue").change(function(){
 	
 	formL.langue = $('#langue').val();
-	// alert(formL.langue);
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validateSignUp.php",
 			data: formL,
 			success: function(data){
-				// alert($('#avatar').val());
-				// alert(typeof(data));
-				// alert(data);
 				if(data == "fr")
 				{
 					location.reload();
@@ -191,41 +174,28 @@ $( document ).ready(function(){
 	event.preventDefault();
 	
 		formCM.mail1 = $('#mail1').val();
-		
-		// alert(formCM.mail1);
+
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validate.php",
 			data: formCM,
 			success: function(data){
-				// alert($('#avatar').val());
-				// alert(typeof(data));
-				// alert(data);
 				if(data == "truem")
 				{
-					// alert("plop connected");
-					/*******************************************/
 						var formCP = {};
 						formCP.password1 = $('#password1').val();
 						formCP.mail01 = $('#mail1').val();
-						// alert(formCP.password1);
 						$.ajax({
 							type: "POST",
 							url: "http://127.0.0.1/split/form/validate.php",
 							data: formCP,
 							success: function(data){
-								// alert($('#avatar').val());
-								// alert(typeof(data));
-								// alert("data : "+data);
 								if(data == "truep")
 								{
 									$("#formLi").submit();
-									// alert("plop connected");
-									// location.reload();
 								}
 								else if(data == "falsep")
 								{
-									// alert("plop not connected");
 									$( "#password1" ).val("");
 									$( "#cksub1" ).html("Your e-mail address or password is invalid. Please try again.");
 									$( "#cksub1" ).attr( "class", "checkNo" );
@@ -238,8 +208,6 @@ $( document ).ready(function(){
 							}, 
 							dataType: "text"
 						});
-					/*******************************************/
-					// location.reload();
 				}
 				else if(data == "falsem")
 				{
@@ -264,44 +232,32 @@ $( document ).ready(function(){
 /**************************************************************************/
 	var i = $( "#nb-game" ).attr("data");
 	var nb = parseInt(i); //convert in number
-	// alert(typeof nb);
 	
 	for(i=0;i<=nb; i++)
-	{
-		//var article-info = {};
-		// plop=i;
-		
+	{		
 		$("#jeux"+i).click(function(){	
-		
-			// alert($(this).attr("alt"))
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
 			
-			var url = $("#plop").val();
-			// alert(id);
-			
-			/****************************************/
-			$("#overContainer2"+id).removeClass('OCoff');
-			$("#overContainer2"+id).addClass('OCon');
-			/****************************************/
-			
 			gameInf = {};	
-			gameInf.selct = game;
-			
-			alert(gameInf.selct);	
+			gameInf.select = game;
 			
 			$.ajax({
 				type: "POST",
 				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: gameInf,
 				success: function(data){
+				$("#video_"+id).attr("src", data);
+				$("#overContainer2"+id).removeClass('OCoff');
+				$("#overContainer2"+id).addClass('OCon');
+				document.getElementById('video').contentWindow.location.reload();
+				
 				}, 
 				dataType: "text"
 			});
 			
 			/****************************************/
 			$(".gameBack").click(function(){
-				// alert("close");
 				$("#overContainer2"+id).removeClass('OCon');
 				$("#overContainer2"+id).addClass('OCoff');
 			});	
@@ -325,7 +281,6 @@ $( document ).ready(function(){
 		
 		var game = $("#"+id).html(); // Get the name of the game selected
 		var price = $("#p_"+id).html(); // Get the price of the game selected
-		//alert(price);
 		addcart = {};		
 		
 		addcart.cart = game;
@@ -336,7 +291,6 @@ $( document ).ready(function(){
 				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: addcart,
 				success: function(data){
-					// alert("nb_cart "+data);
 					$("#nb_cart").html(data);
 					
 						addprice= {};

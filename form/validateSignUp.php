@@ -45,13 +45,12 @@
 /*********************************************************************************/
 /*********************************************************************************/
 
-	if(isset($_POST["selct"]))
+	if(isset($_POST["select"]))
 	{
 		session_start();
-		$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["selct"].'" ');
+		$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["select"].'" ');
 		$donnees = $req->fetch();
-		echo $donnees;
-		
+		echo $donnees["video"];		
 		return;
 	}
 /*********************************************************************************/

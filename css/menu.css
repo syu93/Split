@@ -320,9 +320,9 @@
     border-left: 1px solid #343434;
     border-right: 1px solid #343434;
 	
-	column-width:100px;
-	-moz-column-width:100px; /* Firefox */
-	-webkit-column-width:100px; /* Safari and Chrome */
+	column-width:104px;
+	-moz-column-width:104px; /* Firefox */
+	-webkit-column-width:104px; /* Safari and Chrome */
 }
 .menu2 .level1 > li:nth-child(2)
 {
@@ -338,8 +338,10 @@
 	-webkit-border-radius:0 0  15px 0;
 	border-radius: 0 0 15px 0;
 }
-
-
+.menu2 .level1 > li:nth-last-child(2)
+{
+	width:120px;
+}
 .menu2 .level1 > li > a
 {
 	list-style: none;

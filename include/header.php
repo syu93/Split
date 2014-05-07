@@ -134,7 +134,7 @@
 						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>						
 						<?php $reponse = $bdd->query($menu);
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="action.php"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
+							<li><a href="game.php?genre=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
 						<?php }
 						
 						$cart = $bdd->query($cart);
