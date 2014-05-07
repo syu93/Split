@@ -16,10 +16,10 @@ $( document ).ready(function(){
 						$( "#ckpseudo" ).html("Not Avaible");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
 						$("#pseudo2").addClass('inputNo');
-<<<<<<< HEAD
+// <<<<<<< HEAD
 					
-=======
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// =======
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 					$( "#formSi" ).submit(function( event ) {
 					event.preventDefault();
 					});
@@ -66,10 +66,10 @@ $( document ).ready(function(){
 						$( "#ckmail2" ).html("Not Avaible");
 						$( "#ckmail2" ).attr( "class", "checkNo" );
 						$("#mail2").addClass('inputNo');
-<<<<<<< HEAD
+// <<<<<<< HEAD
 						
-=======
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// =======
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 					$( "#formSi" ).submit(function( event ) {	
 					event.preventDefault();
 					});					
@@ -148,10 +148,10 @@ $( document ).ready(function(){
 			url: "http://127.0.0.1/split/form/validateSignUp.php",
 			data: formL,
 			success: function(data){
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 				if(data == "fr")
 				{
 					location.reload();
@@ -180,11 +180,11 @@ $( document ).ready(function(){
 	event.preventDefault();
 	
 		formCM.mail1 = $('#mail1').val();
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
+// =======
 		
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1/split/form/validate.php",
@@ -192,10 +192,10 @@ $( document ).ready(function(){
 			success: function(data){
 				if(data == "truem")
 				{
-<<<<<<< HEAD
-=======
-					/*******************************************/
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// <<<<<<< HEAD
+// =======
+					// /*******************************************/
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 						var formCP = {};
 						formCP.password1 = $('#password1').val();
 						formCP.mail01 = $('#mail1').val();
@@ -251,11 +251,11 @@ $( document ).ready(function(){
 	for(i=0;i<=nb; i++)
 	{		
 		$("#jeux"+i).click(function(){	
-<<<<<<< HEAD
+// <<<<<<< HEAD
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
 			
-=======
+// =======
 		
 			var id = $(this).attr("alt");
 			var game = $("#"+id).html();
@@ -267,7 +267,7 @@ $( document ).ready(function(){
 			$("#overContainer2"+id).addClass('OCon');
 			/****************************************/
 			
->>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
+// >>>>>>> 3894f58e29f9032bed21a495786a03abe6347b10
 			gameInf = {};	
 			gameInf.select = game;
 			
