@@ -287,8 +287,10 @@ $( document ).ready(function(){
 			
 			/****************************************/
 			$(".gameBack").click(function(){
+				$("#video_"+id).attr("src","");
 				$("#overContainer2"+id).removeClass('OCon');
 				$("#overContainer2"+id).addClass('OCoff');
+				document.getElementById('video').contentWindow.location.reload();
 			});	
 		});
 
