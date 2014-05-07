@@ -2,11 +2,9 @@
 	require_once("include/header.php");
 	require_once("form/init.php");	
 	require_once("form/req.php");
-	
+
 	/*****************************/
-	/*****************************/
-	
-	
+	/*****************************/	
 ?>
 
 			<div class="container">
