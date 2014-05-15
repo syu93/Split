@@ -97,7 +97,7 @@ require_once'header.php';
 			
 			<p>
 			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>" >
-			<?php echo'<input name="contentimg" type="hidden" value="'.$donnees['url'].'"/>' ?>
+			<?php echo'<input name="contentimg" type="text" value="'.$donnees['url'].'"/>' ?>
 			</p>
 			
 			<br>
@@ -184,7 +184,7 @@ require_once'header.php';
 		$price = $_POST['gamePrice'];
 		
 		$gameImg = $_FILES['gameImg']['name'];
-		if(empmty($gameImg))
+		if(empty($gameImg))
 		{
 			$gameImg = $_POST["contentimg"];
 		}
