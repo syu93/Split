@@ -99,7 +99,7 @@ require_once'header.php';
 			
 			<br>
 			<p>
-			<input class="inputtext" type="text" value="<?php echo$donnees['genre'] ?>">
+			<!--<input class="inputtext" type="text" value="<?php echo$donnees['genre'] ?>">-->
 			<br>
 			<br>
 
@@ -107,7 +107,7 @@ require_once'header.php';
 		<span>Type de jeu</span>
 			<select name="gameGenre">
 		<?php 
-		$req1 = $bdd->query('SELECT genre FROM game, genre WHERE game.idgenre = genre.id AND game.title="'.$SelectModule.'" ');
+		$req1 = $bdd->query('SELECT idgenre FROM gamegenre WHERE gamegenre.idgame="'.$SelectModule.'" ');
 		while ($donnees = $req1->fetch())
 		{
 		?>

@@ -32,7 +32,7 @@
 .icon-euro, .icon-dollar
 {
 	font-family: Mech;
-	font-size:20px;
+	font-size:17px;
 	margin:0 5px 0 3px;
 }
 
@@ -40,7 +40,7 @@
 {
 	content:"€";
 	font-family: Mech;
-	font-size:23px;
+	font-size:21px;
 	width:auto;
 }
 
@@ -48,7 +48,7 @@
 {
 	content:"$";
 	font-family: airstrike;
-	font-size:23px;
+	font-size:21px;
 	width:auto;
 }
 
