@@ -56,7 +56,10 @@ require_once'header.php';
 		<br>
 		<span>Position actuel</span>
 			<p>
-				<?php echo'<input name="contentid" type="hidden" value="'.$donnees['id'].'"/>'?>
+				<?php
+					echo'<input name="contentid" type="hidden" value="'.$donnees['title'].'"/>';
+					echo'<input name="contentimg" type="hidden" value="'.$donnees['url'].'"/>'
+				?>
 				<textarea class="contentActPos" readonly><?php echo $donnees['position']; ?></textarea>				
 				<br>
 				<br>
@@ -93,13 +96,13 @@ require_once'header.php';
 			</p>
 			
 			<p>
-			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>" required>
-		
+			<span>Image</span>	<br>	<input type="file" class="" name="gameImg" value="<?php echo$donnees['url']; ?>" >
+			<?php echo'<input name="contentimg" type="hidden" value="'.$donnees['url'].'"/>' ?>
 			</p>
 			
 			<br>
-			<p>
-			<!--<input class="inputtext" type="text" value="<?php echo$donnees['genre'] ?>">-->
+			<!--<p>
+			<!--<input class="inputtext" type="text" value="<?php ?>">
 			<br>
 			<br>
 
@@ -107,14 +110,14 @@ require_once'header.php';
 		<span>Type de jeu</span>
 			<select name="gameGenre">
 		<?php 
-		$req1 = $bdd->query('SELECT idgenre FROM gamegenre WHERE gamegenre.idgame="'.$SelectModule.'" ');
-		while ($donnees = $req1->fetch())
-		{
+		//$req1 = $bdd->query('SELECT idgenre FROM gamegenre WHERE gamegenre.idgame="'.$SelectModule.'" ');
+		//while ($donnees = $req1->fetch())
+		//{
 		?>
-			<option><?php echo $donnees["genre"] ?></option>		
-		<?php } ?>
+			<option><?php // $donnees["genre"] ?></option>
+		<?php // } ?>
 		</select>
-			</p>
+			</p>-->
 			
 			<p>
 			<h2>Connected</h2>
@@ -179,17 +182,22 @@ require_once'header.php';
 		$contentPosition = $_POST['contentPosition'];
 		
 		$price = $_POST['gamePrice'];
+		
 		$gameImg = $_FILES['gameImg']['name'];
+		if(empmty($gameImg))
+		{
+			$gameImg = $_POST["contentimg"];
+		}
 		
 		$pth = uploadgameimg($gameImg, $contentTitle);
 		
-		$gameGenre = $_POST['gameGenre'];
+		// $gameGenre = $_POST['gameGenre'];
 		
 		$connected =$_POST['connected'];
 		$contentactive =$_POST['contentactive'];
 		$contentid=$_POST['contentid'];
 
-		$req = $bdd->prepare('UPDATE game SET url=:url, price=:price, genre=:gameGenre,  title=:contentTitle, text_fr=:contentTextFr, text_en=:contentTextEn,textlongue_fr=:gameTextlongueFr, textlongue_en=:gameTextlongueEn, position=:contentPosition,connected=:connected,active=:contentactive WHERE id=:contentid');
+		$req = $bdd->prepare('UPDATE game SET url=:url, price=:price,  title=:contentTitle, text_fr=:contentTextFr, text_en=:contentTextEn,textlongue_fr=:gameTextlongueFr, textlongue_en=:gameTextlongueEn, position=:contentPosition,connected=:connected,active=:contentactive WHERE title=:contentid');
 		$req->execute(array(
 		':contentTitle'=> $contentTitle,
 		':contentid'=> $contentid,
@@ -201,9 +209,9 @@ require_once'header.php';
 		':connected'=> $connected,
 		':contentactive'=> $contentactive,
 		':price'=> $price,
-		':gameGenre'=> $gameGenre,
+		// ':gameGenre'=> $gameGenre,
 		':url'=> $pth,
-		));	
+		));
 	}
 	?>
 </div>
