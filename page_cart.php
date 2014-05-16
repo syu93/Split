@@ -10,7 +10,8 @@
 <style>
 .menu2 .cart:hover .panier
 {
-opacity:0;	
+opacity:0;
+display:none;
 }
 </style>
 </head>
@@ -30,24 +31,64 @@ opacity:0;
 		</div>	
 	</div>
 	<?php
+	/*****************/
+	$infobank = "SELECT * FROM `content` WHERE title='infobank'";
+	$paiement = "SELECT * FROM `content` WHERE title='paiement' ";
+	$facture = "SELECT * FROM `content` WHERE title='facturation' ";
+	$phone = "SELECT * FROM `content` WHERE title='phone' ";
+	$compte = "SELECT * FROM `content` WHERE title='compte' ";	
+	$termes = "SELECT * FROM `content` WHERE title='termes' ";
+	//---
+	$req1 = $bdd->query($infobank);
+	$req2 = $bdd->query($paiement);
+	$req3= $bdd->query($facture);
+	$req4= $bdd->query($phone);
+	$req5= $bdd->query($compte);
+	$req6= $bdd->query($termes);
+	//--
+	$data1 = $req1->fetch();
+	$data2 = $req2->fetch();
+	$data3 = $req3->fetch();
+	$data4 = $req4->fetch();
+	$data5 = $req5->fetch();
+	$data6 = $req6->fetch();
+	
+	/*****************/
 		if($_SESSION['member']["connected"] == 1)
 		{
 			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
-			echo'plop';
+				echo"<form action='validateSignUp.php' method='POST'> ";
+					echo'<div class="">';
+						echo'<span>'.$data1[$_SESSION['user']['langue']].'</span>';
+						echo'<span></span>';
+						echo'<input type="text" name="nom">';
+					echo'<div>';
+
+					echo'<div class="">';
+						echo'<span>'.$data2[$_SESSION['user']['langue']].'</span>';
+						echo'<span></span>';
+						echo'<input type="text" name="nom">';
+					echo'<div>';
+				
+				echo'</form>';
 			echo'</div>';
 		}
 		else
 		{
 			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
-			echo'<span>You must be connected to order</span>';
-$signup = $bdd->query($sign);
-$donnees = $signup->fetch();
-if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
-?>		
-<span id="<?php echo $idt; ?>" class="signIn">
-<?php echo$donnees[$_SESSION['user']['langue']];
-echo'</div>';
-}
-?>
-</body>
-</html>
+			echo'<span>You must be connected to order</span>';//recover content
+			echo'</br>';
+			
+			$signup = $bdd->query($sign);
+			$donnees = $signup->fetch();
+			$idt="signIn2"; $class="OCoff";
+	?>		
+			<span id="<?php echo $idt; ?>" class="signIn">
+	<?php
+			echo$donnees[$_SESSION['user']['langue']];
+		
+		echo'</div>';
+		}
+	?>
+	</body>
+	</html>

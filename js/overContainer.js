@@ -4,6 +4,12 @@ $( document ).ready(function(){
 	  $("#overContainer").removeClass('OCoff');
 	  $("#overContainer").addClass('OCon');
 	});
+
+	$("#signIn2").click(function(){
+
+	  $("#overContainer").removeClass('OCoff');
+	  $("#overContainer").addClass('OCon');
+	});
 	 
 	$("#closeBtn").click(function(){
 
