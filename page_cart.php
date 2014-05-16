@@ -1,6 +1,7 @@
 <?php
 	require_once("include/header.php");
 	require_once("bdd/bddconnect.php");
+	require_once("form/req.php");
  	$cart_tag="SELECT text_fr, text_en FROM content WHERE title='cart' AND active=1 AND tag ='menu' ";
 	$cart_tot="SELECT text_fr, text_en FROM content WHERE title='total' ";
 ?>
@@ -31,8 +32,22 @@ opacity:0;
 	<?php
 		if($_SESSION['member']["connected"] == 1)
 		{
-			echo"plop";
+			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
+			echo'plop';
+			echo'</div>';
 		}
-	?>
+		else
+		{
+			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
+			echo'<span>You must be connected to order</span>';
+$signup = $bdd->query($sign);
+$donnees = $signup->fetch();
+if($_SESSION['member']['connected']==1){$idt=""; $class="profil";}else{$idt="signIn"; $class="OCoff";}
+?>		
+<span id="<?php echo $idt; ?>" class="signIn">
+<?php echo$donnees[$_SESSION['user']['langue']];
+echo'</div>';
+}
+?>
 </body>
 </html>
