@@ -5,7 +5,7 @@
 	// require_once("gameManage/addLibrary.php");
 	require_once("form/init.php");
 	$game_p_genre = $game_p_genre." AND gamegenre.idgenre='".$_GET["genre"]."' ";
-	echo $_GET["genre"];
+	// echo $_GET["genre"];
 ?>
 <div class="container">
 	<?php $game_idx = $bdd->query($game_p_genre);

@@ -14,20 +14,25 @@ opacity:0;
 </style>
 </head>
 <body>
-	<div class="container" style="background:url('css/get.png');">
+	<div class="container" style="width: 50%; background:url('css/get.png');float:left;">
 		<div class="cart_head">
 			<h4><?php $mycart1 = $bdd->query($cart_tag); $donnees = $mycart1->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?></h4>
 		</div>
-			
 		<hr>
 		<div id="content"class="content">
 			<iframe id="cart_window" name="cart_window" class="cart_window" src="http://127.0.0.1/split/include/minicart.php"scrolling="no"></iframe>
 		</div>
 		<hr>
 		<div class="total">
-			<H4><?php $mycart2 = $bdd->query($cart_tot); $donnees = $mycart2->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?> : </H4>
-			<span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span>
+			<H2><?php $mycart2 = $bdd->query($cart_tot); $donnees = $mycart2->fetch(); echo $donnees[$_SESSION['user']['langue']]; ?> : 
+			<span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span></H2>
 		</div>	
 	</div>
+	<?php
+		if($_SESSION['member']["connected"] == 1)
+		{
+			echo"plop";
+		}
+	?>
 </body>
 </html>
