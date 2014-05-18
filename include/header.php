@@ -1,7 +1,8 @@
 ﻿ <?php
 	require_once("bdd/bddconnect.php");
 	require_once("form/session.php");
-	
+	getUrl();
+	// echo $_SESSION['user']['location'];
 	$connected = ifconnected();
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";

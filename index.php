@@ -67,7 +67,7 @@
 						</div>
 						
 						<div>
-							<a class="addcart" href="">Ajouter au Panier | <span class="icon-basket"></span></a>
+							<a id="b_cart<?php echo$i; ?>" alt="<?php echo$i; ?>" class="addcart" href="">Ajouter au Panier | <span class="icon-basket"></span></a>
 						</div>
 						
 						<div class="article-genre">
@@ -79,7 +79,7 @@
 						?>
 							</span>
 						</div>
-						<iframe id='video_<?php echo $i; ?>' width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+						<!--<iframe id='video_<?php //echo $i; ?>' width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>-->
 					</div>						
 				</div>				
 			<?php 

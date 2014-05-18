@@ -175,6 +175,14 @@
 {
 	margin-left: 40px;
 	float:left;
+	color:#fff;
+	padding:5px;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	
+	box-shadow: 0 0 6px 0 #000;
+	-webkit-box-shadow: 0 0 6px 0 #000;
 }
 .game-price
 {
@@ -188,12 +196,6 @@
 	width:400px;
 	text-align:justify;
 	padding:15px;
-	
-	border-radius:3px;
-	-webkit-border-radius:3px;
-	
-	box-shadow: 0 0 6px 0 #000;
-	-webkit-box-shadow: 0 0 6px 0 #000;
 }
 
 .article:hover .article-info
@@ -251,6 +253,7 @@
 	line-height:35px;
 	background: #B5B5B5;
 	margin-top:15px;
+	margin-right:85px;
 	padding:5px;
 	color:#000;
 	border:inset #ddd 1px;
@@ -300,6 +303,8 @@
 
 .page-game
 {
+	display:table;
+	color:#fff;
 	margin-top:20px;
 	background: #3d3d3d;
     float: left;

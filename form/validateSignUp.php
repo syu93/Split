@@ -62,15 +62,7 @@
 	{
 	$item = $_POST["cart"];
 	$price = $_POST["price"];
-	
-	// $_SESSION['user']['cart']['id_game'] = array();
-	// $_SESSION['user']['cart']['game'] = array(); 
-	// $_SESSION['user']['cart']['price'] = array(); 
-	// $_SESSION['user']['cart']['editor'] = array(); 
-	// $_SESSION['user']['cart']['genre'] = array(); 
-	// $_SESSION['user']['cart']['pegi'] = array(); 
-	// $_SESSION['user']['cart']['url'] = array(); 
-	
+		
 	session_start();
 	$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["cart"].'" ');
 	$donnees = $req->fetch();	
@@ -80,7 +72,7 @@
 		echo cart_count();
 		return;
 		die();
-	}	// FIXME add the price to the cart array
+	}
 	else
 	{
 		if(empty($_SESSION['user']['cart']['game']))
@@ -94,7 +86,7 @@
 		{
 			array_push($_SESSION['user']['cart']['game'],$item);
 			array_push($_SESSION['user']['cart']['price'],$price);
-		$_SESSION['user']['cart']['nb_cart']=cart_count();
+			$_SESSION['user']['cart']['nb_cart']=cart_count();
 			echo cart_count();
 		}	
 	}	

@@ -188,9 +188,8 @@ require_once'header.php';
 		{
 			$gameImg = $_POST["contentimg"];
 		}
-		
-		$pth = uploadgameimg($gameImg, $contentTitle);
-		
+		$imgtitle = trim($contentTitle," \t\n\r\0\x0B");
+		$pth = uploadgameimg($gameImg, $imgtitle);
 		// $gameGenre = $_POST['gameGenre'];
 		
 		$connected =$_POST['connected'];

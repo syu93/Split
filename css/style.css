@@ -215,7 +215,7 @@ a:hover
 	position:fixed;
 	
 	margin-top:79px;
-	
+	padding-bottom: 15px;
 	z-index: 100;
 	
 	width: 800px;

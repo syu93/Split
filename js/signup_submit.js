@@ -222,8 +222,7 @@ $( document ).ready(function(){
 				}
 			}, 
 			dataType: "text"
-		});	
-		
+		});		
 	});
 /**************************************************************************/	
 /**************************************************************************/	
@@ -258,10 +257,10 @@ $( document ).ready(function(){
 				url: "http://127.0.0.1/split/form/validateSignUp.php",
 				data: gameInf,
 				success: function(data){
-				$("#video_"+id).attr("src", data);
+				// $("#video_"+id).attr("src", data);
 				$("#overContainer2"+id).removeClass('OCoff');
 				$("#overContainer2"+id).addClass('OCon');
-				document.getElementById('video').contentWindow.location.reload();
+				// document.getElementById('video').contentWindow.location.reload();
 				
 				}, 
 				dataType: "text"
@@ -269,10 +268,10 @@ $( document ).ready(function(){
 			
 			/****************************************/
 			$(".gameBack").click(function(){
-				$("#video_"+id).attr("src","");
+				// $("#video_"+id).attr("src","");
 				$("#overContainer2"+id).removeClass('OCon');
 				$("#overContainer2"+id).addClass('OCoff');
-				document.getElementById('video').contentWindow.location.reload();
+				// document.getElementById('video').contentWindow.location.reload();
 			});	
 		});
 
@@ -290,6 +289,44 @@ $( document ).ready(function(){
 	for(i=0;i<=nb; i++)
 	{		
 		$("#cart"+i).click(function(){
+		var id = $(this).attr("alt"); // The nb of the element clicked
+		
+		var game = $("#"+id).html(); // Get the name of the game selected
+		var price = $("#p_"+id).html(); // Get the price of the game selected
+		addcart = {};		
+		
+		addcart.cart = game;
+		addcart.price = price;		
+		
+			$.ajax({
+				type: "POST",
+				url: "http://127.0.0.1/split/form/validateSignUp.php",
+				data: addcart,
+				success: function(data){
+					$("#nb_cart").html(data);
+					
+						addprice= {};
+						addprice.prx_add = price;
+						
+							$.ajax({
+								type: "POST",
+								url: "http://127.0.0.1/split/form/validateSignUp.php",
+								data: addprice,
+								success: function(data){
+									// alert("total :"+data);
+									$("#total").html(data);
+								}, 
+								dataType: "text"
+							});
+
+					document.getElementById('cart_window').contentWindow.location.reload();
+					// document.getElementByName('cart_window').contentWindow.location.reload();
+				}, 
+				dataType: "text"
+			});	
+		});
+
+		$("#b_cart"+i).click(function(){
 		var id = $(this).attr("alt"); // The nb of the element clicked
 		
 		var game = $("#"+id).html(); // Get the name of the game selected

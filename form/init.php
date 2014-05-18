@@ -57,7 +57,7 @@ function session_connect($bdd,$m){
 	// echo"<br>";
 	// print_r($_SESSION['member']["connected"]);
 	
-	header('Location: ../');
+	header('Location:'.$_SESSION['user']['location']);
 }
 /****************************************************************************/
 /****************************************************************************/
@@ -105,6 +105,7 @@ function getUrl() {
 	$url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
 	$url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
 	$url .= $_SERVER["REQUEST_URI"];
+	$_SESSION['user']['location'] = $url;
 	return $url;
 }
 /****************************************************************************/
@@ -195,10 +196,12 @@ function uploadgameimg($gameImg, $gameTitle){
 	$ext = strtolower(substr(strrchr($gameImg, '.'),1)); //get the extension : without the "."
 	// echo $ext;
 	$path = "../gameImg/".$gameTitle.".".$ext;
+	$path = str_replace(' ','',$path);
 	
 	$movefile = move_uploaded_file($_FILES['gameImg']['tmp_name'],$path);
 	
-	$pth = "gameImg/".$gameTitle.".".$ext;
+	// $pth = "gameImg/".$gameTitle.".".$ext;
+	$pth = "gameImg/".str_replace(' ','',$gameTitle).".".$ext;
 	return $pth;
 }
 /****************************************************************************/
