@@ -45,6 +45,7 @@ display:none;
 	$confirmation = "SELECT * FROM `content` WHERE title='confirmation' ";
 	$validate = "SELECT * FROM `content` WHERE title='cartvalidate' ";
 	$msgcart = "SELECT * FROM `content` WHERE title='msgcart'";
+	$cvc = "SELECT * FROM `content` WHERE title='cvc'";
 	//---
 	$req1 = $bdd->query($infobank);
 	$req2 = $bdd->query($paiement);
@@ -59,6 +60,7 @@ display:none;
 	$req11= $bdd->query($confirmation);
 	$req12= $bdd->query($validate);
 	$req13= $bdd->query($msgcart);
+	$req14= $bdd->query($cvc);
 	//---
 	$data1 = $req1->fetch();
 	$data2 = $req2->fetch();
@@ -73,51 +75,52 @@ display:none;
 	$data11 = $req11->fetch();
 	$data12 = $req12->fetch();
 	$data13 = $req13->fetch();
+	$data14 = $req14->fetch();
 	
 	/*****************/
 		if($_SESSION['member']["connected"] == 1)
 		{
-			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
+			echo'<div class="container" style="clear:none; margin-left:5px;	width: 49%; background:url(\'css/get.png\');float:left;">';
 				echo"<form action='validateSignUp.php' method='POST'> ";
-					echo'<div class="">';
+					echo'<div class="" style="padding-left: 10px;">';
 						echo'<h4>'.$data1[$_SESSION['user']['langue']].'</h4>';
 						echo'<br>';
-						echo'<span>'.$data7[$_SESSION['user']['langue']].'</span>';
-						echo'<input type="text" name="nom">';	
+						echo'<p>'.$data7[$_SESSION['user']['langue']].' : <input type="text" name="nom"></p>';
 						echo'<br>';
-						echo'<span>'.$data8[$_SESSION['user']['langue']].'</span>';
-						echo'<input type="text" name="prenom">';
-					echo'<div>';
-
-					echo'<div class="">';
-						echo'<span>'.$data2[$_SESSION['user']['langue']].'</span>';
-						echo'<span></span>';
-						echo'<input type="text" name="carte">';
+						echo'<p>'.$data8[$_SESSION['user']['langue']].' : <input type="text" name="prenom"></p>';
+						echo'<br>';						
+						echo'<p>'.$data2[$_SESSION['user']['langue']].' : <input type="text" name="carte"></p>';
 						echo'<br>';
-						echo'<span>'.$data9[$_SESSION['user']['langue']].'</span>';
-						echo'<span></span>';
-						echo'<input type="text" name="carte">';
+						echo'<p>'.$data9[$_SESSION['user']['langue']].' : <input type="text" name="cvc"></p>';
 						echo'<br>';
-						echo'<span> Number </span>';
-						echo'<span></span>';
-						echo'<input type="text" name="carteNumb">';
-					echo'<div>';
-					
-					echo'<div class="">';
-						echo'<span>'.$data3[$_SESSION['user']['langue']].'</span>';
-						echo'<span></span>';
-						echo'<input type="text" name="facture">';
+						echo'<p>'.$data14[$_SESSION['user']['langue']].' : <input type="text" name="carteNumb"></p>';
 						echo'<br>';
-						echo'<span>'.$data4[$_SESSION['user']['langue']].'</span>';
-						echo'<span></span>';
-						echo'<input type="text" name="phone">';
+						
+						echo'<p>'.$data3[$_SESSION['user']['langue']].' : ';
+						echo '<select name="year">';
+						echo'<option></option>';
+							for($i=14;$i<=24;$i++)
+							{
+									echo'<option>'.$i.'</option>';
+							}
+						echo '</select>';
+						echo '<select name="month">';
+						echo'<option></option>';
+							for($i=1;$i<=12;$i++)
+							{
+									echo'<option>'.$i.'</option>';
+							}
+						echo '</select>';
+						echo '</p>';
+						echo'<br>';
+						echo'<p>'.$data4[$_SESSION['user']['langue']].' : <input type="text" name="phone"></p>';
 					echo'<div>';
 					
 					echo'<div class="">';
 						// echo'<textarea></textarea>';
 						echo'<br>';
 						echo$data6[$_SESSION['user']['langue']];
-						echo'<input type="checkbox" name="terme">';
+						echo'<input type="checkbox" name="terme" required>';
 						echo'<br>';						
 						echo'<span>'.$data11[$_SESSION['user']['langue']].'</span>';						
 					echo'<div>';					

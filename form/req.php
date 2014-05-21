@@ -11,6 +11,7 @@
 	$profil="SELECT * FROM member WHERE id='".$pseudo["id"]."'";
 	
 	$editor="SELECT * FROM content WHERE title='editor' ";
+	$tag="SELECT * FROM content WHERE title='tag' ";
 	
 	
 	/*************************************************************************/

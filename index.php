@@ -24,10 +24,9 @@
 			$genre_idx = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
 			$genre_idx_inf = $bdd->query($genre_index." AND game.title='".$donnees['title']."' ");
 			
-			$carteditor	= "SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.title=".$donnees['title']." AND game.ideditor=editor.name";
-			echo$carteditor;
-			// $carteditor = $bdd->query($carteditor);
-			// $c_editor = $carteditor->fetch();
+			$carteditor	= "SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.title='".$donnees['title']."' AND game.ideditor=editor.name";
+			$carteditor = $bdd->query($carteditor);
+			$c_editor = $carteditor->fetch();
 			?>
 				<div class="article">
 				<div id="<?php echo $i; ?>" class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
@@ -76,8 +75,12 @@
 						</div>
 						
 						<div class="article-genre">
-							<span>Tags : 
 						<?php 
+							$cartitem3 = $bdd->query($tag);
+							$donnees3 = $cartitem3->fetch();
+							
+							echo '<span>'.$donnees3[$_SESSION['user']['langue']].' : ' ;
+						
 						while($donnees2 = $genre_idx_inf->fetch()){
 							echo '<a class="g_genre" href="game.php?genre='.$donnees2['genre'].'" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 						}

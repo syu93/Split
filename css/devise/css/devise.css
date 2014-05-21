@@ -52,6 +52,35 @@
 	width:auto;
 }
 
+/**********/
+.container .icon-euro, .container .icon-dollar
+{
+	font-family: Mech;
+	font-size:30px;
+	margin:0 5px 0 3px;
+}
+
+.container .icon-euro:after
+{
+	content:"€";
+	font-family: Mech;
+	font-size:35px;
+	width:auto;
+}
+
+.container .icon-dollar:before
+{
+	content:"$";
+	font-family: airstrike;
+	font-size:35px;
+	width:auto;
+}
+.container select {
+    float: right;
+    margin-right: 60px;
+}
+/**********/
+
 .cart_item .icon-euro:after, .cart_item .icon-dollar:before
 {
 	font-family:ExpletusSans-Medium;
