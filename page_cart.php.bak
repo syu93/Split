@@ -128,7 +128,7 @@ display:none;
 		else
 		{
 			echo'<div class="container" style="clear:none; width: 49%; background:url(\'css/get.png\');float:left;">';
-			echo'<h6>'.$data13[$_SESSION['user']['langue']].'</h6>';//recover content
+			echo'<h6>'.$data13[$_SESSION['user']['langue']].'</span>';//recover content
 			echo'</br>';
 			
 			$signup = $bdd->query($sign);

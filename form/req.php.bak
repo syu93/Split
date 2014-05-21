@@ -11,6 +11,7 @@
 	$profil="SELECT * FROM member WHERE id='".$pseudo["id"]."'";
 	
 	$editor="SELECT * FROM content WHERE title='editor' ";
+	$carteditor="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.text_fr=".$gm." AND game.ideditor=editor.name";
 	
 	
 	/*************************************************************************/

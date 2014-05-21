@@ -26,8 +26,8 @@
 			
 			$carteditor	= "SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.title=".$donnees['title']." AND game.ideditor=editor.name";
 			echo$carteditor;
-			// $carteditor = $bdd->query($carteditor);
-			// $c_editor = $carteditor->fetch();
+			$carteditor = $bdd->query($carteditor);
+			$c_editor = $carteditor->fetch();
 			?>
 				<div class="article">
 				<div id="<?php echo $i; ?>" class="bandeau"><?php echo $donnees[$_SESSION['user']['langue']]; ?></div>
