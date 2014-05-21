@@ -19,5 +19,5 @@
 		<span id='total' class='<?php echo devise(); ?>' ><?php echo summary(); ?></span>
 	</div>
 	<?php $mycart2 = $bdd->query($cart_button); $donnees = $mycart2->fetch(); ?>
-	<a href="page_cart.php"><input type="button" class="submit" value="<?php echo $donnees[$_SESSION['user']['langue']]; ?>" ></a>
+	<a href=""><input type="button" class="submit" value="<?php echo $donnees[$_SESSION['user']['langue']]; ?>" >
 </div>
