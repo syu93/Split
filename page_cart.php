@@ -34,7 +34,7 @@ display:none;
 	/*****************/
 	$infobank = "SELECT * FROM `content` WHERE title='info bank'";
 	$paiement = "SELECT * FROM `content` WHERE title='paiement' ";
-	$facture = "SELECT * FROM `content` WHERE title='facturation' ";
+	$expiration = "SELECT * FROM `content` WHERE title='expiration' ";
 	$phone = "SELECT * FROM `content` WHERE title='phone' ";
 	$compte = "SELECT * FROM `content` WHERE title='compte' ";	
 	$termes = "SELECT * FROM `content` WHERE title='termes' ";
@@ -49,7 +49,7 @@ display:none;
 	//---
 	$req1 = $bdd->query($infobank);
 	$req2 = $bdd->query($paiement);
-	$req3= $bdd->query($facture);
+	$req3= $bdd->query($expiration);
 	$req4= $bdd->query($phone);
 	$req5= $bdd->query($compte);
 	$req6= $bdd->query($termes);
@@ -99,7 +99,7 @@ display:none;
 						echo'<p>'.$data3[$_SESSION['user']['langue']].' : ';
 						echo '<select name="year">';
 						echo'<option></option>';
-							for($i=14;$i<=24;$i++)
+							for($i=2014;$i<=2024;$i++)
 							{
 									echo'<option>'.$i.'</option>';
 							}
