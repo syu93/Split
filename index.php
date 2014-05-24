@@ -84,12 +84,14 @@
 						while($donnees2 = $genre_idx_inf->fetch()){
 							echo '<a class="g_genre" href="game.php?genre='.$donnees2['genre'].'" >'.$donnees2[$_SESSION['user']['langue']].'</a>';
 						}
+						?>
+							</span>
+						<?php
 						echo'<br>';
 						$cartitem2 = $bdd->query($editor);
 						$donnees2 = $cartitem2->fetch();
 						echo'<span>'.$donnees2[$_SESSION['user']['langue']].' : '.$c_editor[$_SESSION['user']['langue']].'</span>';
 						?>
-							</span>
 						</div>
 						<!--<iframe id='video_<?php //echo $i; ?>' width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>-->
 					</div>						
