@@ -1,6 +1,8 @@
 ﻿ <?php
 	require_once("bdd/bddconnect.php");
-	require_once("form/session.php");
+	 require_once("form/init.php");
+	// require_once("form/session.php");
+	start_session();
 	getUrl();
 	// echo $_SESSION['user']['location'];
 	$connected = ifconnected();
@@ -9,7 +11,7 @@
 	require_once("form/req.php");
 	/********************************************************/
 
-	// debug($_SESSION);
+	debug($_SESSION);
 	// unset($_SESSION['user']['cart']['game'][0]);
 	// echo $_SESSION['user']['cart']['game'][0];
 	/********************************************************/

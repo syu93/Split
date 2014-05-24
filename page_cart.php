@@ -85,17 +85,17 @@ display:none;
 					echo'<div class="" style="padding-left: 10px;">';
 						echo'<h4>'.$data1[$_SESSION['user']['langue']].'</h4>';
 						echo'<br>';
-						echo'<p>'.$data7[$_SESSION['user']['langue']].' : <input type="text" name="nom" required></p>';
+						echo'<p>'.$data7[$_SESSION['user']['langue']].' : <input type="text" name="nom" ></p>';
 						echo'<br>';
-						echo'<p>'.$data8[$_SESSION['user']['langue']].' : <input type="text" name="prenom" required></p>';
+						echo'<p>'.$data8[$_SESSION['user']['langue']].' : <input type="text" name="prenom" ></p>';
 						echo'<br>';						
-						echo'<p>'.$data2[$_SESSION['user']['langue']].' : <input id="card" type="text" name="carte" required maxlength="19"></p>';
+						echo'<p>'.$data2[$_SESSION['user']['langue']].' : <input id="card" type="text" name="carte"  maxlength="19"></p>';
 						echo'<br>';
-						echo'<p>'.$data14[$_SESSION['user']['langue']].' : <input type="text" class="credit_card_cvc form-control" name="cvc" required></p>';
+						echo'<p>'.$data14[$_SESSION['user']['langue']].' : <input type="text" name="cvc" maxlength="3" ></p>';
 						echo'<br>';
 						
 						echo'<p>'.$data3[$_SESSION['user']['langue']].' : ';
-						echo '<select name="month" required>';
+						echo '<select name="month" >';
 						echo'<option></option>';
 							for($i=1;$i<=9;$i++)
 							{
@@ -107,7 +107,7 @@ display:none;
 							}
 						echo '</select>';
 						echo"/";
-						echo '<select name="year" required>';
+						echo '<select name="year" >';
 						echo'<option></option>';
 							for($i=14;$i<=24;$i++)
 							{
@@ -117,14 +117,14 @@ display:none;
 
 						echo '</p>';
 						echo'<br>';
-						echo'<p>'.$data4[$_SESSION['user']['langue']].' : <input id="number" type="text" name="phone" required maxlength="14"></p>';
+						echo'<p>'.$data4[$_SESSION['user']['langue']].' : <input id="number" type="text" name="phone"  maxlength="14"></p>';
 					echo'<div>';
 					
 					echo'<div class="">';
 						// echo'<textarea></textarea>';
 						echo'<br>';
 						echo$data6[$_SESSION['user']['langue']];
-						echo'<input type="checkbox" name="terme" required>';
+						echo'<input type="checkbox" name="terme" >';
 						echo'<br>';						
 						echo'<span>'.$data11[$_SESSION['user']['langue']].'</span>';						
 					echo'<div>';					

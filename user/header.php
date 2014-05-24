@@ -1,6 +1,5 @@
 ﻿ <?php
 	require_once("../bdd/bddconnect.php");
-	// require_once("../form/session.php");
 	
 	$connected = ifconnected();
 	$pseudo = $_SESSION['member']['pseudo'];

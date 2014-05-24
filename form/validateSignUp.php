@@ -150,35 +150,132 @@
 	if(isset($_POST["order"]))
 	{
 		session_start();
+		$name = $_POST['nom'];
+		$firstname = $_POST['prenom'];
+		$carte = $_POST['carte'];
+		$date_exp = $_POST['month']."/".$_POST['year'];
+		$code = $_POST['cvc'];
+		$mail =$_SESSION['member']['pseudo']['email'];
+		//---------------------
+		$infobank = "SELECT * FROM `content` WHERE title='info bank'";
+		$paiement = "SELECT * FROM `content` WHERE title='paiement' ";
+
+		$phone = "SELECT * FROM `content` WHERE title='phone' ";
+		$compte = "SELECT * FROM `content` WHERE title='compte' ";	
+		$termes = "SELECT * FROM `content` WHERE title='termes' ";
+		$nom = "SELECT * FROM `content` WHERE title='nom' ";
+		$prenom = "SELECT * FROM `content` WHERE title='prenom' ";
+		$expiration = "SELECT * FROM `content` WHERE title='expiration' ";
+		$confirm = "SELECT * FROM `content` WHERE title='confirm' ";
+		$confirmation = "SELECT * FROM `content` WHERE title='confirmation' ";
+		$validate = "SELECT * FROM `content` WHERE title='cartvalidate' ";
+		$msgcart = "SELECT * FROM `content` WHERE title='msgcart'";
+		$cvc = "SELECT * FROM `content` WHERE title='cvc'";
+		
+		$nokey = "SELECT * FROM `content` WHERE title='nokey'";
+		$alreadybuy = "SELECT * FROM `content` WHERE title='alreadybuy'";
+		$orderrecap = "SELECT * FROM `content` WHERE title='orderrecap'";
+		$available = "SELECT * FROM `content` WHERE title='available'";
+		//---
+		$req1 = $bdd->query($infobank);
+		$req2 = $bdd->query($paiement);
+		$req3= $bdd->query($expiration);
+		$req4= $bdd->query($phone);
+		$req5= $bdd->query($compte);
+		$req6= $bdd->query($termes);
+		$req7= $bdd->query($nom);
+		$req8= $bdd->query($prenom);
+
+		$req10= $bdd->query($confirm);
+		$req11= $bdd->query($confirmation);
+		$req12= $bdd->query($validate);
+		$req13= $bdd->query($msgcart);
+		$req14= $bdd->query($cvc);
+		
+		$req15= $bdd->query($nokey);
+		$req16= $bdd->query($alreadybuy);
+		$req17= $bdd->query($orderrecap);
+		$req18= $bdd->query($available);
+		//---
+		$dat1 = $req1->fetch();
+		$dat2 = $req2->fetch();
+		$dat3 = $req3->fetch();
+		$dat4 = $req4->fetch();
+		$dat5 = $req5->fetch();
+		$dat6 = $req6->fetch();
+		$dat7 = $req7->fetch();
+		$dat8 = $req8->fetch();
+
+		$dat10 = $req10->fetch();
+		$dat11 = $req11->fetch();
+		$dat12 = $req12->fetch();
+		$dat13 = $req13->fetch();
+		$dat14 = $req14->fetch();
+		
+		$dat15 = $req15->fetch();
+		$dat16 = $req16->fetch();
+		$dat17 = $req17->fetch();
+		$dat18 = $req18->fetch();
+		//---------------------
+		$dat_15 = $dat15[$_SESSION['user']['langue']];
+		$dat_16 = $dat16[$_SESSION['user']['langue']];
+		//---------------------
+		$message['order'] = array();
+		$validate_order['item'] = array();
+		$total  = summary();
 		foreach($_SESSION['user']['cart']['game']as$cart_game):
-			$req1= $bdd->query('SELECT title FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
+			$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
 			$data1 = $req1->fetch();			
-			$c_game = $data1['title'];
+			$c_game = $data1['title'];			
 			
-			$req2 = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="" ');
-			$data2 = $req2->fetch();
-			$c_licence = $data2['licencekey'];
-			if(empty($c_licence))
-			{
-				$message="We are sorry, no key remaining for this item, try later";
-				require_once("../include/message.tpl");
-				// header('Location: ../index.php');//FIXME: create a validate payement page
-				die();
-			}
-			
-			$req3 =  $bdd->query('UPDATE `licence` SET `member`= "'.$_SESSION['member']['pseudo']['email'].'" WHERE idgame = "'.$c_game.'" AND member ="" ');
+				$req2 = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="" ');
+				$data2 = $req2->fetch();
+				$data_2 = $req2->rowCount();
+				$c_licence = $data2['licencekey'];
+				//------------------------------
+				$o_check = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="'.$mail.'"');
+				$data3 = $o_check->rowCount();
+				//------------------------------
+				if($data_2 < 1) //Check if a licence for this game is available
+				{
+					$dat_15 = $cart_game." :<br>".$dat15[$_SESSION['user']['langue']].".";
+					array_push($message['order'], $dat_15);
+					$vld_bt="";
+					//------------------------------
+					$total = $total-$data1['price'];//FIXME : Adjust the price of the order
+				}
+				else if($data3 >= 1) //Check if the user already have a licence for this game
+				{
+					$dat_16 = $cart_game." :<br>".$dat16[$_SESSION['user']['langue']].".";
+					array_push($message['order'], $dat_16);
+					$vld_bt="";
+					//------------------------------
+					$total = $total-$data1['price'];//FIXME : Adjust the price of the order
+				}
+				else // Make the order if conditions are full fill
+				{
+					// echo'Wait while we treat your order';
+					array_push($message['order'], $cart_game." : ".$dat18[$_SESSION['user']['langue']].".");
+					// array_push($validate_order['item'],) //FIXME:Only buy available game
+					$vld_bt='<input type="submit" name="validate_order" style="float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';
+					//------------------------------
+					$total  = summary();
+				}
 		endforeach;
-
-/******************/
-     $to      = $_SESSION['member']['pseudo']['email'];
-     $subject = 'Your order';
-     $message = 'Recape of your order'; //Take the contente of a template message
-     $headers = 'From: Support Split<support@split.com>' . "\r\n" .
-     'Reply-To: custumer-service@split.com' . "\r\n" .
-     'X-Mailer: PHP/' . phpversion();
-     mail($to, $subject, $message, $headers);		
-/******************/		
-		// header('Location: ../index.php');//FIXME: create a validate payement page
+	require_once("../include/message.tpl");
+	/******************/
+		 // $to      = $_SESSION['member']['pseudo']['email'];
+		 // $subject = 'Your order';
+		 // $message = 'Recape of your order'; //Take the contente of a template message
+		 // $headers = 'From: Support Split<support@split.com>' . "\r\n" .
+		 // 'Reply-To: custumer-service@split.com' . "\r\n" .
+		 // 'X-Mailer: PHP/' . phpversion();
+		 // mail($to, $subject, $message, $headers);		
+	/******************/
 	}
-
+	if(isset($_POST['validate_order']))
+	{
+		echo"plop";
+		// $req3 =  $bdd->query('UPDATE `licence` SET `member`= "'.$mail.'" WHERE idgame = "'.$c_game.'" AND licencekey= "'.$c_licence.'" AND member ="" ');
+	}
 ?>
