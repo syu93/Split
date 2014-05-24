@@ -143,5 +143,42 @@
 		echo cart_count();
 		return;
 	}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+	if(isset($_POST["order"]))
+	{
+		session_start();
+		foreach($_SESSION['user']['cart']['game']as$cart_game):
+			$req1= $bdd->query('SELECT title FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
+			$data1 = $req1->fetch();			
+			$c_game = $data1['title'];
+			
+			$req2 = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="" ');
+			$data2 = $req2->fetch();
+			$c_licence = $data2['licencekey'];
+			if(empty($c_licence))
+			{
+				$message="We are sorry, no key remaining for this item, try later";
+				require_once("../include/message.tpl");
+				// header('Location: ../index.php');//FIXME: create a validate payement page
+				die();
+			}
+			
+			$req3 =  $bdd->query('UPDATE `licence` SET `member`= "'.$_SESSION['member']['pseudo']['email'].'" WHERE idgame = "'.$c_game.'" AND member ="" ');
+		endforeach;
+
+/******************/
+     $to      = $_SESSION['member']['pseudo']['email'];
+     $subject = 'Your order';
+     $message = 'Recape of your order'; //Take the contente of a template message
+     $headers = 'From: Support Split<support@split.com>' . "\r\n" .
+     'Reply-To: custumer-service@split.com' . "\r\n" .
+     'X-Mailer: PHP/' . phpversion();
+     mail($to, $subject, $message, $headers);		
+/******************/		
+		// header('Location: ../index.php');//FIXME: create a validate payement page
+	}
 
 ?>

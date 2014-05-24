@@ -53,14 +53,14 @@
 }
 
 /**********/
-.container .icon-euro, .container .icon-dollar
+.cart .icon-euro, .container .icon-dollar
 {
 	font-family: Mech;
 	font-size:30px;
 	margin:0 5px 0 3px;
 }
 
-.container .icon-euro:after
+.cart .icon-euro:after
 {
 	content:"€";
 	font-family: Mech;
@@ -68,14 +68,14 @@
 	width:auto;
 }
 
-.container .icon-dollar:before
+.cart  .icon-dollar:before
 {
 	content:"$";
 	font-family: airstrike;
 	font-size:35px;
 	width:auto;
 }
-.container select {
+.cart select {
     float: right;
     margin-right: 60px;
 }
