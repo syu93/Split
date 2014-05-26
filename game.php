@@ -1,4 +1,8 @@
 <?php
+if($_GET['genre']='community')
+{
+	header('location:community');
+}
 	require_once("include/header.php");
 	require_once("bdd/bddconnect.php");
 	require_once("form/req.php");

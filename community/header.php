@@ -1,6 +1,7 @@
 ﻿ <?php
 	require_once("../bdd/bddconnect.php");
-	
+	require_once("../form/init.php");
+	session_start();
 	$connected = ifconnected();
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";

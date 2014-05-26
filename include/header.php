@@ -1,8 +1,11 @@
 ﻿ <?php
 	require_once("bdd/bddconnect.php");
-	 require_once("form/init.php");
-	// require_once("form/session.php");
+	require_once("form/init.php");
+	
 	start_session();
+	
+	debug($_SESSION['user']['cart']['incart']);
+	
 	getUrl();
 	// echo $_SESSION['user']['location'];
 	$connected = ifconnected();
@@ -11,7 +14,7 @@
 	require_once("form/req.php");
 	/********************************************************/
 
-	debug($_SESSION);
+	// debug($_SESSION);
 	// unset($_SESSION['user']['cart']['game'][0]);
 	// echo $_SESSION['user']['cart']['game'][0];
 	/********************************************************/
@@ -112,12 +115,12 @@
 	?>		
 		<span id="<?php echo $idt; ?>" class="signIn">
 			<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-			<a href="user/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
+			<a href="community/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
 			<div class="<?php echo $class; ?>">
 				<?php	
 					$avt = $bdd->query($profil);
 					$avat = $avt->fetch();
-					echo"<a href='user/user.php'><img src='".$avat['avatar']."'/>";
+					echo"<a href='community/user.php'><img src='".$avat['avatar']."'/>";
 				?>
 				<?php
 					echo $pseudo['pseudo']."</a>";

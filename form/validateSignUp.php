@@ -65,8 +65,14 @@
 		
 	session_start();
 	$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["cart"].'" ');
-	$donnees = $req->fetch();	
-	$in_cart = array_search($donnees[$_SESSION["user"]["langue"]], $_SESSION['user']['cart']['game']);
+	$donnees = $req->fetch();
+	
+	// $in_cart = array_search($donnees[$_SESSION["user"]["langue"]] );
+	
+	foreach($_SESSION['user']['cart']['incart'],$cart as $key => $value):
+		echo 
+	endforeach;	
+	
 	if($in_cart !== false)
 	{
 		echo cart_count();
@@ -75,17 +81,26 @@
 	}
 	else
 	{
-		if(empty($_SESSION['user']['cart']['game']))
+		// if(empty($_SESSION['user']['cart']['game']))
+		if(empty($_SESSION['user']['cart']['incart']))
 		{
-			$_SESSION['user']['cart']['game'] = array($item);
-			$_SESSION['user']['cart']['price'] = array($price);
-			$_SESSION['user']['cart']['nb_cart']=cart_count();
+			$cart=new cart;
+			$cart->order_count($item,$price);
+			
+			array_push($_SESSION['user']['cart']['incart'],$cart);
 			echo cart_count();
 		}
 		else
 		{
-			array_push($_SESSION['user']['cart']['game'],$item);
-			array_push($_SESSION['user']['cart']['price'],$price);
+			$cart=new cart;
+			$cart->order_count($item,$price);
+			array_push($_SESSION['user']['cart']['incart'],$cart);
+			
+			// array_push($_SESSION['user']['cart']['game'],$item);
+			// array_push($_SESSION['user']['cart']['price'],$price);
+			
+			
+			
 			$_SESSION['user']['cart']['nb_cart']=cart_count();
 			echo cart_count();
 		}	
@@ -223,46 +238,60 @@
 		$message['order'] = array();
 		$validate_order['item'] = array();
 		$total  = summary();
+		$i=1;
 		foreach($_SESSION['user']['cart']['game']as$cart_game):
 			$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
 			$data1 = $req1->fetch();			
 			$c_game = $data1['title'];			
 			
-				$req2 = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="" ');
-				$data2 = $req2->fetch();
-				$data_2 = $req2->rowCount();
-				$c_licence = $data2['licencekey'];
+			$req2 = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="" ');
+			$data2 = $req2->fetch();
+			$data_2 = $req2->rowCount();
+			$c_licence = $data2['licencekey'];
+			//------------------------------
+			$o_check = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="'.$mail.'"');
+			$data3 = $o_check->rowCount();
+			//------------------------------
+			if($data_2 < 1) //Check if a licence for this game is available
+			{
+				$dat_15 = $cart_game." :<br>".$dat15[$_SESSION['user']['langue']].".";
+				array_push($message['order'], $dat_15);
+				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
-				$o_check = $bdd->query('SELECT * FROM licence WHERE idgame="'.$c_game.'" AND member="'.$mail.'"');
-				$data3 = $o_check->rowCount();
+				// $total = $total-$data1['price'];//FIXME : Adjust the price of the order
+			}
+			else if($data3 >= 1) //Check if the user already have a licence for this game
+			{
+				$dat_16 = $cart_game." :<br>".$dat16[$_SESSION['user']['langue']].".";
+				array_push($message['order'], $dat_16);
+				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
-				if($data_2 < 1) //Check if a licence for this game is available
-				{
-					$dat_15 = $cart_game." :<br>".$dat15[$_SESSION['user']['langue']].".";
-					array_push($message['order'], $dat_15);
-					$vld_bt="";
-					//------------------------------
-					$total = $total-$data1['price'];//FIXME : Adjust the price of the order
-				}
-				else if($data3 >= 1) //Check if the user already have a licence for this game
-				{
-					$dat_16 = $cart_game." :<br>".$dat16[$_SESSION['user']['langue']].".";
-					array_push($message['order'], $dat_16);
-					$vld_bt="";
-					//------------------------------
-					$total = $total-$data1['price'];//FIXME : Adjust the price of the order
-				}
-				else // Make the order if conditions are full fill
-				{
-					// echo'Wait while we treat your order';
-					array_push($message['order'], $cart_game." : ".$dat18[$_SESSION['user']['langue']].".");
-					// array_push($validate_order['item'],) //FIXME:Only buy available game
-					$vld_bt='<input type="submit" name="validate_order" style="float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';
-					//------------------------------
-					$total  = summary();
-				}
+				// $total = $total-$data1['price'];//FIXME : Adjust the price of the order
+			}
+			else // Make the order if conditions are full fill
+			{
+				// echo'Wait while we treat your order';
+				array_push($message['order'], $cart_game." : ".$dat18[$_SESSION['user']['langue']].".");
+				// array_push($validate_order['item'],) //FIXME:Only buy available game
+				$vld_bt='<input type="submit" name="validate_order" style="float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';
+				//------------------------------
+				// $total  = summary();
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			$cart.$i = new cart;
+			// $cart.$i->order_count(, );
 		endforeach;
-	require_once("../include/message.tpl");
+		
+	// require_once("../include/message.tpl");
 	/******************/
 		 // $to      = $_SESSION['member']['pseudo']['email'];
 		 // $subject = 'Your order';

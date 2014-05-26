@@ -287,7 +287,7 @@ $( document ).ready(function(){
 	
 	
 	for(i=0;i<=nb; i++)
-	{		
+	{
 		$("#cart"+i).click(function(){
 		var id = $(this).attr("alt"); // The nb of the element clicked
 		

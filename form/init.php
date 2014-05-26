@@ -7,13 +7,11 @@ function start_session(){
 		$_SESSION['user']["cart"] = array(); 
 		
 		// $_SESSION['user']['cart']['id_game'] = array(); 
-		$_SESSION['user']['cart']['nb_cart'] = 0; 
+		$_SESSION['user']['cart']['nb_cart'] = 0;
 		$_SESSION['user']['cart']['game'] = array(); 
 		$_SESSION['user']['cart']['price'] = array(); 
-		$_SESSION['user']['cart']['editor'] = array(); 
-		$_SESSION['user']['cart']['genre'] = array(); 
-		$_SESSION['user']['cart']['pegi'] = array(); 
-		$_SESSION['user']['cart']['url'] = array(); 
+		
+		$_SESSION['user']['cart']['incart'] = array(); 
 	}
 	if(empty($_SESSION['member']["connected"]))
 	{			
@@ -459,6 +457,28 @@ function rm_summary($tot){
 	$total=number_format($tot, 2);
 	$sub_tot = summary();
 	return number_format($sub_tot,2);
+}
+
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+class cart
+{
+	private $game;
+	private $price;
+	
+	public function order_count($g, $p)
+	{
+		$this->game=$g;
+		$this->price=$p;
+	}	
+	
+	public function display_cart()
+	{
+		echo $this->game;
+		echo $this->price;
+	}
 }
 
 /****************************************************************************/

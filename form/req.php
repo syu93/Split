@@ -1,7 +1,6 @@
 <?php
 	// Header
 	$menu=" SELECT * FROM content WHERE active=1 AND tag ='menu' AND page='index' ORDER BY position LIMIT 6";
-	$menu2_user=" SELECT * FROM content WHERE active=1 AND tag ='menu' AND page='user' ORDER BY position LIMIT 6";
 	$lib="SELECT text_fr, text_en FROM content WHERE title='mylibrary' AND active=1 AND tag ='menu' AND connected='".$connected."' ";		
 	$gmelib = 'SELECT game.text_fr, game.text_en, game.url FROM `licence`, `game` WHERE licence.idgame=game.title ';
 	$ply="SELECT text_fr, text_en FROM content WHERE title='play' AND active=1 AND tag ='menu' AND connected='".$connected."' ";
@@ -13,6 +12,13 @@
 	$editor="SELECT * FROM content WHERE title='editor' ";
 	$tag="SELECT * FROM content WHERE title='tag' ";
 	
+	
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	/*************************************************************************/
+	// Community
+	$menu2_user=" SELECT * FROM content WHERE active=1 AND tag ='menu2' AND page='user' ORDER BY position LIMIT 6";
 	
 	/*************************************************************************/
 	/*************************************************************************/
