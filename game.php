@@ -1,5 +1,5 @@
 <?php
-if($_GET['genre']='community')
+if($_GET['genre']=='community')
 {
 	header('location:community');
 }

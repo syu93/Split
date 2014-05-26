@@ -131,9 +131,10 @@
 				<nav class="menu2 element-container">					
 					<ul class="level1">
 						<span><a id="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>						
-						<?php $reponse = $bdd->query($menu2_user);
+						<?php
+						$reponse = $bdd->query($menu2_user);						
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="game.php?genre=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
+							<li><a href="index.php?page=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
 						<?php }
 						
 						$cart = $bdd->query($cart);

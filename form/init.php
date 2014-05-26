@@ -4,14 +4,10 @@ function start_session(){
 	if(empty($_SESSION["user"]['id_session']))
 	{			
 		$_SESSION['user']['id_session'] = uniqid("", false); // User represent the session itself and member the information about the customer	
-		$_SESSION['user']["cart"] = array(); 
 		
-		// $_SESSION['user']['cart']['id_game'] = array(); 
-		$_SESSION['user']['cart']['nb_cart'] = 0;
-		$_SESSION['user']['cart']['game'] = array(); 
-		$_SESSION['user']['cart']['price'] = array(); 
-		
-		$_SESSION['user']['cart']['incart'] = array(); 
+		$_SESSION['user']['nb_cart'] = 0;		
+		$cart_obj = new cart;
+		$_SESSION['user']['cart']  = array();
 	}
 	if(empty($_SESSION['member']["connected"]))
 	{			
@@ -434,7 +430,7 @@ function createID($n){
 /****************************************************************************/
 // count nb of element in cart
 function cart_count(){
-	$nb_cart = count($_SESSION['user']['cart']['game']);
+	$nb_cart = count($_SESSION['user']['cart']);
 	return $nb_cart;
 }
 /****************************************************************************/
@@ -443,10 +439,10 @@ function cart_count(){
 /****************************************************************************/
 // Total of the cart in add
 function summary(){
-	$nb_cart = cart_count() -1;
 	$total=number_format(0.00, 2);
-	foreach($_SESSION['user']['cart']['price']as$price):
-		$total += $price;
+	foreach($_SESSION['user']['cart']as$price):
+		$prx = $price->price_cart();
+		$total += $prx;
 	endforeach;
 	return number_format($total,2);
 }
@@ -465,8 +461,8 @@ function rm_summary($tot){
 /****************************************************************************/
 class cart
 {
-	private $game;
-	private $price;
+	public $game;
+	public $price;
 	
 	public function order_count($g, $p)
 	{
@@ -476,8 +472,12 @@ class cart
 	
 	public function display_cart()
 	{
-		echo $this->game;
-		echo $this->price;
+		return $this->game;
+	}
+	
+	public function price_cart()
+	{
+		return $this->price;
 	}
 }
 

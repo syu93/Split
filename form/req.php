@@ -18,7 +18,7 @@
 	/*************************************************************************/
 	/*************************************************************************/
 	// Community
-	$menu2_user=" SELECT * FROM content WHERE active=1 AND tag ='menu2' AND page='user' ORDER BY position LIMIT 6";
+	$menu2_user=" SELECT * FROM content WHERE active=1 AND tag ='menu2' AND page='cummunity' ORDER BY position LIMIT 6";
 	
 	/*************************************************************************/
 	/*************************************************************************/

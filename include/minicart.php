@@ -46,17 +46,17 @@
 				$c_empty = "SELECT * FROM content WHERE title='cartempty' ";
 				$empty = $bdd->query($c_empty);
 				$data = $empty->fetch();
-				if($_SESSION['user']['cart']['game'] == null)
+				if($_SESSION['user']['cart'] == null)
 				{
 					echo"<H6 class='c_empty'>".$data[$_SESSION['user']['langue']]."</H6>";					
 				}
-				foreach( $_SESSION['user']['cart']['game']as$game):			
-					$g=trim($game," \t\n\r\0\x0B"); //delete the space around the variable
+				foreach( $_SESSION['user']['cart']as$game):			
+					$g=trim($game->display_cart()," \t\n\r\0\x0B"); //delete the space around the variable
 					$gm ="'".preg_quote($g,"'" )."'"; // Escape the singles quotes
 					/********************************************************************************/
-					$incart="SELECT * FROM game WHERE game.text_fr=".$gm." ";
-					$carteditor="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.text_fr=".$gm." AND game.ideditor=editor.name";
-					$cartgenre="SELECT genre.genre, genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre AND game.".$_SESSION['user']['langue']." = ".$gm.";";
+					$incart="SELECT * FROM game WHERE game.title=".$gm." ";
+					$carteditor="SELECT editor.text_fr, editor.text_en FROM game, editor WHERE game.title=".$gm." AND game.ideditor=editor.name";
+					$cartgenre="SELECT genre.genre, genre.text_fr, genre.text_en FROM game,`gamegenre`, genre WHERE game.title = gamegenre.idgame AND genre.genre = gamegenre.idgenre AND game.title = ".$gm.";";
 					
 					$cartitem1 = $bdd->query($incart);
 					$cartitem2 = $bdd->query($editor);
@@ -72,7 +72,7 @@
 					$c_editor = $carteditor->fetch();				
 					/********************************************************************************/
 					echo"<div id='mycartItem' class='cart_item'>";
-							echo"<span id='sum' data=".$_SESSION['user']['cart']['nb_cart']."></span>";
+							echo"<span id='sum' data=".$_SESSION['user']['nb_cart']."></span>";
 							echo "<a href='#'><img src=../".$donnees1["url"]."></a>";
 							echo "<H6>".$donnees1[$_SESSION['user']['langue']]."</H6>";
 							echo "<p>".$donnees2[$_SESSION['user']['langue']]." : ".$c_editor[$_SESSION['user']['langue']]."</p>";

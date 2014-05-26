@@ -4,8 +4,6 @@
 	
 	start_session();
 	
-	debug($_SESSION['user']['cart']['incart']);
-	
 	getUrl();
 	// echo $_SESSION['user']['location'];
 	$connected = ifconnected();
@@ -15,8 +13,6 @@
 	/********************************************************/
 
 	// debug($_SESSION);
-	// unset($_SESSION['user']['cart']['game'][0]);
-	// echo $_SESSION['user']['cart']['game'][0];
 	/********************************************************/
 	
  ?>

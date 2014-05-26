@@ -375,11 +375,11 @@ $( document ).ready(function(){
 	for(i=0;i<=nb; i++)
 	{	
 		$("#trash"+i).click(function(event){
-		var s = nb-1;
+		var s = nb;
 		var arr_idx = $(this).attr("data");
 		var rmcart = {};
 		rmcart.arr_idx = arr_idx;
-
+		// alert(rmcart.arr_idx);
 			$.ajax({
 				type: "POST",
 				url: "http://127.0.0.1/split/form/validateSignUp.php",

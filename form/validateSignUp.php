@@ -60,53 +60,58 @@
 	
 	if(isset($_POST["cart"]))
 	{
-	$item = $_POST["cart"];
-	$price = $_POST["price"];
+		//recover the mage added infos
+		$item = $_POST["cart"];
+		$price = $_POST["price"];
+
+		//Transform the game text_fr of text_en into title in the bdd
+		session_start();		
+		$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$item.'" ');
+		$donnees = $req->fetch();
+		$in_cart_item = $donnees['title'];//peut etre text_fr
+
+		//Initriat the verification array
+		$tab_verif = array();
 		
-	session_start();
-	$req= $bdd->query('SELECT * FROM game WHERE '.$_SESSION["user"]["langue"].'="'.$_POST["cart"].'" ');
-	$donnees = $req->fetch();
-	
-	// $in_cart = array_search($donnees[$_SESSION["user"]["langue"]] );
-	
-	foreach($_SESSION['user']['cart']['incart'],$cart as $key => $value):
-		echo 
-	endforeach;	
-	
-	if($in_cart !== false)
-	{
-		echo cart_count();
-		return;
-		die();
-	}
-	else
-	{
-		// if(empty($_SESSION['user']['cart']['game']))
-		if(empty($_SESSION['user']['cart']['incart']))
+		// Foreach the cart object to recover all the game in cart
+		foreach($_SESSION['user']['cart'] as $data):
+			// $data->order_count("7 Days to Die",22.99);
+			$ic_game = $data->display_cart();
+			array_push($tab_verif,$ic_game); // Push it the the verification array
+		endforeach;
+		// search for the item already in the cart
+		$in_cart = array_search($in_cart_item,$tab_verif);
+		
+		if($in_cart !== false)
 		{
-			$cart=new cart;
-			$cart->order_count($item,$price);
-			
-			array_push($_SESSION['user']['cart']['incart'],$cart);
 			echo cart_count();
+			return;
+			die();
 		}
 		else
 		{
-			$cart=new cart;
-			$cart->order_count($item,$price);
-			array_push($_SESSION['user']['cart']['incart'],$cart);
-			
-			// array_push($_SESSION['user']['cart']['game'],$item);
-			// array_push($_SESSION['user']['cart']['price'],$price);
-			
-			
-			
-			$_SESSION['user']['cart']['nb_cart']=cart_count();
-			echo cart_count();
-		}	
-	}	
-	
-	return;
+			if(empty($tab_verif))
+			{
+				// First add of item
+				$obj =new cart;
+				$_SESSION['user']['cart'][] = $obj;
+				foreach($_SESSION['user']['cart'] as $data):
+					$data->order_count($in_cart_item,$price);
+				endforeach;
+				$_SESSION['user']['nb_cart']=cart_count();
+				echo cart_count();
+			}
+			else
+			{
+				$arr=new cart;
+				$arr->order_count($in_cart_item,$price);
+				array_push($_SESSION['user']['cart'], $arr);	
+				$_SESSION['user']['nb_cart']=cart_count();
+				echo cart_count();
+			}	
+		}
+		
+		return;
 	}
 	
 	if(isset($_POST["prx_add"]))
@@ -129,32 +134,24 @@
 	if(isset($_POST["arr_idx"]))
 	{
 		session_start();
-		unset($_SESSION['user']['cart']['game'][$_POST["arr_idx"]]);
-		unset($_SESSION['user']['cart']['price'][$_POST["arr_idx"]]);
+		foreach($_SESSION['user']['cart'] as $data):
+			$data->display_cart();
+			unset($_SESSION['user']['cart'][$_POST["arr_idx"]]);
+		endforeach;
 		
 		$_SESSION['in_cart']['game']=array();
-		$_SESSION['in_cart']['price']=array();
 		
-		foreach($_SESSION['user']['cart']['game']as$in_cart):
+		foreach($_SESSION['user']['cart']as$in_cart):
 			array_push($_SESSION['in_cart']['game'], $in_cart);
 		endforeach;
 		
-		foreach($_SESSION['user']['cart']['price']as$in_cart):
-			array_push($_SESSION['in_cart']['price'], $in_cart);
-		endforeach;
-		
-		$_SESSION['user']['cart']['game']=array();
-		$_SESSION['user']['cart']['price']=array();
+		$_SESSION['user']['cart']=array();
 		
 		foreach($_SESSION['in_cart']['game']as$in_cart):
-			array_push($_SESSION['user']['cart']['game'], $in_cart);
+			array_push($_SESSION['user']['cart'], $in_cart);
 		endforeach;
 		
-		foreach($_SESSION['in_cart']['price']as$in_cart):
-			array_push($_SESSION['user']['cart']['price'], $in_cart);
-		endforeach;
-		
-		$_SESSION['user']['cart']['nb_cart'] = $_SESSION['user']['cart']['nb_cart'] - 1;
+		$_SESSION['user']['nb_cart'] = $_SESSION['user']['nb_cart'] - 1;
 		echo cart_count();
 		return;
 	}
