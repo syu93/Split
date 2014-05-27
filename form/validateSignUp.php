@@ -188,6 +188,8 @@
 		$alreadybuy = "SELECT * FROM `content` WHERE title='alreadybuy'";
 		$orderrecap = "SELECT * FROM `content` WHERE title='orderrecap'";
 		$available = "SELECT * FROM `content` WHERE title='available'";
+		$tot = "SELECT * FROM `content` WHERE title='total'";
+		$subtot = "SELECT * FROM `content` WHERE title='subtotal'";
 		//---
 		$req1 = $bdd->query($infobank);
 		$req2 = $bdd->query($paiement);
@@ -208,6 +210,8 @@
 		$req16= $bdd->query($alreadybuy);
 		$req17= $bdd->query($orderrecap);
 		$req18= $bdd->query($available);
+		$req19= $bdd->query($tot);
+		$req20= $bdd->query($subtot);
 		//---
 		$dat1 = $req1->fetch();
 		$dat2 = $req2->fetch();
@@ -228,6 +232,9 @@
 		$dat16 = $req16->fetch();
 		$dat17 = $req17->fetch();
 		$dat18 = $req18->fetch();
+		$dat19 = $req19->fetch();
+		$dat20 = $req20->fetch();
+		
 		//---------------------
 		$dat_15 = $dat15[$_SESSION['user']['langue']];
 		$dat_16 = $dat16[$_SESSION['user']['langue']];
@@ -235,8 +242,13 @@
 		$message['order'] = array();
 		$validate_order['item'] = array();
 		$total  = summary();
+		$substract_total=0;
+		$subtotal=summary();
 		$i=1;
-		foreach($_SESSION['user']['cart']['game']as$cart_game):
+		foreach($_SESSION['user']['cart']as$crt_game):
+			$cart_price=$crt_game ->price_cart();
+			$cart_game=$crt_game ->display_cart();
+			
 			$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
 			$data1 = $req1->fetch();			
 			$c_game = $data1['title'];			
@@ -255,7 +267,8 @@
 				array_push($message['order'], $dat_15);
 				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
-				// $total = $total-$data1['price'];//FIXME : Adjust the price of the order
+				// $total -= $cart_price; //FIXME : Adjust the price of the order
+				$substract_total += $cart_price;
 			}
 			else if($data3 >= 1) //Check if the user already have a licence for this game
 			{
@@ -264,6 +277,8 @@
 				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
 				// $total = $total-$data1['price'];//FIXME : Adjust the price of the order
+				// $total -= $cart_price;
+				$substract_total += $cart_price;
 			}
 			else // Make the order if conditions are full fill
 			{
@@ -274,21 +289,10 @@
 				//------------------------------
 				// $total  = summary();
 			}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			$cart.$i = new cart;
-			// $cart.$i->order_count(, );
 		endforeach;
 		
-	// require_once("../include/message.tpl");
+	$subtotal -=$substract_total;
+	require_once("../include/message.tpl");
 	/******************/
 		 // $to      = $_SESSION['member']['pseudo']['email'];
 		 // $subject = 'Your order';

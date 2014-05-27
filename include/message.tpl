@@ -1,5 +1,5 @@
 <?php
-	require_once("../user/header.php");
+	require_once("../community/header.php");
 	
 	require_once("../form/init.php");	
 	require_once("../form/req.php");	
@@ -19,7 +19,9 @@
 		echo'<br>';
 		echo$vld_bt;
 		echo'<br>';
-		echo'<span class="'.devise().'">Total : '.$total.'</span>';
+		echo'<span>'.$dat19[$_SESSION['user']['langue']].' : </span><span class="'.devise().'">'.$total.'</span>-<span class="'.devise().'">'.$substract_total.'</span>';
+		echo'<br>';
+		echo'<span>'.$dat20[$_SESSION['user']['langue']].' : </span><span class="'.devise().'">'.$subtotal.'</span>';
 	echo'</form>';
 	echo"</div>";
 	foreach($message['order']as$message):
