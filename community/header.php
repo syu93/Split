@@ -133,7 +133,7 @@
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a id="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>						
+						<span><a class="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>						
 						<?php
 						$reponse = $bdd->query($menu2_user);						
 						while ($donnees = $reponse->fetch()) {	?>						
@@ -144,7 +144,7 @@
 						while ($donnees = $cart->fetch()) { ?>												
 							<li class="cart">
 							<i id="nb_cart" class="nb_cart icon-basket" ><?php echo cart_count();?></i>
-							<a href="page_cart.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>
+							<a href="../page_cart.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>
 							<?php require_once("../include/cart.php");?>						
 						</li>
 						<?php } ?>

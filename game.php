@@ -3,6 +3,26 @@ if($_GET['genre']=='community')
 {
 	header('location:community');
 }
+else if($_GET['genre']=='cgutext')
+{
+	require_once("include/header.php");
+	require_once("bdd/bddconnect.php");
+
+	$message = array("cgu"=>"");
+	$message['cgu'] = array();
+	
+	$cgu = "SELECT * FROM `content` WHERE title='cgu'";
+	$req1 = $bdd->query($cgu);
+	$dat1 = $req1->fetch();
+	
+	array_push($message['cgu'], $dat1[$_SESSION['user']['langue']]);
+	require_once('include/cgu.tpl');	
+	die();
+}
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
 	require_once("include/header.php");
 	require_once("bdd/bddconnect.php");
 	require_once("form/req.php");

@@ -50,16 +50,14 @@
 					<ul class="level1">
 	<?php
 	$library = $bdd->query($lib);
-	// var_dump($pseudo);
-	// var_dump($lib);
 	while ($donnees = $library->fetch()) { ?>
 						<li><a class="signIn" herf="#"><?php echo $donnees[$_SESSION['user']['langue']];?></a>
 	<?php }	?>
-							<ul class="level2">
-								
+							<ul class="level2">								
 	<?php
 	
 	$gmelib = $gmelib.' AND licence.member="'.$_SESSION["member"]['mail'].'" ';
+	// echo $gmelib;
 	$game = $bdd->query($gmelib);
 	while ($donnees = $game->fetch()) {	?>
 								<li class="myGame">
@@ -135,7 +133,7 @@
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a id="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>						
+						<span><a class="logo" href="index.php"><img  src="img/SPLIT_LOGO.PNG"></a></span>						
 						<?php $reponse = $bdd->query($menu);
 						while ($donnees = $reponse->fetch()) {	?>						
 							<li><a href="game.php?genre=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>

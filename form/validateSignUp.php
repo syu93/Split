@@ -245,11 +245,15 @@
 		$substract_total=0;
 		$subtotal=summary();
 		$i=1;
+		$vld_bt='';
+		$_SESSION['user']['order']['game']=array();
+		$_SESSION['user']['order']['licence']=array();
+		//---------------------
 		foreach($_SESSION['user']['cart']as$crt_game):
 			$cart_price=$crt_game ->price_cart();
 			$cart_game=$crt_game ->display_cart();
-			
-			$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" ');
+		
+			$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" OR game.title="'.$cart_game.'" ');
 			$data1 = $req1->fetch();			
 			$c_game = $data1['title'];			
 			
@@ -267,7 +271,6 @@
 				array_push($message['order'], $dat_15);
 				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
-				// $total -= $cart_price; //FIXME : Adjust the price of the order
 				$substract_total += $cart_price;
 			}
 			else if($data3 >= 1) //Check if the user already have a licence for this game
@@ -276,36 +279,97 @@
 				array_push($message['order'], $dat_16);
 				$vld_bt='<input type="submit" name="validate_order" style="display:none; float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';//Griser le boutton
 				//------------------------------
-				// $total = $total-$data1['price'];//FIXME : Adjust the price of the order
-				// $total -= $cart_price;
 				$substract_total += $cart_price;
 			}
 			else // Make the order if conditions are full fill
 			{
-				// echo'Wait while we treat your order';
 				array_push($message['order'], $cart_game." : ".$dat18[$_SESSION['user']['langue']].".");
-				// array_push($validate_order['item'],) //FIXME:Only buy available game
+				order($cart_game,$cart_price,$c_licence);
 				$vld_bt='<input type="submit" name="validate_order" style="float: none;" value="'.$dat12[$_SESSION['user']['langue']].'">';
-				//------------------------------
-				// $total  = summary();
 			}
 		endforeach;
 		
-	$subtotal -=$substract_total;
+	$subtotal = subtotal($subtotal,$substract_total);
 	require_once("../include/message.tpl");
-	/******************/
-		 // $to      = $_SESSION['member']['pseudo']['email'];
-		 // $subject = 'Your order';
-		 // $message = 'Recape of your order'; //Take the contente of a template message
-		 // $headers = 'From: Support Split<support@split.com>' . "\r\n" .
-		 // 'Reply-To: custumer-service@split.com' . "\r\n" .
-		 // 'X-Mailer: PHP/' . phpversion();
-		 // mail($to, $subject, $message, $headers);		
-	/******************/
 	}
+	
 	if(isset($_POST['validate_order']))
 	{
-		echo"plop";
-		// $req3 =  $bdd->query('UPDATE `licence` SET `member`= "'.$mail.'" WHERE idgame = "'.$c_game.'" AND licencekey= "'.$c_licence.'" AND member ="" ');
+		session_start();
+		$i=0;
+		$message = array("alert"=>"");
+		$message['alert'] = array();
+		
+		$today = date("Ymd");
+		$date = date("Y-m-d");
+		
+		$nb_order = $bdd->prepare('SELECT * FROM order');
+		$nb_order->execute();						
+		$n_order = $nb_order->rowCount();
+		$n_order+=1;
+		$n_order = str_pad($n_order, 4, '0', STR_PAD_LEFT);
+		$id_order = $n_order."-".$today;
+		$reg_order =  "INSERT INTO `order`(`idorder`, `idclient`, `date`) VALUES ('".$id_order."','".$_SESSION['member']['mail']."','".$date."')";
+		
+		foreach($_SESSION['user']['order']['game']as$data):
+		$cart_price=$data ->price_cart();
+		$cart_game=$data ->display_cart();		
+		
+		$req1= $bdd->query('SELECT * FROM game WHERE game.text_fr="'.$cart_game.'" OR game.text_en="'.$cart_game.'" OR game.title="'.$cart_game.'" ');
+		$data1 = $req1->fetch();
+		$c_game = $data1['title'];
+			$c_licence = $_SESSION['user']['order']['licence'][$i];
+				$buygame =  $bdd->prepare('UPDATE `licence` SET `member`= :member WHERE idgame = :game AND licencekey= :licence AND member ="" ');				
+				$succed = $buygame->execute(array(
+				':member'=>$_SESSION['member']["mail"],
+				':game'=>$c_game,
+				':licence'=>$c_licence,
+				));
+				$buygame =  $bdd->query('SELECT * FROM `licence` WHERE member="'.$_SESSION['member']["mail"].'" AND idgame = "'.$c_game.'" AND licencekey="'.$c_licence.'" ');				
+				if(!$buygame)
+				{
+					array_push($message['alert'],"An error occured while we proced to your order of ".$c_game.".<br> Our technician will try to fix it as soon as possible,<br> You can also try agan to make your order.<br> We are sorry for this inconvenience<br><br>The Split team.");
+					require_once("../include/alert.tpl");
+					die();
+				}
+				else
+				{
+					array_push($message['alert'],"We have successfully proced to your order, you will receive an email of conformation.<br> Thank You for your order.<br><br>The Split team.");
+					//--------------------
+					$req_order = $bdd->query($reg_order);					
+					$ck_order = $bdd->query('SELECT * FROM `order` WHERE `idorder`="'.$id_order.'" ');
+					if(!$ck_order)
+					{
+						$reg_order = "";
+					}
+					else
+					{
+						$reg_o_details = "INSERT INTO orderdetails (idorder, idgame) VALUES('".$id_order."', '".$c_game."')";
+						$reg_o_d = $bdd->query($reg_o_details);
+					}
+					//--------------------
+					require_once("../include/alert.tpl");
+				}
+		$i++;
+		endforeach;
+	/******************/
+		ob_start(); // turn on output buffering
+		include('../include/mail.php');
+		$res = ob_get_contents(); // get the contents of the output buffer
+		ob_end_clean(); //  clean (erase) the output buffer and turn off output buffering
+	
+		$to  = $_SESSION['member']['pseudo']['email'];
+		$subject = 'Confirmation of you order';
+		$message = $res; //Take the contente of a template message
+		// $headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers= 'Content-type: text/html; charset=utf-8' . "\r\n";	 
+		$headers.= 'Content-Transfer-Encoding: 32bit' . "\r\n";	
+		$headers.= 'From: Customer Service <custumer-service@split.com>' . "\r\n" .
+		 'Reply-To: custumer-service@split.com' . "\r\n" .
+		 'X-Mailer: PHP/' . phpversion();
+		 mail($to, $subject, $message, $headers);		
+	/******************/	
+	empty_cart();
+	//END of the order
 	}
 ?>

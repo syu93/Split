@@ -10,3 +10,17 @@
 	padding-bottom: 15px;
 	margin-bottom:27px;
 }
+
+.footer .foot_index
+{
+	float:left;
+	margin-right: 25%;
+}
+.footer .foot_index:last-child
+{
+	margin-right: 0;
+}
+.footer .foot_index li
+{
+	list-style:none;
+}
