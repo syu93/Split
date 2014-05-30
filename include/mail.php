@@ -64,7 +64,7 @@
 				<tr><td style="height: 20px;"><hr></td></tr>
 			</tbody>
 			<tfoot style="font-size:25px; color:#3d3d3d; border-top: solid 1px #000;">
-				<tr><td>Plop Plop Plop Plop Plop Plop Plop </td></tr>
+				<tr><td>The Split team. </td></tr>
 			</tfoot >
 		</table>
 	</body>
