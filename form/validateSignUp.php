@@ -167,7 +167,7 @@
 		$carte = $_POST['carte'];
 		$date_exp = $_POST['month']."/".$_POST['year'];
 		$code = $_POST['cvc'];
-		$mail =$_SESSION['member']['pseudo']['email'];
+		$mail =$_SESSION['member']['email'];
 		//---------------------
 		$infobank = "SELECT * FROM `content` WHERE title='info bank'";
 		$paiement = "SELECT * FROM `content` WHERE title='paiement' ";
@@ -358,18 +358,18 @@
 		$res = ob_get_contents(); // get the contents of the output buffer
 		ob_end_clean(); //  clean (erase) the output buffer and turn off output buffering
 	
-		$to  = $_SESSION['member']['pseudo']['email'];
+		$to  = $_SESSION['member']['mail'];
 		$subject = 'Confirmation of you order';
 		$message = $res; //Take the contente of a template message
-		// $headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers = 'MIME-Version: 1.0' . "\r\n";
 		$headers= 'Content-type: text/html; charset=utf-8' . "\r\n";	 
-		$headers.= 'Content-Transfer-Encoding: 32bit' . "\r\n";	
+		$headers.= 'Content-Transfer-Encoding: 8bit' . "\r\n";	
 		$headers.= 'From: Customer Service <custumer-service@split.com>' . "\r\n" .
 		 'Reply-To: custumer-service@split.com' . "\r\n" .
 		 'X-Mailer: PHP/' . phpversion();
 		 mail($to, $subject, $message, $headers);		
 	/******************/	
 	empty_cart();
-	//END of the order
+	// END of the order
 	}
 ?>

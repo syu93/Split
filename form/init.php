@@ -30,7 +30,10 @@ function start_session(){
 /****************************************************************************/
 /****************************************************************************/
 function empty_cart(){
-	session_start();
+	if($_SESSION)
+	{
+		session_start();
+	}
 	$_SESSION['user']['nb_cart'] = 0;
 	$cart_obj = new cart;
 	$_SESSION['user']['cart']  = array();
@@ -42,11 +45,11 @@ function empty_cart(){
 /****************************************************************************/
 function session_connect($bdd,$m){
 	$mail = $m;
-	$test = $bdd->query("SELECT id, pseudo, email FROM member WHERE email='$mail'");
+	$test = $bdd->query("SELECT pseudo, email FROM member WHERE email='$mail'");
 	$pseudo = $test->fetch();
 	
 	session_start();
-	$_SESSION['member']['id'] = $_SESSION['user']['id'];
+	$_SESSION['member']['id'] = $_SESSION['user']['id_session'];
 	$_SESSION['member']['pseudo'] = $pseudo;
 	$_SESSION['member']['mail'] = $mail;
 	
@@ -55,14 +58,7 @@ function session_connect($bdd,$m){
 	// panier
 	/*************************************************************************/	
 	
-	$_SESSION['member']["connected"] = 1;
-	
-	// print_r("Session id: ".$_SESSION['member']['id']);
-	// echo"<br>";
-	// print_r($_SESSION['member']['pseudo']);
-	// echo"<br>";
-	// print_r($_SESSION['member']["connected"]);
-	
+	$_SESSION['member']["connected"] = 1;	
 	header('Location:'.$_SESSION['user']['location']);
 }
 /****************************************************************************/

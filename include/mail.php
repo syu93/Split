@@ -17,7 +17,7 @@
 	<body style="width:900px; margin-left:auto; margin-right:auto; background:#e5e5e5; padding:10px; border:solid #333 1px; box-shadow:0 0 3px 1px #000;">
 		<table style="">
 			<thead style="font-size:35px; color:#3d3d3d; font-weight:bold;">
-				<tr><td><img src="http://127.0.0.1/split/img/SPLIT_LOGO.jpg" style="width: 200px;"><hr></td></tr>
+				<tr><td><img src="http://avengerplague.olympe.in/img/SPLIT_LOGO.PNG" style="width: 200px;"><hr></td></tr>
 				<tr><td>Recap of your order</td></tr>
 			</thead>
 			<tbody style="font-size:25px; color:#3d3d3d;">

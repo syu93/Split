@@ -125,7 +125,7 @@
 			</div>
 			<div class="float-container">
 				<?php 
-					require_once("connect.php");
+					include("include/connect.php");
 				?>
 			</div>
 			</div>

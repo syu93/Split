@@ -4,7 +4,7 @@
 		<h6>Connexion/Inscription</h6>
 	</div>
 	<span id="closeBtn" class="closeBtn">
-		<img  src="img/close.PNG">
+		<img  src="http://127.0.0.1/split/img/close.PNG">
 	</span>
 	
 	<div class="connect">

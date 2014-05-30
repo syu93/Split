@@ -1,27 +1,41 @@
 <NotepadPlus>
     <Session activeView="0">
-        <mainView activeIndex="5">
-            <File firstVisibleLine="423" xOffset="0" scrollWidth="984" startPos="14587" endPos="14587" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\init.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="596" startPos="87" endPos="87" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\bdd\bddconnect.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1394" startPos="1267" endPos="1406" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\req.php" />
-            <File firstVisibleLine="0" xOffset="88" scrollWidth="1091" startPos="3481" endPos="3481" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\header.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1503" startPos="94" endPos="94" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\index.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1007" startPos="1117" endPos="1117" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\cart.php" />
-            <File firstVisibleLine="37" xOffset="0" scrollWidth="1610" startPos="4620" endPos="4620" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\minicart.php" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1018" startPos="784" endPos="784" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\page_cart.php" />
-            <File firstVisibleLine="150" xOffset="0" scrollWidth="717" startPos="5506" endPos="5506" selMode="0" lang="Javascript" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\js\signup_submit.js" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1157" startPos="22" endPos="22" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\validateSignUp.php" />
+        <mainView activeIndex="9">
+            <File firstVisibleLine="3" xOffset="0" scrollWidth="1058" startPos="1078" endPos="1090" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\init.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="596" startPos="200" endPos="200" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\bdd\bddconnect.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1394" startPos="257" endPos="257" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\req.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1109" startPos="364" endPos="364" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\header.php" />
+            <File firstVisibleLine="12" xOffset="0" scrollWidth="1503" startPos="1814" endPos="1823" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\index.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1007" startPos="303" endPos="223" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\cart.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1702" startPos="2889" endPos="2889" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\minicart.php" />
+            <File firstVisibleLine="82" xOffset="0" scrollWidth="1081" startPos="279" endPos="284" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\page_cart.php" />
+            <File firstVisibleLine="362" xOffset="0" scrollWidth="717" startPos="10833" endPos="10833" selMode="0" lang="Javascript" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\js\signup_submit.js" />
+            <File firstVisibleLine="331" xOffset="0" scrollWidth="2036" startPos="13503" endPos="13503" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\validateSignUp.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="517" startPos="563" endPos="577" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\validate.php" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="948" startPos="284" endPos="284" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\connect.php" />
+            <File firstVisibleLine="177" xOffset="0" scrollWidth="2223" startPos="5878" endPos="5890" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\admin\updategame.php" />
+            <File firstVisibleLine="12" xOffset="0" scrollWidth="1566" startPos="1107" endPos="1084" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\game.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="319" startPos="176" endPos="176" selMode="0" lang="Javascript" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\js\overContainer.js" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1185" startPos="1805" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\message.tpl" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="397" startPos="55" endPos="55" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\form\session.php" />
+            <File firstVisibleLine="108" xOffset="0" scrollWidth="1124" startPos="4740" endPos="4744" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\community\header.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="441" startPos="419" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\community\user.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="441" startPos="0" endPos="0" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\community\index.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1120" startPos="512" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\alert.tpl" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1815" startPos="180" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\mail.tpl" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1146" startPos="489" endPos="494" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\mail.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1092" startPos="301" endPos="301" selMode="0" lang="PHP" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\footer.php" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1062" startPos="112" endPos="112" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\include\cgu.tpl" />
         </mainView>
-        <subView activeIndex="0">
-            <File firstVisibleLine="137" xOffset="0" scrollWidth="5903" startPos="5966" endPos="5966" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\style.css" />
-            <File firstVisibleLine="433" xOffset="0" scrollWidth="649" startPos="9642" endPos="9642" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\menu.css" />
+        <subView activeIndex="4">
+            <File firstVisibleLine="89" xOffset="0" scrollWidth="5903" startPos="4478" endPos="4478" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\style.css" />
+            <File firstVisibleLine="246" xOffset="0" scrollWidth="649" startPos="5790" endPos="5794" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\menu.css" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="163" startPos="0" endPos="0" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\com-center.css" />
-            <File firstVisibleLine="123" xOffset="0" scrollWidth="742" startPos="154" endPos="91" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\article.css" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="275" startPos="0" endPos="0" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\footer.css" />
+            <File firstVisibleLine="124" xOffset="0" scrollWidth="742" startPos="2301" endPos="2301" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\article.css" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="309" startPos="286" endPos="286" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\footer.css" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="316" startPos="0" endPos="0" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\validate.css" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="212" startPos="292" endPos="292" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\user.css" />
-            <File firstVisibleLine="48" xOffset="0" scrollWidth="941" startPos="1374" endPos="1374" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\devise\css\devise.css" />
+            <File firstVisibleLine="33" xOffset="0" scrollWidth="941" startPos="932" endPos="932" selMode="0" lang="CSS" encoding="-1" filename="D:\Developpement\EasyPHP-DevServer\data\localweb\Split\css\devise\css\devise.css" />
         </subView>
     </Session>
 </NotepadPlus>

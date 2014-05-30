@@ -51,8 +51,6 @@
 					<ul class="level1">
 	<?php
 	$library = $bdd->query($lib);
-	// var_dump($pseudo);
-	// var_dump($lib);
 	while ($donnees = $library->fetch()) { ?>
 						<li><a class="signIn" herf="#"><?php echo $donnees[$_SESSION['user']['langue']];?></a>
 	<?php }	?>
@@ -64,16 +62,16 @@
 	while ($donnees = $game->fetch()) {	?>
 								<li class="myGame">
 									<span class="g-img">
-										<img src="../<?php echo$donnees["url"];?>"/>
+										<img src="../<?php //echo$donnees["url"];?>"/>
 									</span>
 									<span class="g-desc">
-										<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>								
+										<a href="#"><?php //echo$donnees[$_SESSION['user']['langue']];?></a>								
 									</span>
 		<?php	$play = $bdd->query($ply);
 		while ($donnees = $play->fetch()) {	?>
 									<ul class="level3">
 										<li>
-											<a href="#"><?php echo$donnees[$_SESSION['user']['langue']];?></a>
+											<a href="#"><?php //echo$donnees[$_SESSION['user']['langue']];?></a>
 		<?php }	?>
 										</li>
 									</ul>
@@ -111,7 +109,7 @@
 	?>		
 		<span id="<?php echo $idt; ?>" class="signIn">
 			<?php echo$donnees[$_SESSION['user']['langue']]; ?>
-			<a href="user/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
+			<a href="http://127.0.0.1/split/community/user.php?=<?php echo $pseudo["pseudo"]; ?> "><?php echo $pseudo["pseudo"]; ?></a>
 			<div class="<?php echo $class; ?>">
 				<?php	
 					$avt = $bdd->query($profil);
@@ -126,27 +124,26 @@
 
 			</div>
 			<div class="float-container">
-
+				<?php
+					include("../include/connect.php");
+					//-----
+					$community = "SELECT * FROM `content` WHERE title='community' ";
+					$req1 = $bdd->query($community);
+					$dat1 = $req1->fetch();
+				?>
 			</div>
 			</div>
 
 			<div class="element-container">
 				<nav class="menu2 element-container">					
 					<ul class="level1">
-						<span><a class="logo" href="../index.php"><img  src="../img/SPLIT_LOGO.PNG"></a></span>						
+						<span><a class="logo" href="http://127.0.0.1/split/index.php"><img  src="http://127.0.0.1/split/img/SPLIT_LOGO.PNG"></a></span>
+						<li><a href="http://127.0.0.1/split/community/index.php"><?php echo $dat1[$_SESSION['user']['langue']]; ?> </a></li>
 						<?php
 						$reponse = $bdd->query($menu2_user);						
 						while ($donnees = $reponse->fetch()) {	?>						
-							<li><a href="index.php?page=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
-						<?php }
-						
-						$cart = $bdd->query($cart);
-						while ($donnees = $cart->fetch()) { ?>												
-							<li class="cart">
-							<i id="nb_cart" class="nb_cart icon-basket" ><?php echo cart_count();?></i>
-							<a href="../page_cart.php"><?php echo $donnees[$_SESSION['user']['langue']]; ?></a>
-							<?php require_once("../include/cart.php");?>						
-						</li>
-						<?php } ?>
+							<li><a href="http://127.0.0.1/split/community/index.php?page=<?php echo $donnees['title'];?>"> <?php echo $donnees[$_SESSION['user']['langue']]; ?> </a></li>
+						<?php }?>
+						<li></li>
 					</ul>
 				</nav>
