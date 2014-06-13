@@ -167,7 +167,7 @@
 		$carte = $_POST['carte'];
 		$date_exp = $_POST['month']."/".$_POST['year'];
 		$code = $_POST['cvc'];
-		$mail =$_SESSION['member']['email'];
+		$mail =$_SESSION['member']['mail'];
 		//---------------------
 		$infobank = "SELECT * FROM `content` WHERE title='info bank'";
 		$paiement = "SELECT * FROM `content` WHERE title='paiement' ";
