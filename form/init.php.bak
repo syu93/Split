@@ -270,8 +270,9 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		{
 
 				$req = $bdd->prepare('INSERT INTO member (genre, name, firstname, date, pseudo, avatar, email , password ,country, registred) 
-								VALUES(:genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country, :registred)');
+								VALUES(:id, :genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country, :registred)');
 				$req->execute(array(
+					':id'=> $id,
 					':genre'=> $genre,
 					':name'=> $name,
 					':firstname'=> $firstname,
