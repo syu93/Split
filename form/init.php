@@ -30,7 +30,11 @@ function start_session(){
 /****************************************************************************/
 /****************************************************************************/
 function empty_cart(){
+<<<<<<< HEAD
 	if(empty($_SESSION))
+=======
+	if(!($_SESSION))
+>>>>>>> origin/Syu93WorkSpace
 	{
 		session_start();
 	}
@@ -269,10 +273,9 @@ function signup($bdd,$g,$n,$f,$d,$p,$a,$e,$pw,$c){
 		if(!empty($genre) && !empty($name) && !empty($firstname) && !empty($pseudo) && !empty($email) && !empty($cryptedPW))
 		{
 
-				$req = $bdd->prepare('INSERT INTO member (id, genre, name, firstname, date, pseudo, avatar, email , password ,country, registred) 
-								VALUES(:id, :genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country, :registred)');
+				$req = $bdd->prepare('INSERT INTO member (genre, name, firstname, date, pseudo, avatar, email , password ,country, registred) 
+								VALUES(:genre, :name, :firstname, :date, :pseudo, :avatar, :email, :password, :country, :registred)');
 				$req->execute(array(
-					':id'=> $id,
 					':genre'=> $genre,
 					':name'=> $name,
 					':firstname'=> $firstname,
