@@ -30,7 +30,7 @@ function start_session(){
 /****************************************************************************/
 /****************************************************************************/
 function empty_cart(){
-	if($_SESSION)
+	if(empty($_SESSION))
 	{
 		session_start();
 	}
@@ -331,6 +331,49 @@ function exist_pseudo($bdd,$p){
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
+function exist_pseudo_part($bdd,$p){
+	$pseudo = $p;
+	
+	$repPS=NULL;
+	
+	$test = $bdd->prepare("SELECT name FROM partner WHERE name='$pseudo'");
+	$test->execute(array(
+	':pseudo' => $pseudo,
+	));
+	while ($exist = $test->fetch())
+	{
+		$repPS = $exist["name"];
+	}
+	
+	if($repPS==NULL)
+	{
+		$test = $bdd->prepare("SELECT name FROM editor WHERE name='$pseudo'");
+		$test->execute(array(
+		':pseudo' => $pseudo,
+		));
+		while ($exist = $test->fetch())
+		{
+			$repPS = $exist["name"];
+		}
+	}
+	
+	// tester si le resultat de la reqette est vide
+	if ($repPS!=NULL)
+	{
+		echo("truep");
+	}
+	else
+	{
+		// print_r($repPS);
+		echo("falsep");
+	}
+	
+	return;
+}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
 function exist_mail($bdd,$m){
 	
 	$mail = $m;
@@ -338,6 +381,38 @@ function exist_mail($bdd,$m){
 	$repEM=NULL;
 	// Recovery of the game array of the licence
 	$test = $bdd->prepare("SELECT email FROM member WHERE email='$mail'");
+	$test->execute(array(
+	':mail' => $mail,
+	));
+	while ($exist = $test->fetch())
+	{
+		$repEM = $exist["email"];
+	}
+	
+	// tester si le resultat de la reqette est vide
+	if ($repEM!=NULL)
+	{
+		// print_r($repEM);
+		echo("truem");
+	}
+	else
+	{
+		// print_r($repEM);
+		echo("falsem");
+	}
+	return;
+}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function exist_mail_part($bdd,$m){
+	
+	$mail = $m;
+	
+	$repEM=NULL;
+	// Recovery of the game array of the licence
+	$test = $bdd->prepare("SELECT email FROM partner WHERE email='$mail'");
 	$test->execute(array(
 	':mail' => $mail,
 	));

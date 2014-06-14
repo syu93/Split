@@ -13,7 +13,7 @@ $( document ).ready(function(){
 			success: function(data){
 				if(data == 'truep')
 				{					
-						$( "#ckpseudo" ).html("Not Avaible");
+						$( "#ckpseudo" ).html("Not available");
 						$( "#ckpseudo" ).attr( "class", "checkNo" );
 						$("#pseudo2").addClass('inputNo');
 
@@ -25,7 +25,7 @@ $( document ).ready(function(){
 				{
 					if(formP.pseudo != "")
 					{
-						$( "#ckpseudo" ).html("Avaible");
+						$( "#ckpseudo" ).html("available");
 						$( "#ckpseudo" ).attr( "class", "checkOk" );
 						$("#pseudo2").removeClass('inputNo');
 					}
@@ -60,7 +60,7 @@ $( document ).ready(function(){
 				if(data == 'truem')
 				{	
 					
-						$( "#ckmail2" ).html("Not Avaible");
+						$( "#ckmail2" ).html("Not available");
 						$( "#ckmail2" ).attr( "class", "checkNo" );
 						$("#mail2").addClass('inputNo');
 
@@ -72,7 +72,7 @@ $( document ).ready(function(){
 				{
 					if(formM.mail != "")
 					{
-						$( "#ckmail2" ).html("Avaible");
+						$( "#ckmail2" ).html("available");
 						$( "#ckmail2" ).attr( "class", "checkOk" );
 						$("#mail2").removeClass('inputNo');
 					}
@@ -87,7 +87,136 @@ $( document ).ready(function(){
 			dataType: "text"
 		});		
 	});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+	var datN;
+	var datM;
+	
+	// Creat Json object
+	var partnerP = {};
 
+	// recover the input value of pseudo
+	$("#partName1").change(function(){
+	
+	partnerP.namePart = $('#partName1').val();
+		$.ajax({
+			type: "POST",
+			url: "http://127.0.0.1/split/form/validate.php",
+			data: partnerP,
+			success: function(data){
+			datN=data;
+				if(data == 'truep')
+				{					
+						$( "#ckpseudoPart" ).html("Not available");
+						$( "#ckpseudoPart" ).attr( "class", "checkNo" );
+						$("#partName1").addClass('inputNo');
+						
+						$( "#formPartSI" ).submit(function( event ) {	
+							event.preventDefault();
+						});
+				}
+				else
+				{
+					if(partnerP.namePart != "")
+					{
+						$( "#ckpseudoPart" ).html("Available");
+						$( "#ckpseudoPart" ).attr( "class", "checkOk" );
+						$("#partName1").removeClass('inputNo');			
+					}
+					else
+					{
+						$( "#ckpseudoPart" ).html("");
+						$( "#ckpseudoPart" ).attr( "class", "checkOk" );
+						$("#partName1").removeClass('inputNo');
+					}
+				}				
+			}, 
+			dataType: "text"
+		});
+	});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+// partner sign up
+
+	// Creat Json object
+	var partnerM	= {};
+	// recover the input value of mail
+	$("#partMail1").change(function(){
+	partnerM.mailPart = $('#partMail1').val();
+		$.ajax({
+			type: "POST",
+			url: "http://127.0.0.1/split/form/validate.php",
+			data: partnerM,
+			success: function(data){
+			datM=data;
+				if(data == 'truem')
+				{					
+					$( "#ckmailPart" ).html("Not available");
+					$( "#ckmailPart" ).attr( "class", "checkNo" );
+					$("#partMail1").addClass('inputNo');
+
+					$( "#formPartSI" ).submit(function( event ) {	
+					event.preventDefault();
+					});					
+				}
+				else
+				{
+					if(partnerM.mailPart != "")
+					{
+						$( "#ckmailPart" ).html("available");
+						$( "#ckmailPart" ).attr( "class", "checkOk" );
+						$("#partMail1").removeClass('inputNo');
+					}
+					else
+					{
+						$( "#ckmailPart" ).html("");
+						$( "#ckmailPart" ).attr( "class", "checkOk" );
+						$("#partMail1").removeClass('inputNo');
+					}
+				}				
+			}, 
+			dataType: "text"
+		});		
+	});
+
+/**************************************************************************/
+/**************************************************************************/
+$( "#sign_part" ).click(function( event ) {
+	if(datN!='truep' && datM!='truem')
+	{
+		$( "#formPartSI" ).unbind('submit');		
+	}
+});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+	// Prevent from  submitting nothing
+	// $("#sign_part").click(function(event){		
+		// if($('#partName1').val()=="" && $('#partMail1').val()=="")
+		// {
+			// event.preventDefault();
+			// $("#partName1").addClass('inputNo');
+			// $("#partMail1").addClass('inputNo');
+			// $("#partPsw1").addClass('inputNo');
+		// }
+
+		// if($('#partName1').val()!="" && $('#partMail1').val()!="")
+		// {
+			// $("#partName1").removeClass('inputNo');
+			// $("#partMail1").removeClass('inputNo');
+			// $("#partPsw1").removeClass('inputNo');
+		// }
+	// });
+	
 /**************************************************************************/	
 /**************************************************************************/	
 /**************************************************************************/	

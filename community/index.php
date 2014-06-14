@@ -40,44 +40,68 @@
 		if($_GET['page']=='partenariat')
 		{
 	?>
-			<div class="article" style="width:100%; height:240px; text-align:left;">
+			<div class="article connect" style="width:100%; height:240px; text-align:left;">
 				<div class="bandeau"><?php echo $dat1[$_SESSION['user']['langue']]; ?></div>
 					<div style="padding:10px;">
-						<div style="float:left";>
-						<p><?php echo $dat6[$_SESSION['user']['langue']]; ?></p>
-							<form action="http://127.0.0.1/split/form/validateSignUp.php" method="POST">
-								<p><label style="float:left" for="name"><?php echo $dat2[$_SESSION['user']['langue']]?> : </label>
-									<input type="text" id="name" name="name" style="float:none;">
-								</p>
-								<p><label style="float:left" for="email"><?php echo $dat3[$_SESSION['user']['langue']]?> : </label>
-									<input type="text" id="email" name="email" style="float:none;">
-								</p>
-								<p><label style="float:left" for="pswd"><?php echo $dat4[$_SESSION['user']['langue']]?> : </label>
-									<input type="password" id="pswd" name="password" style="float:none;">
-								</p>
-								<p><label style="float:left" for=""><?php echo $dat2[$_SESSION['user']['langue']]?> : </label>
-									<input type="file" id="name" name="avatar" style="float:none;">
-								</p>
+						<div style="float:left; width:430px; margin-right:0px;">
+						<p><?php echo $dat6[$_SESSION['user']['langue']]; ?></p><br>
+							<form id="formPartSI" action="http://127.0.0.1/split/form/validateSignUp.php" method="POST">
+							
+								<div class="element">
+									<label for="name"><?php echo $dat2[$_SESSION['user']['langue']]?> : </label>
+									<span id="ckpseudoPart" class="checkOk"></span>
+								</div>								
+								<div class="input">
+									<input type="text" id="partName1" name="partName1" required>
+								</div>
+								
+								<div class="element">
+									<label for="partMail1"><?php echo $dat3[$_SESSION['user']['langue']]?> : </label>
+									<span id="ckmailPart" class="checkOk"></span>
+								</div>								
+								<div class="input">
+									<input type="email" id="partMail1" name="partMail1" required>
+								</div>
+								
+								<div class="element">
+									<label for="partPsw1"><?php echo $dat4[$_SESSION['user']['langue']]?> : </label>
+								</div>								
+								<div class="input">
+									<input type="password" id="partPsw1" name="password" required>
+								</div>
 								<br>
-								<p>
-									<input style="float:left" type="submit" value='<?php echo $dat8[$_SESSION['user']['langue']]?>' name="sign_part">
-								</p>
+								<br>
+								<div>
+									<input id="sign_part" type="submit" value='<?php echo $dat8[$_SESSION['user']['langue']]?>' name="sign_part">
+								</div>
 							</form>
 						</div>
 						
-						<div style="float:left;">
-						<p><?php echo $dat7[$_SESSION['user']['langue']]; ?></p>
+						<div style="float:left; width: 430px;">
+						<p><?php echo $dat7[$_SESSION['user']['langue']]; ?></p><br>
 							<form action="http://127.0.0.1/split/form/validateSignUp.php" method="POST">
-								<p><label style="float:left" for="email"><?php echo $dat3[$_SESSION['user']['langue']]?> : </label>
-									<input type="text" id="email" name="email" style="float:none;">
-								</p>
-								<p><label style="float:left" for="pswd"><?php echo $dat4[$_SESSION['user']['langue']]?> : </label>
-									<input type="password" id="pswd" name="password" style="float:none;">
-								</p>
+							
+								<div class="element">
+									<label for="email"><?php echo $dat3[$_SESSION['user']['langue']]?> : </label>
+								</div>
+								<div class="input">
+									<input type="text" id="email" name="email">
+								</div>
+								
+								<div class="element">
+									<label for="pswd"><?php echo $dat4[$_SESSION['user']['langue']]?> : </label>
+								</div>
+								<div class="input">
+									<input type="password" id="pswd" name="password">
+								</div>
+								
 								<br>
-								<p>
-									<input style="float:left" type="submit" value='<?php echo $dat8[$_SESSION['user']['langue']]?>' name="log_part">
-								</p>
+								<br>
+								
+								<div>
+									<input type="submit" value='<?php echo $dat8[$_SESSION['user']['langue']]?>' name="log_part">
+								</div>
+								
 							</form>
 						</div>
 					</div>
