@@ -380,6 +380,7 @@
 // Sign up for the partner
 	if(isset($_POST["sign_part"]))
 	{
+	// To do
 		// echo$_POST["partName1"];
 		// echo$_POST["partMail1"];
 		// echo$_POST["password"];
