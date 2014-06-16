@@ -5,13 +5,14 @@
 	{
 		session_start();
 	}
+	getUrl();
 	$connected = ifconnected();
 	$pseudo = $_SESSION['member']['pseudo'];
 	$logoff="true";
 	require_once("../form/req.php");
 	/********************************************************/
 
-	// debug($_SESSION);
+	debug($_SESSION);
 	// unset($_SESSION['user']['cart']['game'][0]);
 	// echo $_SESSION['user']['cart']['game'][0];
 	/********************************************************/

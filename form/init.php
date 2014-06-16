@@ -13,6 +13,10 @@ function start_session(){
 	{			
 		$_SESSION['member']["connected"] = 0;
 	}
+	if(empty($_SESSION['partner']["connected"]))
+	{			
+		$_SESSION['partner']["connected"] = 0;
+	}
 	if(empty($_SESSION['member']["pseudo"]))
 	{			
 		$_SESSION['member']["pseudo"] =null;
@@ -65,6 +69,18 @@ function session_connect($bdd,$m){
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
+	function init_session_partner() {
+	if(!($_SESSION))
+	{
+		session_start();
+	}
+	$_SESSION['partner']['connected'] = 1;
+	header('Location:../community/index.php?page=partenariat');
+	}
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
 function session_disconnect($m){
 	session_start();
 	
@@ -75,6 +91,21 @@ function session_disconnect($m){
 	$_SESSION['member']["connected"] = 0;
 	
 	$_SESSION = array();
+	session_destroy();
+	
+	header('Location: ../');
+}
+
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function partner_session_disconnect($m)
+{
+	session_start();
+	$_SESSION['partner']["connected"] = 0;
+	
+	$_SESSION['partner'] = array();
 	session_destroy();
 	
 	header('Location: ../');
@@ -445,6 +476,38 @@ function exist_password($bdd,$m,$pw){
 	$repPW=NULL;
 	// Recovery of the game array of the licence
 	$test = $bdd->query("SELECT password FROM member WHERE password='$cryptpw' AND email='$mail'");
+
+	while ($exist = $test->fetch())
+	{
+		$repPW = $exist["password"];
+	}
+	
+	// tester si le resultat de la reqette est vide
+	if ($repPW!=NULL)
+	{
+		// print_r("null".$repPW);
+		echo("truep");
+	}
+	else
+	{
+		// print_r("oui".$repPW);
+		echo("falsep");
+	}
+	return;
+}
+
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+function exist_password_part($bdd,$m,$pw){
+	$mail = $m;
+	$password = $pw;
+	$cryptpw = md5($password);
+	
+	$repPW=NULL;
+	// Recovery of the game array of the licence
+	$test = $bdd->query("SELECT password FROM partner WHERE password='$cryptpw' AND email='$mail'");
 
 	while ($exist = $test->fetch())
 	{

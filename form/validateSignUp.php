@@ -380,11 +380,36 @@
 // Sign up for the partner
 	if(isset($_POST["sign_part"]))
 	{
-	// To do
-		// echo$_POST["partName1"];
-		// echo$_POST["partMail1"];
-		// echo$_POST["password"];
+		session_start();
+		$_SESSION['partner']['name'] = $_POST["partName1"];
+		$psw = md5($_POST["password"]);
+		$date = date("Y-m-d");
+		//----
+		$register = 'INSERT into partner (name, email, password, registred) VALUES("'.$_SESSION['partner']['name'].'","'.$_POST["partMail1"].'", "'.$psw.'", "'.$date.'")';
+		$req = $bdd ->query($register);
+		//----
+		init_session_partner();
 	}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+	if(isset($_POST['mailP1']))
+	{
+		session_start();
+		$test = $bdd->query("SELECT name FROM partner WHERE email='".$_POST['mailP1']."' ");
+		$name = $test->fetch();
 
+		$_SESSION['partner']['name'] = $name['name'];
+		init_session_partner();
+	}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+	if(isset($_GET["partnerlogoff"]))
+	{
+		partner_session_disconnect($_GET["partnerlogoff"]);
+	}
 
 ?>

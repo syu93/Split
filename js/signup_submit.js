@@ -195,27 +195,6 @@ $( "#sign_part" ).click(function( event ) {
 		$( "#formPartSI" ).unbind('submit');		
 	}
 });
-/**************************************************************************/	
-/**************************************************************************/	
-/**************************************************************************/	
-/**************************************************************************/
-	// Prevent from  submitting nothing
-	// $("#sign_part").click(function(event){		
-		// if($('#partName1').val()=="" && $('#partMail1').val()=="")
-		// {
-			// event.preventDefault();
-			// $("#partName1").addClass('inputNo');
-			// $("#partMail1").addClass('inputNo');
-			// $("#partPsw1").addClass('inputNo');
-		// }
-
-		// if($('#partName1').val()!="" && $('#partMail1').val()!="")
-		// {
-			// $("#partName1").removeClass('inputNo');
-			// $("#partMail1").removeClass('inputNo');
-			// $("#partPsw1").removeClass('inputNo');
-		// }
-	// });
 	
 /**************************************************************************/	
 /**************************************************************************/	
@@ -308,7 +287,6 @@ $( "#sign_part" ).click(function( event ) {
 			success: function(data){
 				if(data == "truem")
 				{
-
 						var formCP = {};
 						formCP.password1 = $('#password1').val();
 						formCP.mail01 = $('#mail1').val();
@@ -332,6 +310,78 @@ $( "#sign_part" ).click(function( event ) {
 								else
 								{
 
+								}
+							}, 
+							dataType: "text"
+						});
+				}
+				else if(data == "falsem")
+				{
+					$( "#password1" ).val("");
+					$( "#cksub1" ).html("Your e-mail address or password is invalid. Please try again.");
+					$( "#cksub1" ).attr( "class", "checkNo" );
+					$("#mail1").addClass('inputNo');
+					$("#password1").addClass('inputNo');
+				}
+				else
+				{
+					// alert("error");
+				}
+			}, 
+			dataType: "text"
+		});		
+	});
+	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+// Connect Partner
+
+	// Creat Json object
+	var connectP = {};
+	
+	// recover the input value of avatar
+	$("#log_part").click(function(event){		
+	event.preventDefault();
+	
+		connectP.mailP1 = $('#mailP1').val();
+		// alert(connectP.mailP1);
+
+		$.ajax({
+			type: "POST",
+			url: "http://127.0.0.1/split/form/validate.php",
+			data: connectP,
+			success: function(data){
+			// alert(data);
+				if(data == "truem")
+				{
+						var connectPpw = {};
+						connectPpw.passwordP1 = $('#passwordP1').val();
+						connectPpw.mailP01 = $('#mailP1').val();
+						$.ajax({
+							type: "POST",
+							url: "http://127.0.0.1/split/form/validate.php",
+							data: connectPpw,
+							success: function(data){
+							// alert(data);
+								if(data == "truep")
+								{
+									// alert('ok');
+									$("#formPartLi").submit();
+								}
+								else if(data == "falsep")
+								{
+									alert('pbl');
+									$( "#passwordP1" ).val("");
+									$( "#cksubP1" ).html("Your e-mail address or password is invalid. Please try again.");
+									$( "#cksubP1" ).attr( "class", "checkNo" );
+									$("#mailP1").addClass('inputNo');
+									$("#passwordP1").addClass('inputNo');
+								}
+								else
+								{
+									// alert('pbl');
 								}
 							}, 
 							dataType: "text"
