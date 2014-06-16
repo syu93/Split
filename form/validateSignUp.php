@@ -192,6 +192,7 @@
 		$subtot = "SELECT * FROM `content` WHERE title='subtotal'";
 		//---
 		$req1 = $bdd->query($infobank);
+		$r_bk = $bdd->query($infobank);
 		$req2 = $bdd->query($paiement);
 		$req3= $bdd->query($expiration);
 		$req4= $bdd->query($phone);
@@ -214,6 +215,7 @@
 		$req20= $bdd->query($subtot);
 		//---
 		$dat1 = $req1->fetch();
+		$dat100 = $r_bk->fetch();
 		$dat2 = $req2->fetch();
 		$dat3 = $req3->fetch();
 		$dat4 = $req4->fetch();
@@ -325,16 +327,23 @@
 				':game'=>$c_game,
 				':licence'=>$c_licence,
 				));
-				$buygame =  $bdd->query('SELECT * FROM `licence` WHERE member="'.$_SESSION['member']["mail"].'" AND idgame = "'.$c_game.'" AND licencekey="'.$c_licence.'" ');				
+				$buygame =  $bdd->query('SELECT * FROM `licence` WHERE member="'.$_SESSION['member']["mail"].'" AND idgame = "'.$c_game.'" AND licencekey="'.$c_licence.'" ');
+				//--
+				$orderok = $bdd->query('SELECT * FROM content WHERE title = "orderok"');
+				$ordererr = $bdd->query('SELECT * FROM content WHERE title = "ordererr"');
+				
+				$repok = $orderok->fetch();
+				$reperr = $ordererr->fetch();
+				
 				if(!$buygame)
 				{
-					array_push($message['alert'],"An error occured while we proced to your order of ".$c_game.".<br> Our technician will try to fix it as soon as possible,<br> You can also try agan to make your order.<br> We are sorry for this inconvenience<br><br>The Split team.");
-					require_once("../include/alert.tpl");
+					array_push($message['alert'],"".$reperr[$_SESSION['user']['langue']]."");
+				require_once("../include/alert.tpl");
 					die();
 				}
 				else
 				{
-					array_push($message['alert'],"We have successfully proced to your order, you will receive an email of conformation.<br> Thank You for your order.<br><br>The Split team.");
+					array_push($message['alert'],"".$repok[$_SESSION['user']['langue']]."");
 					//--------------------
 					$req_order = $bdd->query($reg_order);					
 					$ck_order = $bdd->query('SELECT * FROM `order` WHERE `idorder`="'.$id_order.'" ');

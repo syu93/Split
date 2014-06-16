@@ -10,7 +10,7 @@
 	
 	echo'<div class="container" style="text-shadow:0 0 1px #3d3d3d; float:left; padding:5px; margin-right:10px; width:300px;background:url(\'../css/get.png\');">';
 	echo'<form action="http://127.0.0.1/split/form/validateSignUp.php" method="POST">';
-		echo'<h6>'.$dat1[$_SESSION['user']['langue']].'</h6>';
+		echo'<h6>'.$dat100[$_SESSION['user']['langue']].'</h6>';
 		echo'<p>'.$dat7[$_SESSION['user']['langue']]." : ".$name."  ".$firstname.'</p>';
 		echo'<p>'.$dat5[$_SESSION['user']['langue']]." : ".substr_replace($carte, "XXX XXXX XXXX", 6, 13).'</p>';
 		echo'<p>'.$dat3[$_SESSION['user']['langue']]." : ".$date_exp.'</p>';
