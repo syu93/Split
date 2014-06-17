@@ -372,7 +372,7 @@ $( "#sign_part" ).click(function( event ) {
 								}
 								else if(data == "falsep")
 								{
-									alert('pbl');
+									// alert('pbl');
 									$( "#passwordP1" ).val("");
 									$( "#cksubP1" ).html("Your e-mail address or password is invalid. Please try again.");
 									$( "#cksubP1" ).attr( "class", "checkNo" );
@@ -583,4 +583,43 @@ $( "#sign_part" ).click(function( event ) {
 			});
 		});
 	}
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+//respond
+	$("#responce").click(function(event){
+		event.preventDefault();
+		$("#new_form").addClass('OCoff');
+		//--
+		$("#respond_form").removeClass('OCoff');
+		$("#respond_form").addClass('OCon');
+	});	
+	
+	$("#new_msg").click(function(event){
+		event.preventDefault();
+		$("#respond_form").addClass('OCoff');
+		//--
+		$("#new_form").removeClass('OCoff');
+		$("#new_form").addClass('OCon');
+	});
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/	
+/**************************************************************************/
+
+	// $("#respond_sub").click(function(event){
+		// event.preventDefault();
+		// $("#respond_form").submit();
+		// alert('sub');
+		// location.reload();
+	// });
+
+	// $("#new_sub").click(function(event){
+		// event.preventDefault();
+		// $("#new_form").submit();
+		// alert('sub');
+		// location.reload();
+	// });
+	
 });

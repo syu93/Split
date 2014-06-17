@@ -6,6 +6,10 @@
 	/*****************************/
 	/*****************************/
 	// debug($_SESSION);
+	// session_start();
+	$community = "SELECT * FROM `content` WHERE title='community' ";
+	$event = "SELECT * FROM `content` WHERE title='event' ";
+	$forum = "SELECT * FROM `content` WHERE title='forum' ";
 	
 	$partnership = "SELECT * FROM `content` WHERE title='partnership' ";
 	$name = "SELECT * FROM `content` WHERE title='nom' ";
@@ -16,7 +20,12 @@
 	$login = "SELECT * FROM `content` WHERE title='login' ";
 	$submit = "SELECT * FROM `content` WHERE title='submit' ";
 	$deco="SELECT text_fr, text_en FROM content WHERE title='logoff'";
+	$subject="SELECT text_fr, text_en FROM content WHERE title='subject'";
 	//-----
+	$req01 = $bdd->query($community);
+	$req02 = $bdd->query($event);
+	$req03 = $bdd->query($forum);
+	
 	$req1 = $bdd->query($partnership);
 	$req2 = $bdd->query($name);
 	$req3 = $bdd->query($email);
@@ -26,7 +35,12 @@
 	$req7 = $bdd->query($login);
 	$req8 = $bdd->query($submit);
 	$req9 = $bdd->query($deco);
+	$req10 = $bdd->query($subject);
 	//-----
+	$dat01 = $req01->fetch();
+	$dat02 = $req02->fetch();
+	$dat03 = $req03->fetch();
+	
 	$dat1 = $req1->fetch();
 	$dat2 = $req2->fetch();
 	$dat3 = $req3->fetch();
@@ -36,26 +50,67 @@
 	$dat7 = $req7->fetch();
 	$dat8 = $req8->fetch();
 	$dat9 = $req9->fetch();
+	$dat10 = $req10->fetch();
 	
 ?>
 	<div class="container">
 	<?php
+	if(isset($_POST['submit']))
+	{
+		$thrd = addslashes ($_POST['thread']);
+		$msg = addslashes ($_POST['message']);
+		$q_new_post = "INSERT INTO forum (forum, thread, user, message) VALUES('".$_POST['forum']."', '".$thrd."', '".$_SESSION['member']['mail']."', '".$msg."')";
+		// echo $thrd;
+		// echo $msg;
+		// echo $q_new_post;
+		$new_post = $bdd->query($q_new_post);
+	}
+	
 	if(isset($_GET['page'])){
 		if($_GET['page']=='partenariat')
 		{
+		$forum = "partner";
 			if($_SESSION['partner']['connected'] == 1)
 			{				
 				echo '<span style="float:right; background:#3D3D3D; line-height:22px;padding:3px; color:#ccc; margin-bottom:10px;">'.$_SESSION['partner']['name'].' <a href="../form/validateSignUp.php?partnerlogoff=true">('.$dat9[$_SESSION['user']['langue']].')</a></span>';
-				?>
-				<div class="article connect" style="width:100%; height:240px; text-align:left;">
+				
+				$r_partner = $bdd->query('SELECT * FROM forum WHERE forum = "'.$forum.'" ORDER BY date DESC');
+	?>
+				<div class="article connect" style="width:100%; height:auto; text-align:left; box-shadow:none;  padding-bottom:0;">
 				<div class="bandeau"><?php echo $dat1[$_SESSION['user']['langue']]; ?></div>
-				<div>
+				<?php
+					while($f_partner = $r_partner->fetch())
+					{
+					$thread = $f_partner['thread'];
+					//----
+					$author = $f_partner['user'];
+					$a_member = $bdd->query('SELECT * FROM member WHERE email = "'.$author.'" ');
+					$rep_member = $a_member->fetch();
+				?>
+					<div class="forum">
+						<div class="forum_inf">
+							<img style="width: 140px; height: 70px;" src='../<?php echo $rep_member['avatar']; ?>'/>
+							<br>
+							<span style="margin-left:3px;"><?php echo $rep_member['pseudo']; ?></span>
+							<br>
+							<span style="margin-left:3px;"><?php echo $f_partner['date']; ?></span>
+						</div >
+						
+						<div class="forum_msg" style="float:left;">
+							<span><span style="text-decoration:underline;"><?php echo $dat10[$_SESSION['user']['langue']]; ?></span> : <a style="font-size:16px; color:#444;" href=""><?php echo $f_partner['thread']; ?></a></span>
+							<p><?php echo $f_partner['message']; ?></p>
+						</div>
+					</div>
+				<?php
+					}
+				?>
+				</div>
 				<?php				
 			}
 			else
 			{
 	?>	
-		<div class="article connect" style="width:100%; height:240px; text-align:left;">
+		<div class="article connect" style="width:100%; height:240px; text-align:left;padding-bottom:0;">
 			<div class="bandeau"><?php echo $dat1[$_SESSION['user']['langue']]; ?></div>
 				<div style="padding:10px;">
 					<div style="float:left; width:430px; margin-right:0px;">
@@ -123,9 +178,140 @@
 				</div>
 		</div>
 	<?php
-		}}}
+			}
+		}
+		else if($_GET['page']=='event')
+		{
+			$forum = "event";
+			$r_forum = $bdd->query('SELECT * FROM forum WHERE forum = "'.$forum.'" ORDER BY date DESC');
+		?>
+			<div class="article connect" style="width:100%; height:auto; text-align:left; box-shadow:none;padding-bottom:0;">
+			<div class="bandeau"><?php echo $dat02[$_SESSION['user']['langue']]; ?></div>
+		<?php
+			while($f_forum = $r_forum->fetch())
+			{
+			$thread = $f_forum['thread'];
+			//----
+			$author = $f_forum['user'];
+			$a_member = $bdd->query('SELECT * FROM member WHERE email = "'.$author.'" ');
+			$rep_member = $a_member->fetch();
+			?>
+				<div class="forum">
+					<div class="forum_inf">
+						<img style="width: 140px; height: 70px;" src='../<?php echo $rep_member['avatar']; ?>'/>
+						<br>
+						<span style="margin-left:3px;"><?php echo $rep_member['pseudo']; ?></span>
+						<br>
+						<span style="margin-left:3px;"><?php echo $f_forum['date']; ?></span>
+					</div>
+					
+					<div class="forum_msg" style="float:left;">
+						<span><span style="text-decoration:underline;"><?php echo $dat10[$_SESSION['user']['langue']]; ?></span> : <a style="font-size:16px; color:#444;" href=""><?php echo $f_forum['thread']; ?></a></span>
+						<p><?php echo $f_forum['message']; ?></p>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+			</div>
+		<?php
+		}
+		
+		else if($_GET['page']=='forum')
+		{
+			$forum = "forum";
+			$r_forum = $bdd->query('SELECT * FROM forum WHERE forum = "'.$forum.'" ORDER BY date DESC');
+		?>
+			<div class="article connect" style="width:100%; height:auto; text-align:left; box-shadow:none;padding-bottom:0;">
+			<div class="bandeau"><?php echo $dat03[$_SESSION['user']['langue']]; ?></div>
+		<?php
+			while($f_forum = $r_forum->fetch())
+			{
+			$thread = $f_forum['thread'];
+			//----
+			$author = $f_forum['user'];
+			$a_member = $bdd->query('SELECT * FROM member WHERE email = "'.$author.'" ');
+			$rep_member = $a_member->fetch();
+			?>
+				<div class="forum">
+					<div class="forum_inf">
+						<img style="width: 140px; height: 70px;" src='../<?php echo $rep_member['avatar']; ?>'/>
+						<br>
+						<span style="margin-left:3px;"><?php echo $rep_member['pseudo']; ?></span>
+						<br>
+						<span style="margin-left:3px;"><?php echo $f_forum['date']; ?></span>
+					</div>
+					
+					<div class="forum_msg" style="float:left;">
+						<span><span style="text-decoration:underline;"><?php echo $dat10[$_SESSION['user']['langue']]; ?></span> : <a style="font-size:16px; color:#444;" href=""><?php echo $f_forum['thread']; ?></a></span>
+						<p><?php echo $f_forum['message']; ?></p>
+					</div>
+				</div>
+			<?php
+			}
+			?>				
+			</div>
+		<?php
+		}
+	}
+	else
+	{
 	?>
+		
+		<div class="article connect" style="width:100%; height:auto; text-align:left; box-shadow:none;padding-bottom:0;">
+		<div class="bandeau"><?php echo $dat01[$_SESSION['user']['langue']]; ?></div>
+		<?php
+			$r_forum = $bdd->query('SELECT * FROM forum ORDER BY date DESC');
+			while($f_forum = $r_forum->fetch())
+			{
+			$thread = $f_forum['thread'];
+			//----
+			$author = $f_forum['user'];
+			$a_member = $bdd->query('SELECT * FROM member WHERE email = "'.$author.'" ');
+			$rep_member = $a_member->fetch();
+			?>
+				<div class="forum">
+					<div class="forum_inf">
+						<img style="width: 140px; height: 70px;" src='../<?php echo $rep_member['avatar']; ?>'/>
+						<br>
+						<span style="margin-left:3px;"><?php echo $rep_member['pseudo']; ?></span>
+						<br>
+						<span style="margin-left:3px;"><?php echo $f_forum['date']; ?></span>
+					</div>
+					
+					<div class="forum_msg"style="float:left;">
+						<span><span style="text-decoration:underline;"><?php echo $dat10[$_SESSION['user']['langue']]; ?></span> : <a style="font-size:16px; color:#444;" href=""><?php echo $f_forum['thread']; ?></a></span>
+						<p><?php echo $f_forum['message']; ?></p>
+					</div>
+				</div>
+			<?php
+			}
+			?>		
+		</div>
 	</div>
 <?php
+	}
+		if($_SESSION['member']['connected'] == 1)
+		{
+?>
+					<div class="forum_respond">
+						<form method="post" id="respond_form" action="<?php echo$_SESSION['user']['location'];?>" class="OCoff">
+							<span><a href=""><?php echo $thread; ?></a></span>
+							<input type="hidden" name="forum" value="<?php echo $forum; ?>">
+							<input type="hidden" name="thread" value="<?php echo $thread; ?>">
+							<textarea name="message" style="width:890px; height:200px;"></textarea>
+							<input id="respond_sub" style="float:none;" type="submit" name="submit" value="<?php echo $dat8[$_SESSION['user']['langue']];?>">
+						</form>
+
+						<form method="post" id="new_form" action="<?php echo$_SESSION['user']['location'];?>" class="OCoff">
+							<input type="hidden" name="forum" value="<?php echo $forum; ?>">
+							<textarea style="float:none; width:500px; height:25px;" id="thread" type="text" name="thread"></textarea>
+							<textarea name="message" style="width:890px; height:200px;"></textarea>
+							<input id="new_sub" style="float:none;" type="submit" name="submit" value="<?php echo $dat8[$_SESSION['user']['langue']];?>">
+						</form>
+						<a id="responce" href="">Repondre</a>, <a id="new_msg" href="">nouveau message</a>
+					</div>
+<?php
+		}
 	require_once("../include/footer.php");
 ?>

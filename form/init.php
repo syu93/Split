@@ -63,7 +63,7 @@ function session_connect($bdd,$m){
 	/*************************************************************************/	
 	
 	$_SESSION['member']["connected"] = 1;	
-	header('Location:'.$_SESSION['user']['location']);
+	header('Location:'.$_SESSION['user']['location']); // DEBUG THE REDIRECTION
 }
 /****************************************************************************/
 /****************************************************************************/

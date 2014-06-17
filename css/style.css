@@ -476,3 +476,37 @@ hr
 	
 	padding-top:110px;
 }
+
+.forum
+{
+	background:#d4d4d4;
+	float:left;
+}
+
+.forum:nth-child(2n)
+{
+	background:#bdbdbd;
+}
+
+.forum .forum_inf
+{
+	float:left;
+	width:145px;
+	word-wrap:normal;	
+}
+
+.forum .forum_msg
+{
+	border-left:solid #3d3d3d 2px;
+	padding:2px;
+	width:749px;
+	min-height:120px;	
+}
+
+.forum_respond
+{
+	text-align:center;
+	background:#3d3d3d;
+	margin-bottom:10px;
+	
+}

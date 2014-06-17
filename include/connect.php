@@ -9,7 +9,7 @@
 	
 	<div class="connect">
 		<div class="form1">
-			<form method="POST" action="form/validateSignUp.php" id="formLi">
+			<form method="POST" action="http://127.0.0.1/split/form/validateSignUp.php" id="formLi">
 				<div class="element">
 					<div class="element"><label for="mail1">Email : </label><span id="ckmail1" class="checkMail"></span></div>
 					<hr>
@@ -36,7 +36,7 @@
 		<hr class="hr-vert">
 		
 		<div class="form2">
-			<form method="POST" action="form/validateSignUp.php" id="formSi" enctype="multipart/form-data">
+			<form method="POST" action="http://127.0.0.1/split/form/validateSignUp.php" id="formSi" enctype="multipart/form-data">
 				<div class="element">
 					<span>Genre : </span> 
 						<div class="genre"><label for="GrM">M. </label><input id="GrM" type="radio" name="genre" value="male" checked></div>
