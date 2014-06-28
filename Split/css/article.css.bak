@@ -1,0 +1,273 @@
+/*
+ *	Welcome to the
+ *	Menu CSS Style of 
+ *	Split
+ */
+
+.container .article img
+{
+	height: 91px;
+    width: 200px;
+	border-radius:10px;
+
+	border: inset 1px #FFF;
+}
+ 
+.article
+{
+	width:210px;
+	height:150px;
+	background:url("get.png");
+	padding:5px;
+	
+	margin-bottom:5px;
+	
+	display:inline-block;
+	
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	
+	text-align:center;
+	
+	position:relative;
+	
+	overflow:hidden;
+	
+	-webkit-box-shadow: 0 1px 5px 1px #000;
+	box-shadow: 0 1px 5px 1px #000;
+}
+.article:hover
+{
+	-webkit-box-shadow:inset 0 0 1000px 1px #888, 0 1px 5px 1px #000;
+	box-shadow:inset 0 0 1000px 1px #888, 0 1px 5px 1px #000;
+	
+	transition-property:-webkit-box-shadow;
+	transition-property:box-shadow;
+	transition-duration:0.5s;
+}
+
+.article-text
+{
+    display: table;
+    float: left;
+    font-size: 16px;
+    height: 45px;
+    padding: 5px;
+    text-align: left;
+    width: 130px;
+}
+
+.article-describ
+{
+	display:none;
+	position:absolute;
+	top:160px;
+	left:0;
+	padding:5px;
+
+	overflow:hidden;
+	
+	background:url("get.png");
+	width:210px;
+	z-index:19;
+}
+
+.article:hover .article-describ
+{	
+	display:block;
+	
+	animation: marquee 8s linear infinite;	
+	animation-delay:2s;
+	
+	-webkit-box-shadow:inset 0 0 1000px 1px #3D3D3D;
+	box-shadow:inset 0 0 1000px 1px #3D3D3D;
+	
+	text-align:left;
+}
+
+.article a
+{
+	color:#000;
+}
+
+@keyframes marquee 
+{
+    0%   { top:   8em }
+    100% { top: -11em }
+}
+	
+.article-info
+{
+	opacity:0;
+	position:absolute;
+	right:-60px;
+	background:#B5B5B5;
+	z-index:20;
+	font-family:"fontello";
+	font-size:25px;
+	padding:5px;
+	
+	border-radius: 8px 0 0 8px;
+	-webkit-border-radius: 8px 0 0 8px;	
+}
+
+.describ-text .article-text
+{
+	font-size: 30px;
+	padding:0 0 10px 0;
+	text-shadow: 2px 0 3px #000;
+	width:430px;
+	float:left;
+}
+.describ-text
+{
+	margin-left: 40px;
+	float:left;
+}
+.game-price
+{
+	/*margin-right:18px;*/
+	float:right;
+}
+
+.long-describ
+{
+	width:400px;
+	text-align:justify;
+	padding:15px;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	
+	box-shadow: 0 0 6px 0 #000;
+	-webkit-box-shadow: 0 0 6px 0 #000;
+}
+
+.article:hover .article-info
+{
+	opacity:1;
+	right:0;
+	transition:right ease 0.3s;
+}
+.article-info a:hover
+{
+	text-shadow: 0 0 6px #000;
+}
+
+.icon-info:hover
+{
+	cursor:pointer;
+}
+.icon-basket:hover
+{
+	cursor:pointer;
+}
+
+.gameBack
+{
+	float:left;
+	margin-left:15px;
+	clear:both;
+	cursor:pointer;
+}
+.game-title
+{
+	text-align:center;
+	font-size:18px;
+}
+.gameDescrib
+{
+	width:100%;
+	height:100%;
+	
+	background:linear-gradient(to bottom, #F6F8F9 0%, #D7DEE3 50%) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+	position:fixed;
+	top:0;
+	left:0;
+	
+	z-index:100;
+}
+
+.addcart
+{
+	float: right;
+	display:inline-block;
+	width: 175px;
+	height: 35px;
+	line-height:35px;
+	background: #B5B5B5;
+	margin-top:15px;
+	padding:5px;
+	color:#000;
+	border:inset #ddd 1px;
+	-webkit-box-shadow: 0 0 3px 0 #000;
+	box-shadow: 0 0 3px 0 #000;
+	clear:both;
+}
+.addcart:hover
+{
+	color:#000;
+	transition:text-shadow ease 0.6s;
+	text-shadow: 0 0 5px #000;
+	border:solid #ddd 1px;
+}
+.addcart .icon-basket
+{
+	font-size:20px;
+	color:#000;
+}
+.addcart:hover .icon-basket
+{
+	color:#6e91be;
+}
+
+.article-genre
+{
+	float:left;
+	margin-top:15px;
+}
+.article-tag
+{
+
+}
+.article-tag:after
+{
+	color:#000;
+	content:" ,";
+}
+.article-tag:last-child:after
+{
+	content:"";
+}
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+
+.page-game
+{
+	margin-top:20px;
+	margin-left:20px;
+	background: url('get.png');
+    float: left;
+    height: 400px;
+	padding: 20px;
+	
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.page-game img
+{
+	width:400px;
+	height:200px;
+	
+	float:left;
+	
+	border: inset 1px #FFF;
+	
+	-webkit-border-radius:15px;
+	border-radius:15px;
+}
